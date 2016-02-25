@@ -1,0 +1,348 @@
+@CHARSET "UTF-8";
+
+html, body{
+	width: auto;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	font-family: 微软雅黑;
+	color: gray;
+}
+
+.inside-body{
+	overflow: auto;
+}
+
+div{
+	z-index: 1;
+}
+
+.curr-choice{
+	color: #66B3FF;
+}
+
+a{
+	color: #FFFFFF;
+	text-decoration: none;
+	z-index: 2;
+}
+
+a:hover{
+	color: #E0E0E0;
+	text-decoration: none;
+}
+
+a:visited{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.normal-text, .normal-a{
+	float: left;
+}
+
+.curson-a{
+	cursor: pointer;
+}
+
+.mail-a, .mail-a:visited{
+	color: gray;
+}
+
+.user-link, .user-link:visited{
+	color: 	#84C1FF;
+}
+
+textarea{
+	resize: none;
+}
+
+.menu-text{
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+.normal-label{
+	color: #E0E0E0;
+	font-weight: normal;
+}
+
+.normal-ul{
+	list-style: none;
+}
+
+.li-spacing{
+	display: inline;
+	width: 1px;
+	height: 14px;
+	margin: 8px 10px 0px;
+	overflow: hidden;
+	background-color: #8E8E8E;
+	float: left;
+}
+
+.glyphicons-label{
+	padding: 8px 6px 8px 10px;
+	border: 1px solid #ccc;
+	border-right: 0px solid #ccc;
+	height: 34px;
+	line-height: 34px;
+}
+
+.form-group-line{
+	position: relative;
+	height: 36px;
+	margin-top: 15px;
+}
+
+.form-group-line-label{
+	position: absolute;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.inline-html{
+	display: inline;
+	margin-top: 10px;
+}
+
+.form-input{
+	width: 95%;
+	height: 34px;
+	line-height: 34px;
+	border: 1px solid #ccc;
+	border-left: 0px solid #ccc;
+	padding-left: 10px;
+	position: absolute;
+	left: 26px;
+	top: 0px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.focus-remove-input:focus{
+	border: 1px solid #ccc;
+	border-left: 0px solid #ccc;
+	outline: 0;
+}
+
+.focus-remove-input:focus{
+	border: 1px solid #ccc;
+	border-left: 0px solid #ccc;
+	outline: 0;
+}
+
+.body-div{
+	width: auto;
+	height: 100%;
+	overflow-x: visible;
+	overflow-y: visible;
+	min-width: 1268px;
+}
+
+.head-div{
+	width: 100%;
+	height: 28px;
+	background-color: #BEBEBE;
+}
+
+.headlogin-div{
+	height: 28px;
+	line-height: 28px;
+	color: #FFFFFF;
+	position: relative;
+	margin-left: 6%;
+}
+
+.second-div{
+	width: 100%;
+	height: 62px;
+	background-color: #d2d2d2;
+	position: relative;
+}
+
+.logo-div{
+	width: 200px;
+	height: 62px;
+	font-size: 40px;
+	color: #FFFFFF;
+	position: relative;
+	margin-left: 5.5%;
+	font-weight: bold;
+	font-style: italic;
+	background: url("../image/png/logo.png");
+	float: left;
+}
+
+.menu-div{
+	float: left;
+	line-height: 62px;
+	margin-left: 110px;
+	height: 100%;
+	width: 850px;
+}
+
+.menu-ul{
+	padding: 0px;
+	height: 100%;
+}
+
+.menu-li{
+	height: 100%;
+}
+
+.menu-li:hover{
+	background-color: #BEBEBE;
+	cursor: default;
+}
+
+.curr-li{
+	background-color: #ADADAD;
+}
+
+.menu-horizontal{
+	display: inline;
+	padding: 0px 25px;
+	overflow: hidden;
+	float: left;
+}
+
+.content-frame{
+	border: 0px solid #FFFFFF;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding-top: 90px;
+	padding-bottom: 40px;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.middle-div{
+	width: 100%;
+	height: 100%;
+}
+
+.center-div{
+	width: 1268px;
+	height: 507px;
+	margin: 0px auto;
+	position: relative;
+}
+
+.centerright-div{
+	width: 340px;
+	height: 502px;
+	top: 5px;
+	right: 0px;
+	border: 0px solid #ADADAD;
+/* 	border-left: 1px solid #ADADAD; */
+	float: right;
+	position: absolute;
+}
+
+.signin-div{
+	width: 314px;
+	height: 55px;
+	float: right;
+}
+
+.info-div{
+	width: 314px;
+	height: 447px;
+	float: right;
+	/* border: 1px solid #ADADAD; */
+	border: 0px solid #ADADAD;
+	position: relative;
+}
+
+.hifunbang-div{
+	width: 100%;
+	height: 200px;
+	border: 1px solid #ADADAD;
+}
+
+.hifunbang-title, .transport-title{
+	width: 100%;
+	height: 33px;
+	text-align: center;
+	line-height: 33px;
+	font-size: 18px;
+	color: #AE57A4;
+}
+
+.hifunbang-content{
+	width: 100%;
+	height: 125px;
+	margin: 5px 0px;
+}
+
+.hifunbang-left, .hifunbang-right{
+	width: 50%;
+	float: left;
+	height: 110px;
+	border-right: 1px solid #F0F0F0;
+	padding: 5px 5px;
+	font-size: 14px;
+}
+
+.hifunbang-bottom{
+	text-align: right;
+	padding-right: 8px;
+	padding-top: 10px;
+	font-size: 12px;
+	height: 30px;
+	vertical-align: bottom;
+}
+
+.hifunbang-user{
+	padding: 2px 15px;
+}
+
+.hifunbang-user-li{
+	
+}
+
+.hifunbang-detail{
+	color: #2894FF;
+}
+
+.transport-url{
+	width: 100%;
+	height: 240px;
+	border: 1px solid #ADADAD;
+	margin-top: 7px;
+}
+
+.slide-div{
+	width: 902px;
+	height: 502px;
+	left: 0px;
+	top: 5px;
+	border: 1px solid #ADADAD;
+	float: left;
+	position: absolute;
+}
+
+.center-bottom-div{
+	width: 1268px;
+	height: 200px;
+	margin: 0px auto;
+	position: relative;
+	border: 1px solid #ADADAD;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.bottom-div{
+	width: 100%;
+	margin: 0px auto;
+	height: 40px;
+	background-color: #FFFCEC;
+	text-align: center;
+	position: fixed;
+	bottom: 0px;
+	line-height: 20px;
+}

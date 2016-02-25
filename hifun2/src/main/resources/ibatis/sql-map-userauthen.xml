@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap     
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"     
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="userauthen">
+	
+	<typeAlias alias="user" type="com.hifun.base.session.SessionUser"/>
+	
+	<select id="query-user" parameterClass="java.util.Map" resultClass="user">
+		<![CDATA[
+			select * from user where username = #username# and password = #password#
+			and effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is NULL)
+			limit 1
+		]]>
+	</select>
+	
+	<select id="query-user-byusername" parameterClass="string" resultClass="user">
+		<![CDATA[
+			select * from user where username = #username# 
+			and effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is NULL)
+			limit 1
+		]]>
+	</select>
+	
+	<insert id="insert-userinfo" parameterClass="java.util.Map">
+		insert into user (username, password, createTime, createBy, updateTime, updateBy, effectiveFrom)
+		values (#username#, #password#, NOW(), #username#, NOW(), #username#, NOW())
+	</insert>
+	
+	<select id="query-todayissign" parameterClass="java.util.Map" resultClass="int">
+		select count(1) from signWeb where username = #username# 
+		<![CDATA[
+		and signTime >= #nowdate#
+		]]>
+	</select>
+	
+	<update id="insert-sign" parameterClass="java.util.Map">
+		insert into signWeb (username, signTime, signOrder, effectiveFrom) values (#username#, #nowdate#, #signOrder#, NOW())
+	</update>
+	
+	<select id="query-signcount" parameterClass="string" resultClass="int">
+		select count(1) from signWeb 
+		<![CDATA[
+		where signTime >= #nowdate#
+		]]>
+	</select>
+	
+	<select id="query-signcount-bymap" parameterClass="java.util.Map" resultClass="int">
+		select count(1) from signWeb 
+		<![CDATA[
+		where signTime >= #nowdate# and username = #username#
+		]]>
+	</select>
+	
+	<insert id="update-userexp" parameterClass="java.util.Map">
+		update user set exp = exp + #exp# where username = #username#
+	</insert>
+	
+</sqlMap>

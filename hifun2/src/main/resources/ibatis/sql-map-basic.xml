@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap     
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"     
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="basic">
+	
+	<typeAlias alias="banner" type="com.hifun.bean.Banner"/>
+	<typeAlias alias="menu" type="com.hifun.bean.Menu"/>
+	<typeAlias alias="sessionuser" type="com.hifun.base.session.SessionUser"/>
+	<typeAlias alias="hithings" type="com.hifun.bean.HiThings"/>
+	
+	<select id="query-banner-validatelist" resultClass="banner">
+		<![CDATA[
+			select id, title, path, linkType, linkTo from banner 
+			where effectiveFrom < now() and (effectiveTo > now() or effectiveTo is null)
+			order by createTime desc limit 6
+		]]>
+	</select>
+	
+	<select id="query-menu-validatelist" resultClass="menu">
+		<![CDATA[
+			select id, menuCode, menuName, menuPath, menuLevel, orderNum, parentCode, remark, linkTo from menu
+			where effectiveFrom < now() and (effectiveTo > now() or effectiveTo is null) and parentCode is null
+			order by orderNum asc
+		]]>
+	</select>
+	
+	<select id="query-toptenusers" resultClass="sessionuser">
+		select username, nickname, exp from user order by exp desc, id asc limit 10
+	</select>
+	
+	<select id="query-hithings-bystatus" parameterClass="int" resultClass="hithings">
+		<![CDATA[
+			select ht.id, ht.username, u.nickname, ht.content, ht.status, ht.remark, ht.updateTime, ht.zannum, ht.cainum from hiThings ht
+			left join user u on ht.username = u.username
+			where ht.status = #status# and ht.effectiveFrom < now() and (ht.effectiveTo > now() or ht.effectiveTo is null)
+			order by ht.updateTime desc
+		]]>
+	</select>
+	
+	<select id="query-hithings-byusernamestatus" parameterClass="java.util.Map" resultClass="hithings">
+		<![CDATA[
+			select ht.id, ht.username, u.nickname, ht.content, ht.status, ht.remark, ht.updateTime, ht.zannum, ht.cainum, 
+			case when e.evaluateTypeId is null then 0 else e.evaluateTypeId end as evaluateTypeId from hiThings ht
+			left join user u on ht.username = u.username
+			left join evaluate e on e.evaluateId = ht.id and e.username = #username#
+			left join evaluate_relate er on er.relateTypeId = e.relateTypeId and er.relateTypeName = 'hithings'
+			where ht.status = #status# and ht.effectiveFrom < now() and (ht.effectiveTo > now() or ht.effectiveTo is null)
+			order by ht.updateTime desc
+		]]>
+	</select>
+	
+	<insert id="insert-hithings" parameterClass="java.util.Map">
+		insert into hiThings (username, content, remark, createTime, createBy, updateTime, updateBy, effectiveFrom, effectiveTo)
+		values (#username#, #content#, #remark#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#, NULL)
+	</insert>
+	
+	<select id="query-evaluaterelateid-byname" parameterClass="string" resultClass="int">
+		select relateTypeId from evaluate_relate where relateTypeName = #relateTypeName# limit 1
+	</select>
+	
+	<insert id="insert-evaluate" parameterClass="java.util.Map">
+		insert into evaluate (username, evaluateTime, evaluateId, evaluateTypeId, relateTypeId, createTime, createBy, updateTime, updateBy, effectiveFrom)
+		values (#username#, #nowdate#, #evaluateId#, #evaluateTypeId#, #relateTypeId#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#)
+	</insert>
+	
+	<select id="query-evaluatecount" parameterClass="java.util.Map" resultClass="int">
+		select count(1) from evaluate where username = #username# and evaluateId = #evaluateId#
+	</select>
+	
+	<update id="update-hithingsnum" parameterClass="java.util.Map">
+		update hiThings set 
+		<isEqual property="evaluateTypeId" compareValue="1">
+			zannum = zannum + 1
+		</isEqual>
+		<isNotEqual property="evaluateTypeId" compareValue="1">
+			cainum = cainum + 1
+		</isNotEqual>
+		where id = #evaluateId#
+	</update>
+	
+	<select id="query-totalzan" parameterClass="java.util.Map" resultClass="int">
+		<![CDATA[
+			select count(1) from evaluate 
+			where evaluateTime >= #nowdate# and username = #username# and relateTypeId = #relateTypeId# and evaluateTypeId = 1
+		]]>
+	</select>
+	
+</sqlMap>

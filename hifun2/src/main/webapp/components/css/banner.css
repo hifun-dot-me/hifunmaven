@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+#slider{overflow:hidden;width:900px;height:500px;position:relative;}
+#slider .pics{width:900px;height:500px;padding: 0px;}
+#slider .pics li{width:900px;height:500pxfloat:left}
+#slider #nav {position:absolute;bottom:5px;right:10px;}
+#slider #nav li.nav{background:#337AB7; color:#fff;}
+#slider #nav li{border:1px solid #DDD; color:#d94b01; cursor:pointer;background:#fff;font-size:12px; height:15px;width:15px;float:left;margin-left:4px;display:inline;text-align:center;line-height:15px;}
