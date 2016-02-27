@@ -30,6 +30,13 @@
 					<a href="javascript:void(0);" onclick="logout(this)">退出</a>
 				</c:if>
 			</div>
+			<div class="hitool-div">
+				<ul class="normal-ul hitool-ul">
+					<li class="normal-li hitool-li" onmouseover="mouseoverhiletter(this)" onmouseout="mouseouthiletter(this)">
+						<span>信</span>
+					</li>
+				</ul>
+			</div>
 		</div>
 		
 		<!-- 登录模态框（Modal） -->

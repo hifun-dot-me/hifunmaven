@@ -97,3 +97,9 @@ function locationTo(e, loc){
 	$(e).addClass('curr-li');
 	$("#content-frame").attr('src', $("#base").val()+loc);
 }
+function mouseoverhiletter(e){
+	$(e).addClass("hitool-mouseon-li");
+}
+function mouseouthiletter(e){
+	$(e).removeClass("hitool-mouseon-li");
+}
