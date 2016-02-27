@@ -17,6 +17,21 @@ function IsPC() {
     return flag;
 }
 
+/**
+ * 鼠标位置
+ * @param event
+ * @returns 
+ */
+function mouseCoords(ev) { 
+	if(ev.pageX || ev.pageY){ 
+		return {x:ev.pageX, y:ev.pageY}; 
+	} 
+	return { 
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft, 
+		y:ev.clientY + document.body.scrollTop - document.body.clientTop 
+	}; 
+} 
+
 function ajaxPost(url, data, dataType, doSuccess){
 	ajaxParam(url, data, 'post', dataType, doSuccess);
 }

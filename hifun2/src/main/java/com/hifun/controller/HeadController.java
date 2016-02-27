@@ -205,4 +205,11 @@ public class HeadController extends BaseController {
         return 0;
     }
 
+    @RequestMapping(value = "/viewhiletter.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView viewhiletter() {
+        ModelAndView view = new ModelAndView("/viewhiletter");
+        return view;
+    }
+
 }

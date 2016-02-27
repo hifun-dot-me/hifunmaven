@@ -97,9 +97,43 @@ function locationTo(e, loc){
 	$(e).addClass('curr-li');
 	$("#content-frame").attr('src', $("#base").val()+loc);
 }
-function mouseoverhiletter(e){
-	$(e).addClass("hitool-mouseon-li");
+function clickhitoolli(e, tooldivid){
+	$(tooldivid).show();
+	$(e).addClass("hitool-mouseclick-li");
+	$(tooldivid).css(
+		{
+			//元素顶距+元素高度
+			"top": $(e).offset().top + $(e).height(),
+			//元素左距
+			"left": $(e).offset().left
+		}
+	).animate({
+		//高度需适配
+		"height": "49px"
+	});
 }
-function mouseouthiletter(e){
-	$(e).removeClass("hitool-mouseon-li");
+function mouseouthitoolli(e, tooldivid){
+	var ev = window.event;
+	var mousePos = mouseCoords(ev);
+	//判断鼠标离开li后是否还在tooldiv范围内
+	var x = mousePos.x;
+	var y = mousePos.y;
+	var left = $(tooldivid).offset().left;
+	var top = $(tooldivid).offset().top;
+	var height = $(tooldivid).height();
+	var width = $(tooldivid).width();
+	if(x >= left && x <= left + width && y >= top && y <= top + height){
+		
+	}else{
+		mouseouthitoolletterdiv(e, tooldivid);
+	}
+}
+function mouseouthitoolletterdiv(toolid, e){
+	$(e).animate({
+		"height": "0px",
+		"border": "0px solid #0080FF"
+	}, function(){
+		$(toolid).removeClass("hitool-mouseclick-li");
+		$(e).hide();
+	});
 }

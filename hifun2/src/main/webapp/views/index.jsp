@@ -32,11 +32,22 @@
 			</div>
 			<div class="hitool-div">
 				<ul class="normal-ul hitool-ul">
-					<li class="normal-li hitool-li" onmouseover="mouseoverhiletter(this)" onmouseout="mouseouthiletter(this)">
-						<span>信</span>
+					<li class="normal-ho-li hitool-li" onclick="clickhitoolli(this, '#hitool-letter-div')" 
+						onmouseout="mouseouthitoolli(this, '#hitool-letter-div')" id="letter-li" title="嗨信">
+						<span class="glyphicon glyphicon-envelope letter-icon"></span>
 					</li>
 				</ul>
 			</div>
+		</div>
+		<div class="hitool-letter-div" id="hitool-letter-div" onmouseout="mouseouthitoolletterdiv('#letter-li', this)">
+			<ul class="normal-ul hitooldiv-ul">
+				<li class="normal-ve-li hitooldiv-li">
+					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/viewhiletter.do">查看嗨信</a>
+				</li>
+				<li class="normal-ve-li hitooldiv-li">
+					嗨友申请
+				</li>
+			</ul>
 		</div>
 		
 		<!-- 登录模态框（Modal） -->
