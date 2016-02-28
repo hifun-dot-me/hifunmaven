@@ -18,7 +18,7 @@ function IsPC() {
 }
 
 /**
- * 鼠标位置
+ * 计算鼠标位置
  * @param event
  * @returns 
  */
@@ -30,7 +30,14 @@ function mouseCoords(ev) {
 		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft, 
 		y:ev.clientY + document.body.scrollTop - document.body.clientTop 
 	}; 
-} 
+}
+function mousePosition(e){
+	var ev = e || window.event;
+	var mousePos = mouseCoords(ev);
+	var x = mousePos.x;
+	var y = mousePos.y;
+	return {x:x, y:y};
+}
 
 function ajaxPost(url, data, dataType, doSuccess){
 	ajaxParam(url, data, 'post', dataType, doSuccess);

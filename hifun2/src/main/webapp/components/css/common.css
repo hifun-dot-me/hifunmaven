@@ -88,6 +88,10 @@ textarea{
 	height: auto;
 }
 
+.top-html{
+	vertical-align: top;
+}
+
 .li-spacing{
 	display: inline;
 	width: 1px;
@@ -179,8 +183,8 @@ textarea{
 	line-height: 28px;
 	background-color: #BEBEBE;
 	position: relative;
-	margin-right: 6%;
-	width: 300px;
+	margin-right: 0px;
+	width: 200px;
 	float: right;
 	z-index: 10;
 }
@@ -206,11 +210,11 @@ textarea{
 	background-color: #0080FF;
 }
 
-.letter-icon{
+.hitool-icon{
 	line-height: 26px;
 }
 
-.hitool-letter-div{
+.hitool-temp-div{
 	height: 0px;
 	width: 100px;
 	border: 0px solid #0080FF;

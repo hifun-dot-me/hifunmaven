@@ -32,20 +32,39 @@
 			</div>
 			<div class="hitool-div">
 				<ul class="normal-ul hitool-ul">
+					<li class="normal-ho-li hitool-li" id="home-li" title="主页">
+						<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>">
+							<span class="glyphicon glyphicon-home hitool-icon"></span>
+						</a>
+					</li>
 					<li class="normal-ho-li hitool-li" onclick="clickhitoolli(this, '#hitool-letter-div')" 
 						onmouseout="mouseouthitoolli(this, '#hitool-letter-div')" id="letter-li" title="嗨信">
-						<span class="glyphicon glyphicon-envelope letter-icon"></span>
+						<span class="glyphicon glyphicon-envelope hitool-icon"></span>
+					</li>
+					<li class="normal-ho-li hitool-li" onclick="clickhitoolli(this, '#hitool-setup-div')" 
+						onmouseout="mouseouthitoolli(this, '#hitool-setup-div')" id="setup-li" title="设置">
+						<span class="glyphicon glyphicon-cog hitool-icon"></span>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="hitool-letter-div" id="hitool-letter-div" onmouseout="mouseouthitoolletterdiv('#letter-li', this)">
+		<div class="hitool-temp-div" id="hitool-letter-div" onmouseout="mouseouthitoolletterdiv('#letter-li', this)">
 			<ul class="normal-ul hitooldiv-ul">
 				<li class="normal-ve-li hitooldiv-li">
 					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/viewhiletter.do">查看嗨信</a>
 				</li>
 				<li class="normal-ve-li hitooldiv-li">
 					嗨友申请
+				</li>
+			</ul>
+		</div>
+		<div class="hitool-temp-div" id="hitool-setup-div" onmouseout="mouseouthitoolletterdiv('#setup-li', this)">
+			<ul class="normal-ul hitooldiv-ul">
+				<li class="normal-ve-li hitooldiv-li">
+					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/systemsetup.do">系统设置</a>
+				</li>
+				<li class="normal-ve-li hitooldiv-li">
+					其他设置
 				</li>
 			</ul>
 		</div>

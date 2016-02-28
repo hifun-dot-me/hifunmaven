@@ -113,27 +113,45 @@ function clickhitoolli(e, tooldivid){
 	});
 }
 function mouseouthitoolli(e, tooldivid){
-	var ev = window.event;
-	var mousePos = mouseCoords(ev);
-	//判断鼠标离开li后是否还在tooldiv范围内
-	var x = mousePos.x;
-	var y = mousePos.y;
-	var left = $(tooldivid).offset().left;
-	var top = $(tooldivid).offset().top;
-	var height = $(tooldivid).height();
-	var width = $(tooldivid).width();
-	if(x >= left && x <= left + width && y >= top && y <= top + height){
-		
-	}else{
-		mouseouthitoolletterdiv(e, tooldivid);
-	}
+	calcposition(mousePosition().x, mousePosition().y, e, tooldivid);
 }
 function mouseouthitoolletterdiv(toolid, e){
-	$(e).animate({
+	calcposition(mousePosition().x, mousePosition().y, toolid, e);
+}
+/**
+ * 计算元素位置
+ */
+function calcposition(x, y, e1, e2, flag){
+	judgemouseout(x, y, e1, e2);
+}
+/**
+ * 比较鼠标位置与元素位置，判断是否在元素内
+ * @param x
+ * @param y
+ * @param e1
+ * @param e2
+ */
+function judgemouseout(x, y, e1, e2){
+	if((x >= $(e1).offset().left && x <= $(e1).offset().left + $(e1).width() 
+			&& y >= $(e1).offset().top && y <= $(e1).offset().top + $(e1).height()) ||
+		(x >= $(e2).offset().left && x <= $(e2).offset().left + $(e2).width() 
+				&& y >= $(e2).offset().top && y <= $(e2).offset().top + $(e2).height())){
+		
+	}else{
+		hidetool(e1, e2);
+	}
+}
+/**
+ * 隐藏元素
+ * @param e1
+ * @param e2
+ */
+function hidetool(e1, e2){
+	$(e2).animate({
 		"height": "0px",
 		"border": "0px solid #0080FF"
 	}, function(){
-		$(toolid).removeClass("hitool-mouseclick-li");
-		$(e).hide();
+		$(e1).removeClass("hitool-mouseclick-li");
+		$(e2).hide();
 	});
 }

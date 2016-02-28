@@ -47,14 +47,18 @@
 							<div class="hifunbang-left">
 								<ul class="normal-ul hifunbang-user">
 									<c:forEach items="${toptenlist}" var="t" varStatus="i" begin="0" end="4">
-										<li class="hifunbang-user-li">${i.index+1}.${t.username}</li>
+										<li class="hifunbang-user-li">${i.index+1}.
+											<a class="normal-a floatnone-a curson-a user-link">${t.username}</a>
+										</li>
 									</c:forEach>
 								</ul>
 							</div>
 							<div class="hifunbang-right">
 								<ul class="normal-ul hifunbang-user">
 									<c:forEach items="${toptenlist}" var="t" varStatus="i" begin="5" end="9">
-										<li class="hifunbang-user-li">${i.index+1}.${t.username}</li>
+										<li class="hifunbang-user-li">${i.index+1}.
+											<a class="normal-a floatnone-a curson-a user-link">${t.username}</a>
+										</li>
 									</c:forEach>
 								</ul>
 							</div>

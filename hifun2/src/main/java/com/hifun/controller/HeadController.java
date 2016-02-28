@@ -172,6 +172,13 @@ public class HeadController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/uploadhifunplayground.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView showh8() {
+        ModelAndView view = new ModelAndView("/uploadhifunplayground");
+        return view;
+    }
+
     @RequestMapping(value = "/evaluate.do", method = RequestMethod.POST)
     @ResponseBody
     public int evaluate(
@@ -209,6 +216,13 @@ public class HeadController extends BaseController {
     @ResponseBody
     public ModelAndView viewhiletter() {
         ModelAndView view = new ModelAndView("/viewhiletter");
+        return view;
+    }
+
+    @RequestMapping(value = "/systemsetup.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView systemsetup() {
+        ModelAndView view = new ModelAndView("/systemsetup");
         return view;
     }
 
