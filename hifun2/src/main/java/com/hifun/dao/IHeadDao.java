@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
+import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 
@@ -102,6 +103,16 @@ public interface IHeadDao {
     void insertHiThings(String content, String username, String nowdate);
 
     /**
+     * 保存嗨ground
+     * @param content
+     * @param username
+     * @param nowdate 
+     * @create: 2016年3月1日 下午10:05:08 yuexia
+     * @history:
+     */
+    void insertHiPlayground(String content, String username, String nowdate);
+
+    /**
      * 根据关联名称查询关联id
      * @param relateTypeName
      * @return 
@@ -152,5 +163,13 @@ public interface IHeadDao {
      * @history:
      */
     int queryTotalZan(String nowdate, String username, int relateTypeId);
+
+    /**
+     * 查询所有嗨ground
+     * @return 
+     * @create: 2016年3月1日 下午10:25:42 yuexia
+     * @history:
+     */
+    List<HiPlayground> queryAllHifunPlayground();
 
 }

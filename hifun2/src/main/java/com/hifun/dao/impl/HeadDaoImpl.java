@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
+import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 import com.hifun.dao.BaseDao;
@@ -104,6 +105,16 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
     }
 
     @Override
+    public void insertHiPlayground(String content, String username,
+            String nowdate) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", username);
+        param.put("nowdate", nowdate);
+        param.put("content", content);
+        getSqlMapClientTemplate().insert("insert-hiplayground", param);
+    }
+
+    @Override
     public int queryEvaluateRelateIdByName(String relateTypeName) {
         Object obj = getSqlMapClientTemplate()
             .queryForObject("query-evaluaterelateid-byname", relateTypeName);
@@ -150,6 +161,13 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
         Object obj = getSqlMapClientTemplate().queryForObject("query-totalzan",
             param);
         return obj == null ? 0 : (int) obj;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<HiPlayground> queryAllHifunPlayground() {
+        return getSqlMapClientTemplate()
+            .queryForList("query-allhifunplayground");
     }
 
 }

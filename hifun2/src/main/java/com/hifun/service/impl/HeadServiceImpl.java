@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
+import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 import com.hifun.dao.IHeadDao;
@@ -77,6 +78,12 @@ public class HeadServiceImpl implements IHeadService {
     }
 
     @Override
+    public void insertHiPlayground(String content, String username,
+            String nowdate) {
+        headDao.insertHiPlayground(content, username, nowdate);
+    }
+
+    @Override
     public int queryEvaluateRelateIdByName(String relateTypeName) {
         return headDao.queryEvaluateRelateIdByName(relateTypeName);
     }
@@ -98,6 +105,11 @@ public class HeadServiceImpl implements IHeadService {
     public int queryTotalZan(String nowdate, String username,
             int relateTypeId) {
         return headDao.queryTotalZan(nowdate, username, relateTypeId);
+    }
+
+    @Override
+    public List<HiPlayground> queryAllHifunPlayground() {
+        return headDao.queryAllHifunPlayground();
     }
 
 }

@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <jsp:include page="../components/jsp/include.jsp" />
+<jsp:include page="../components/jsp/ueditor.jsp" />
 <script type="text/javascript" src="../components/js/uploadhithings.js"></script>
 <link rel="stylesheet" type="text/css" href="../components/css/uploadhithings.css">
 <title>uploadthings</title>
@@ -16,7 +17,8 @@
 	<div class="middle-div">
 		<div class="form-div">
 			<form action="" method="post" id="mainForm">
-				<textarea class="form-control" rows="16" name="content" id="content"></textarea>
+<!-- 				<textarea class="form-control" rows="16" name="content" id="content"></textarea> -->
+				<script id="editor" name="content" type="text/plain" style="width:700px;height:300px;"></script>
 				<button class="btn btn-primary btn-right" id="submit">提交</button>
 				<button class="btn btn-default btn-right" onclick="history.go(-1)">返回</button>
 			</form>

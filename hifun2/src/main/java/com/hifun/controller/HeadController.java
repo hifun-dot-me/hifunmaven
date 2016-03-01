@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.AuditEnum;
 import com.hifun.bean.Banner;
+import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 import com.hifun.service.IHeadService;
@@ -106,6 +107,21 @@ public class HeadController extends BaseController {
         return 0;
     }
 
+    @RequestMapping(value = "/submithifunplayground.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int submithifunplayground(
+            @RequestParam(value = "content", required = false) String content) {
+        // session不为空
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            headService.insertHiPlayground(content,
+                ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
+                DateUtil.getNowTimeString("yyyy-MM-dd HH:MM:ss"));
+            return 1;
+        }
+        return 0;
+    }
+
     @RequestMapping(value = "/show.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView showHeadPage() {
@@ -117,6 +133,9 @@ public class HeadController extends BaseController {
     @ResponseBody
     public ModelAndView showh2() {
         ModelAndView view = new ModelAndView("/hifunplayground");
+        List<HiPlayground> hiplaygroundlist = headService
+            .queryAllHifunPlayground();
+        view.addObject("hiplaygroundlist", hiplaygroundlist);
         return view;
     }
 
