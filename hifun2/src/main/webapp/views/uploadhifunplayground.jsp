@@ -18,7 +18,7 @@
 		<div class="form-div">
 			<form action="" method="post" id="mainForm">
 <!-- 				<textarea class="form-control" rows="16" name="content" id="content"></textarea> -->
-				<script id="editor" type="text/plain" style="width:700px;height:300px;"></script>
+				<script id="editor" name="content" type="text/plain" style="width:700px;height:300px;"></script>
 				<button class="btn btn-primary btn-right" id="submit">提交</button>
 				<button class="btn btn-default btn-right" onclick="history.go(-1)">返回</button>
 			</form>

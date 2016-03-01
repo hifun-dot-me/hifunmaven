@@ -1,7 +1,8 @@
 var second = 2;//跳转时间间隔
 $(document).ready(function(){
 	$("#submit").click(function(){
-		
+		alert($("#editor").html());
+		return false;
 	});
 });
 
