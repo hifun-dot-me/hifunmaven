@@ -8,11 +8,12 @@
 	<typeAlias alias="menu" type="com.hifun.bean.Menu"/>
 	<typeAlias alias="sessionuser" type="com.hifun.base.session.SessionUser"/>
 	<typeAlias alias="hithings" type="com.hifun.bean.HiThings"/>
+	<typeAlias alias="hiplayground" type="com.hifun.bean.HiPlayground"/>
 	
 	<select id="query-banner-validatelist" resultClass="banner">
 		<![CDATA[
 			select id, title, path, linkType, linkTo from banner 
-			where effectiveFrom < now() and (effectiveTo > now() or effectiveTo is null)
+			where effectiveFrom <= now() and (effectiveTo > now() or effectiveTo is null)
 			order by createTime desc limit 6
 		]]>
 	</select>
@@ -20,7 +21,7 @@
 	<select id="query-menu-validatelist" resultClass="menu">
 		<![CDATA[
 			select id, menuCode, menuName, menuPath, menuLevel, orderNum, parentCode, remark, linkTo from menu
-			where effectiveFrom < now() and (effectiveTo > now() or effectiveTo is null) and parentCode is null
+			where effectiveFrom <= now() and (effectiveTo > now() or effectiveTo is null) and parentCode is null
 			order by orderNum asc
 		]]>
 	</select>
@@ -33,7 +34,7 @@
 		<![CDATA[
 			select ht.id, ht.username, u.nickname, ht.content, ht.status, ht.remark, ht.updateTime, ht.zannum, ht.cainum from hiThings ht
 			left join user u on ht.username = u.username
-			where ht.status = #status# and ht.effectiveFrom < now() and (ht.effectiveTo > now() or ht.effectiveTo is null)
+			where ht.status = #status# and ht.effectiveFrom <= now() and (ht.effectiveTo > now() or ht.effectiveTo is null)
 			order by ht.updateTime desc
 		]]>
 	</select>
@@ -45,13 +46,18 @@
 			left join user u on ht.username = u.username
 			left join evaluate e on e.evaluateId = ht.id and e.username = #username#
 			left join evaluate_relate er on er.relateTypeId = e.relateTypeId and er.relateTypeName = 'hithings'
-			where ht.status = #status# and ht.effectiveFrom < now() and (ht.effectiveTo > now() or ht.effectiveTo is null)
+			where ht.status = #status# and ht.effectiveFrom <= now() and (ht.effectiveTo > now() or ht.effectiveTo is null)
 			order by ht.updateTime desc
 		]]>
 	</select>
 	
 	<insert id="insert-hithings" parameterClass="java.util.Map">
 		insert into hiThings (username, content, remark, createTime, createBy, updateTime, updateBy, effectiveFrom, effectiveTo)
+		values (#username#, #content#, #remark#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#, NULL)
+	</insert>
+	
+	<insert id="insert-hiplayground" parameterClass="java.util.Map">
+		insert into hiPlayground (username, content, remark, createTime, createBy, updateTime, updateBy, effectiveFrom, effectiveTo)
 		values (#username#, #content#, #remark#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#, NULL)
 	</insert>
 	
@@ -83,6 +89,19 @@
 		<![CDATA[
 			select count(1) from evaluate 
 			where evaluateTime >= #nowdate# and username = #username# and relateTypeId = #relateTypeId# and evaluateTypeId = 1
+		]]>
+	</select>
+	
+	<select id="query-allhifunplayground" resultClass="hiplayground">
+		<![CDATA[
+			select username, content, status, 
+			case when status = 0 then '未验证' 
+				when status = 1 then '已验证'
+				when status = -1 then '验证失败' 
+				end as statusName, 
+			updateTime from hiPlayground 
+			where effectiveFrom <= now() and (effectiveTo > now() or effectiveTo is null)
+			order by updateTime desc
 		]]>
 	</select>
 	

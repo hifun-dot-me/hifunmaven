@@ -29,16 +29,12 @@
 		<div class="right-div">
 			<div class="right-inside-div">
 				<ul class="normal-ul hithings-ul">
-					<li class="hithings-li">
-						<a class="user-link top-html" href="javascript:void(0)" onclick="btnTest(this)">月下</a>&nbsp;&nbsp;&nbsp;基家<br/>
-						<img src="../components/image/png/hithings_online20160219.png" width="180px" height="100px"/><br/><br/>
-						<label class="normal-label">2016-01-01 13:00:45</label>&nbsp;&nbsp;&nbsp;<label class="normal-label">已审核</label>
-					</li>
-					<li class="hithings-li">
-						<a class="user-link top-html" href="javascript:void(0)" onclick="btnTest(this)">月下</a>&nbsp;&nbsp;&nbsp;美味尽在新白鹿<br/>
-						<img src="../components/image/png/hithings_online20160219.png" width="180px" height="100px"/><br/><br/>
-						<label class="normal-label">2016-01-04 09:05:15</label>&nbsp;&nbsp;&nbsp;<label class="normal-label">未审核</label>
-					</li>
+					<c:forEach items="${hiplaygroundlist}" var="h">
+						<li class="hithings-li">
+							<a class="user-link top-html" href="javascript:void(0)" onclick="btnTest(this)">${h.username}</a>&nbsp;&nbsp;&nbsp;${h.content}<br/><br/>
+							<label class="normal-label">${h.updateTime}</label>&nbsp;&nbsp;&nbsp;<label class="normal-label">${h.statusName}</label>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

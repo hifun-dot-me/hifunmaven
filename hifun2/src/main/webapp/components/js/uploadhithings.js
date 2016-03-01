@@ -1,4 +1,5 @@
-var second = 2;//跳转时间间隔
+var second = 2,//跳转时间间隔
+	content = '';
 $(document).ready(function(){
 	$("#submit").click(function(){
 		$(this).blur();
@@ -32,9 +33,13 @@ $(document).ready(function(){
 	});
 });
 
+UE.getEditor('editor').ready(function() {
+    //this是当前创建的编辑器实例
+	content = this.getContent();
+});
+
 function checkForm(){
-	var content = $("#content").val();
-	if(content == '' || content.length > 300){
+	if(content == '' || content.length > 1000){
 		window.wxc.xcConfirm('内容长度不合法', window.wxc.xcConfirm.typeEnum.info);
 		return false;
 	}

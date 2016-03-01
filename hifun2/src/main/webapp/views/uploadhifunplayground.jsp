@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <jsp:include page="../components/jsp/include.jsp" />
+<jsp:include page="../components/jsp/ueditor.jsp" />
 <script type="text/javascript" src="../components/js/uploadhifunplayground.js"></script>
 <link rel="stylesheet" type="text/css" href="../components/css/uploadhifunplayground.css">
-<jsp:include page="../components/jsp/ueditor.jsp" />
 <title>uploadground</title>
 </head>
 <body class="inside-body">
