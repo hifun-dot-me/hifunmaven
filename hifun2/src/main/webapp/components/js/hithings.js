@@ -11,7 +11,7 @@ function locationTo(e, href){
 					iframeToURL($("#base").val() + href);
 				}else{
 					window.wxc.xcConfirm('请先登录', window.wxc.xcConfirm.typeEnum.info);
-					$(e).addClass("btn-block disabled");
+					$(e).addClass("btn-block disabled").removeAttr("onclick");
 				}
 			}
 			);
