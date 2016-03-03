@@ -24,6 +24,9 @@
 		<!-- captcha start -->
 		<captcha.version>1.0</captcha.version>
 		<!-- captcha end -->
+		<!-- quartz start -->
+		<quartz.version>1.8.5</quartz.version>
+		<!-- quartz end -->
     </properties>  
   
     <dependencies>  
@@ -216,6 +219,11 @@
 			<artifactId>ibatis-sqlmap</artifactId>
 			<version>${ibatis.version}</version>
 		</dependency>
+		<dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
+        </dependency>
     </dependencies>
 <!-- 解决每次更新maven自动更改jdk1.5办法 -->
 <build>

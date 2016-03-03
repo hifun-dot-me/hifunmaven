@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- ============================= Spring Quartz ================================ -->
+   <!-- 配置任务实例 -->
+    <bean id="myQuartz" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.hifun.quartz.MyQuartz" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="timeout">
+                    <value>work</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <!-- 配置任务执行时间    触发器 -->
+    <bean id="myQuartzTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="myQuartz" />
+        </property>
+        <!--秒 	分 	时	 月内日期	    月   周内日期	年（可选字段）  -->
+        <property name="cronExpression">
+            <value>0/5 * * * * ?</value><!-- 表示每5秒触发一次 -->
+        </property>
+    </bean>
+    
+    <!-- 总调配中心  -->    
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+			   <ref local="myQuartzTaskTrigger"/>
+             </list>
+        </property>
+    </bean>    
+</beans>
