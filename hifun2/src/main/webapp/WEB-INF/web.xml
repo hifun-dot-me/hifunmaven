@@ -4,8 +4,8 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-    	/WEB-INF/conf/spring/applicationContext.xml,
-    	/WEB-INF/conf/quartz/beans-quartz.xml
+    	classpath:spring/applicationContext.xml,
+    	classpath:quartz/beans-quartz.xml
       </param-value>
   </context-param>
   <context-param>

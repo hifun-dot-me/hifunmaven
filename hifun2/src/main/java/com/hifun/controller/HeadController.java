@@ -71,17 +71,17 @@ public class HeadController extends BaseController {
         // session不为空
         if (sessionProvider != null
                 && sessionProvider.getUserDetail() != null) {
-            // 查询今日总签到数
-            Integer signcount = headService
-                .querySignCount(DateUtil.getNowTimeString("yyyy-MM-dd"));
             // 查询今日是否已签到
             Integer issign = headService.querySignCount(
                 DateUtil.getNowTimeString("yyyy-MM-dd"),
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername());
             // 如果签到过
-            if (issign == 1) {
+            if (issign > 0) {
                 return -1;
             }
+            // 查询今日总签到数
+            Integer signcount = headService
+            		.querySignCount(DateUtil.getNowTimeString("yyyy-MM-dd"));
             // 保存当前签到信息
             headService.insertSign(
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
