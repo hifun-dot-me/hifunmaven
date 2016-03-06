@@ -190,5 +190,4 @@ public interface IHeadDao {
      * @history:
      */
     void updateUserSignByUsername(String username, Integer daynum);
-
 }
