@@ -170,4 +170,11 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
             .queryForList("query-allhifunplayground");
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Map<String, Integer> querySignMap(String username) {
+        return getSqlMapClientTemplate().queryForMap("query-signmap", username,
+            "username");
+    }
+
 }

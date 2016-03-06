@@ -28,12 +28,13 @@ SELECT t.username, CASE WHEN t.flag = 2 THEN 0
 ELSE 
 DATEDIFF(DATE_FORMAT(NOW(), '%Y-%m-%d'), DATE_FORMAT(MAX(t.signTime1), '%Y-%m-%d')) + 1 - t.flag END AS daynum FROM
 (
-	SELECT s1.`id`, s1.`username`, 
+	SELECT s1.`id`, u.`username`, 
 		DATE_FORMAT(s1.`signTime`, '%Y-%m-%d') signTime1, 
 		DATE_FORMAT(s2.`signTime`, '%Y-%m-%d') signTime2,
 		DATEDIFF(DATE_FORMAT(s1.`signTime`, '%Y-%m-%d'), DATE_FORMAT(s2.`signTime`, '%Y-%m-%d')) sign_datediff,
 		CASE WHEN ins3.flag <= 1 THEN flag ELSE 2 END AS flag
-	FROM signWeb s1
+	FROM user u
+	left join signWeb s1 on u.username = s1.username
 	LEFT JOIN signWeb s2 ON s1.`username` = s2.`username` 
 		AND DATEDIFF(DATE_FORMAT(s1.`signTime`, '%Y-%m-%d'), DATE_FORMAT(s2.`signTime`, '%Y-%m-%d')) = 1
 	LEFT JOIN (
@@ -44,8 +45,8 @@ DATEDIFF(DATE_FORMAT(NOW(), '%Y-%m-%d'), DATE_FORMAT(MAX(t.signTime1), '%Y-%m-%d
 			GROUP BY s3.username
 	) ins3 ON ins3.username = s1.username
 	WHERE 1 = 1 
---	and s1.`username` = 'powlin' 
-	GROUP BY s1.`username`, s1.`id`
+--	and u.`username` = 'powlin' 
+	GROUP BY u.`username`, s1.`id`
 ) t 
 WHERE t.signTime2 IS NULL GROUP BY t.username;
 
