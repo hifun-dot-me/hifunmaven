@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
@@ -15,6 +17,7 @@ import com.hifun.dao.IUserAuthenDao;
 import com.hifun.service.IHeadService;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class HeadServiceImpl implements IHeadService {
 
     @Autowired
