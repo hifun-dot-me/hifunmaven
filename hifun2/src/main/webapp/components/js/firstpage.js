@@ -22,7 +22,7 @@ function signin(e){
 		dataType:'json',
 		success:function(res){
 			if(res.data == 1){
-				window.wxc.xcConfirm('签到成功', window.wxc.xcConfirm.typeEnum.success);
+//				window.wxc.xcConfirm('签到成功', window.wxc.xcConfirm.typeEnum.success);
 				this_.parent().html("<button type='button' class='btn btn-primary btn-lg btn-block disabled'>签 到 成 功</button>");
 			}else if(res.data == 0){
 				window.wxc.xcConfirm('请先登录', window.wxc.xcConfirm.typeEnum.info);

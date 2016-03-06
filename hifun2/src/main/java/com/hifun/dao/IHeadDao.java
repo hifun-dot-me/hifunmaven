@@ -1,6 +1,7 @@
 package com.hifun.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
@@ -171,5 +172,23 @@ public interface IHeadDao {
      * @history:
      */
     List<HiPlayground> queryAllHifunPlayground();
+
+    /**
+     * 查询签到map<username, signNum>
+     * @param username
+     * @return 
+     * @create: 2016年3月6日 下午5:45:14 yuexia
+     * @history:
+     */
+    Map<String, Integer> querySignMap(String username);
+
+    /**
+     * 根据用户名更新签到数
+     * @param username 
+     * @param daynum
+     * @create: 2016年3月6日 下午8:59:23 yuexia
+     * @history:
+     */
+    void updateUserSignByUsername(String username, Integer daynum);
 
 }

@@ -1,6 +1,7 @@
 package com.hifun.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -113,6 +114,16 @@ public class HeadServiceImpl implements IHeadService {
     @Override
     public List<HiPlayground> queryAllHifunPlayground() {
         return headDao.queryAllHifunPlayground();
+    }
+
+    @Override
+    public Map<String, Integer> querySignMap(String username) {
+        return headDao.querySignMap(username);
+    }
+
+    @Override
+    public void updateUserSignByUsername(String username, Integer daynum) {
+        headDao.updateUserSignByUsername(username, daynum);
     }
 
 }
