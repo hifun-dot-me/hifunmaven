@@ -51,6 +51,6 @@ DATEDIFF(DATE_FORMAT(NOW(), '%Y-%m-%d'), DATE_FORMAT(MAX(t.signTime1), '%Y-%m-%d
 WHERE t.signTime2 IS NULL GROUP BY t.username;
 
 
-alter user add daynum int default 0 comment '签到总天数' after remark;
+alter table user add daynum int default 0 comment '签到总天数' after remark;
 alter table user add lastSignTime datetime default null comment '最后签到时间' after daynum;
 
