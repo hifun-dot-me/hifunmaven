@@ -23,7 +23,7 @@
 						data-toggle="modal" data-target="#loginModal"><span>请登录</span></a>
 					<span class="li-spacing"></span>
 					<a target="_self" class="normal-a curson-a" 
-						data-toggle="modal" data-target="#registerModal"><span>注册有礼</span></a>
+						data-toggle="modal" data-target="#registerModal"><span>免费注册</span></a>
 				</c:if>
 				<c:if test="${username != null}">
 					<a href="javascript:void(0);" onclick="userinfo(this)">${username}</a>
