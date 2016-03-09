@@ -5,10 +5,11 @@ import org.springframework.stereotype.Service;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.dao.IUserAuthenDao;
+import com.hifun.service.BaseService;
 import com.hifun.service.IUserAuthenService;
 
 @Service
-public class UserAuthenService implements IUserAuthenService {
+public class UserAuthenService extends BaseService implements IUserAuthenService {
 
     @Autowired
     private IUserAuthenDao userAuthenDao;

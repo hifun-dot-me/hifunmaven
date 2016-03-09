@@ -15,11 +15,12 @@ import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 import com.hifun.dao.IHeadDao;
 import com.hifun.dao.IUserAuthenDao;
+import com.hifun.service.BaseService;
 import com.hifun.service.IHeadService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class HeadServiceImpl implements IHeadService {
+public class HeadServiceImpl extends BaseService implements IHeadService {
 
     @Autowired
     private IHeadDao headDao;
