@@ -234,6 +234,11 @@
 			<artifactId>hessian</artifactId>
 			<version>4.0.7</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
+		</dependency>
     </dependencies>
 <!-- 解决每次更新maven自动更改jdk1.5办法 -->
 <build>
