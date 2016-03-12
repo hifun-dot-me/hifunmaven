@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
-import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
+import com.hifun.bean.Shop;
 import com.hifun.dao.BaseDao;
 import com.hifun.dao.IHeadDao;
 
@@ -165,9 +165,9 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<HiPlayground> queryAllHifunPlayground() {
-        return getSqlMapClientTemplate()
-            .queryForList("query-allhifunplayground");
+    public List<Shop> queryAllShopByStatus(int status) {
+        return getSqlMapClientTemplate().queryForList("query-allshop-bystatus",
+            status);
     }
 
     @SuppressWarnings("unchecked")

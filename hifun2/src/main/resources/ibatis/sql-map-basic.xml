@@ -9,6 +9,7 @@
 	<typeAlias alias="sessionuser" type="com.hifun.base.session.SessionUser"/>
 	<typeAlias alias="hithings" type="com.hifun.bean.HiThings"/>
 	<typeAlias alias="hiplayground" type="com.hifun.bean.HiPlayground"/>
+	<typeAlias alias="shop" type="com.hifun.bean.Shop"/>
 	
 	<select id="query-banner-validatelist" resultClass="banner">
 		<![CDATA[
@@ -92,15 +93,15 @@
 		]]>
 	</select>
 	
-	<select id="query-allhifunplayground" resultClass="hiplayground">
+	<select id="query-allshop-bystatus" parameterClass="int" resultClass="shop">
 		<![CDATA[
-			select username, content, status, 
-			case when status = 0 then '未验证' 
-				when status = 1 then '已验证'
-				when status = -1 then '验证失败' 
+			select s.id, s.username, s.shopName, s.shopDesc, s.shopAddr, s.status, s.passTime,
+			case when s.status = 0 then '未验证' 
+				when s.status = 1 then '已验证'
+				when s.status = -1 then '验证失败' 
 				end as statusName, 
-			updateTime from hiPlayground 
-			where effectiveFrom <= now() and (effectiveTo > now() or effectiveTo is null)
+			s.updateTime from shop s
+			where s.effectiveFrom <= now() and (s.effectiveTo > now() or s.effectiveTo is null)
 			order by updateTime desc
 		]]>
 	</select>

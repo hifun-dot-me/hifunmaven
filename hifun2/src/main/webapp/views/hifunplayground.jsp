@@ -21,18 +21,33 @@
 						
 					</div>
 					<div class="left-inside-middle-div">
-						<button type="button" class="btn btn-primary btn-lg btn-block btn-warning" onclick="locationTo(this, '/headpage/uploadhifunplayground.do')">我 要 上 传</button>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="right-div">
 			<div class="right-inside-div">
-				<ul class="normal-ul hithings-ul">
-					<c:forEach items="${hiplaygroundlist}" var="h">
+				<ul class="normal-ul hiplayground-ul">
+					<%-- <c:forEach items="${hiplaygroundlist}" var="h">
 						<li class="hithings-li">
 							<a class="user-link top-html" href="javascript:void(0)" onclick="btnTest(this)">${h.username}</a>&nbsp;&nbsp;&nbsp;${h.content}<br/><br/>
 							<label class="normal-label">${h.updateTime}</label>&nbsp;&nbsp;&nbsp;<label class="normal-label">${h.statusName}</label>
+						</li>
+					</c:forEach> --%>
+					<c:forEach items="${shoplist}" var="s">
+						<li class="hiplayground-li">
+							<div class="hiplayground-div">
+								<img alt="blackboard" title="${s.shopDesc}" src="../components/image/png/blackboard.png" width="100%" height="100%">
+								<div class="hiplayground-tip-div">
+									<span class="shop-title">
+										${s.shopName}
+									</span>
+									<p class="text-ellipsis">
+										${s.shopDesc}
+									</p>
+								</div>
+							</div>
 						</li>
 					</c:forEach>
 				</ul>

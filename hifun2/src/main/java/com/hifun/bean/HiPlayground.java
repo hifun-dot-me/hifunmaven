@@ -10,7 +10,13 @@ public class HiPlayground {
 
     private String nickname;// 昵称
 
-    private String content;// 内容
+    private int shopId;// 商家ID
+
+    private String shopName;// 商家名称
+
+    private String shopDesc;// 商家描述
+
+    private String shopAddr;// 商家地址
 
     private int status;// 审核状态
 
@@ -34,14 +40,6 @@ public class HiPlayground {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public int getStatus() {
@@ -86,6 +84,38 @@ public class HiPlayground {
 
     public void setStatusName(String statusName) {
         this.statusName = statusName;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public String getShopDesc() {
+        return shopDesc;
+    }
+
+    public void setShopDesc(String shopDesc) {
+        this.shopDesc = shopDesc;
+    }
+
+    public String getShopAddr() {
+        return shopAddr;
+    }
+
+    public void setShopAddr(String shopAddr) {
+        this.shopAddr = shopAddr;
     }
 
 }

@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
-import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
+import com.hifun.bean.Shop;
 import com.hifun.dao.IHeadDao;
 import com.hifun.dao.IUserAuthenDao;
 import com.hifun.service.BaseService;
@@ -113,8 +113,8 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
     }
 
     @Override
-    public List<HiPlayground> queryAllHifunPlayground() {
-        return headDao.queryAllHifunPlayground();
+    public List<Shop> queryAllShopByStatus(int status) {
+        return headDao.queryAllShopByStatus(status);
     }
 
     @Override

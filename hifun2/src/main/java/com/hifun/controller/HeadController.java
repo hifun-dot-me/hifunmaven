@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.AuditEnum;
 import com.hifun.bean.Banner;
-import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
+import com.hifun.bean.Shop;
 import com.hifun.service.IHeadService;
 import com.hifun.util.DateUtil;
 
@@ -81,7 +81,7 @@ public class HeadController extends BaseController {
             }
             // 查询今日总签到数
             Integer signcount = headService
-            		.querySignCount(DateUtil.getNowTimeString("yyyy-MM-dd"));
+                .querySignCount(DateUtil.getNowTimeString("yyyy-MM-dd"));
             // 保存当前签到信息
             headService.insertSign(
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
@@ -133,9 +133,9 @@ public class HeadController extends BaseController {
     @ResponseBody
     public ModelAndView showh2() {
         ModelAndView view = new ModelAndView("/hifunplayground");
-        List<HiPlayground> hiplaygroundlist = headService
-            .queryAllHifunPlayground();
-        view.addObject("hiplaygroundlist", hiplaygroundlist);
+        List<Shop> shoplist = headService
+            .queryAllShopByStatus(AuditEnum.Y.getStatus());
+        view.addObject("shoplist", shoplist);
         return view;
     }
 

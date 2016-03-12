@@ -5,9 +5,9 @@ import java.util.Map;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.Banner;
-import com.hifun.bean.HiPlayground;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
+import com.hifun.bean.Shop;
 
 public interface IHeadDao {
 
@@ -167,11 +167,12 @@ public interface IHeadDao {
 
     /**
      * 查询所有嗨ground
+     * @param status
      * @return 
      * @create: 2016年3月1日 下午10:25:42 yuexia
      * @history:
      */
-    List<HiPlayground> queryAllHifunPlayground();
+    List<Shop> queryAllShopByStatus(int status);
 
     /**
      * 查询签到map<username, signNum>
