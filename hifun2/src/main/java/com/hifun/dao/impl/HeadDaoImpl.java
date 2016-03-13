@@ -165,9 +165,12 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Shop> queryAllShopByStatus(int status) {
+    public List<Shop> queryAllShopByStatus(int status, String shopName) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("status", status);
+        param.put("shopName", shopName);
         return getSqlMapClientTemplate().queryForList("query-allshop-bystatus",
-            status);
+            param);
     }
 
     @SuppressWarnings("unchecked")

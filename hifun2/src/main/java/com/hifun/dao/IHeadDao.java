@@ -168,11 +168,12 @@ public interface IHeadDao {
     /**
      * 查询所有嗨ground
      * @param status
+     * @param shopName
      * @return 
      * @create: 2016年3月1日 下午10:25:42 yuexia
      * @history:
      */
-    List<Shop> queryAllShopByStatus(int status);
+    List<Shop> queryAllShopByStatus(int status, String shopName);
 
     /**
      * 查询签到map<username, signNum>

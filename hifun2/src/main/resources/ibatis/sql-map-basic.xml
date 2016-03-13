@@ -93,17 +93,21 @@
 		]]>
 	</select>
 	
-	<select id="query-allshop-bystatus" parameterClass="int" resultClass="shop">
+	<select id="query-allshop-bystatus" parameterClass="java.util.Map" resultClass="shop">
+		select s.id, s.username, s.shopName, s.shopDesc, s.shopAddr, s.status, s.passTime,
+		case when s.status = 0 then '未验证' 
+			when s.status = 1 then '已验证'
+			when s.status = -1 then '验证失败' 
+			end as statusName, 
+		s.updateTime from shop s
 		<![CDATA[
-			select s.id, s.username, s.shopName, s.shopDesc, s.shopAddr, s.status, s.passTime,
-			case when s.status = 0 then '未验证' 
-				when s.status = 1 then '已验证'
-				when s.status = -1 then '验证失败' 
-				end as statusName, 
-			s.updateTime from shop s
 			where s.effectiveFrom <= now() and (s.effectiveTo > now() or s.effectiveTo is null)
-			order by updateTime desc
 		]]>
+		and s.status = #status#
+		<isNotEmpty property="shopName" prepend="and">
+			s.shopName like concat('%', #shopName#, '%')
+		</isNotEmpty>
+		order by updateTime desc
 	</select>
 	
 	<resultMap class="java.util.HashMap" id="signMap">

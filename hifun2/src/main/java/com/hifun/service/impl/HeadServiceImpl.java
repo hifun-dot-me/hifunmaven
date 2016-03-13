@@ -113,8 +113,8 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
     }
 
     @Override
-    public List<Shop> queryAllShopByStatus(int status) {
-        return headDao.queryAllShopByStatus(status);
+    public List<Shop> queryAllShopByStatus(int status, String shopName) {
+        return headDao.queryAllShopByStatus(status, shopName);
     }
 
     @Override

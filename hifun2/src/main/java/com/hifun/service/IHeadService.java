@@ -159,11 +159,12 @@ public interface IHeadService {
     /**
      * 查询所有shop
      * @param status
+     * @param shopName
      * @return 
      * @create: 2016年3月1日 下午10:24:27 yuexia
      * @history:
      */
-    List<Shop> queryAllShopByStatus(int status);
+    List<Shop> queryAllShopByStatus(int status, String shopName);
 
     /**
      * 查询签到map<username, signNum>

@@ -131,10 +131,11 @@ public class HeadController extends BaseController {
 
     @RequestMapping(value = "/hifunplayground.do", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView showh2() {
+    public ModelAndView showh2(
+            @RequestParam(value = "shopName", required = false) String shopName) {
         ModelAndView view = new ModelAndView("/hifunplayground");
         List<Shop> shoplist = headService
-            .queryAllShopByStatus(AuditEnum.Y.getStatus());
+            .queryAllShopByStatus(AuditEnum.Y.getStatus(), shopName);
         view.addObject("shoplist", shoplist);
         return view;
     }

@@ -27,19 +27,26 @@
 			</div>
 		</div>
 		<div class="right-div">
+			<div class="right-top-div">
+				<div class="right-top-tip-div">
+					嗨翻广场火热招商中...
+				</div>
+				<div class="right-top-search-div">
+					<div class="search-div">
+						<form action="" id="mainForm" method="get">
+							<input class="search-input" name="shopName" placeholder="搜索商家">
+							<span class="glyphicon glyphicon-search" id="search-btn"></span>
+						</form>
+					</div>
+				</div>
+			</div>
 			<div class="right-inside-div">
 				<ul class="normal-ul hiplayground-ul">
-					<%-- <c:forEach items="${hiplaygroundlist}" var="h">
-						<li class="hithings-li">
-							<a class="user-link top-html" href="javascript:void(0)" onclick="btnTest(this)">${h.username}</a>&nbsp;&nbsp;&nbsp;${h.content}<br/><br/>
-							<label class="normal-label">${h.updateTime}</label>&nbsp;&nbsp;&nbsp;<label class="normal-label">${h.statusName}</label>
-						</li>
-					</c:forEach> --%>
 					<c:forEach items="${shoplist}" var="s">
 						<li class="hiplayground-li">
-							<div class="hiplayground-div">
+							<div class="hiplayground-div" onmouseover="mouseonblackboard(this)">
 								<img alt="blackboard" title="${s.shopDesc}" src="../components/image/png/blackboard.png" width="100%" height="100%">
-								<div class="hiplayground-tip-div">
+								<div class="hiplayground-tip-div" id="hiplayground-tip-div">
 									<span class="shop-title">
 										${s.shopName}
 									</span>

@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	
+	$("#search-btn").click(function(){
+		$("#mainForm").attr("action", $("#base").val()+'/headpage/hifunplayground.do');
+		$("#mainForm").submit();
+	});
 });
 
 function locationTo(e, href){
@@ -57,3 +60,8 @@ function evaluatePost(e, evaluateId, evaluateTypeId, relateTypeName){
 			);
 	$(e).parent().children("a.evaluate").attr("onclick", "blurutil(this)");
 }
+
+function mouseonblackboard(e){
+	$(e).children(".hiplayground-tip-div").show().animate({height:"60px"});
+}
+
