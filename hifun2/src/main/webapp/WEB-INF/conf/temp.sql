@@ -54,6 +54,7 @@ WHERE t.signTime2 IS NULL GROUP BY t.username;
 alter table user add daynum int default 0 comment '签到总天数' after remark;
 alter table user add lastSignTime datetime default null comment '最后签到时间' after daynum;
 
+drop table if exists hiPlayground;
 CREATE TABLE hiPlayground (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	shopId int comment '商家ID',
@@ -86,5 +87,5 @@ create table shop(
 );
 
 insert into shop values (1, 'waipojia', '外婆家西湖店', '杭帮菜家族杭帮菜杭帮菜哈哈哈哈哈哈', '...', 1, now(), '', now(), 'waipojia', now(), 'waipojia', now(), NULL);
-
+insert into shop values (2, 'xinbailu', '新白鹿庆春店', '我也是杭帮菜家族杭帮菜杭帮菜哈哈哈哈哈哈', '...', 1, now(), '', now(), 'xinbailu', now(), 'xinbailu', now(), NULL);
 

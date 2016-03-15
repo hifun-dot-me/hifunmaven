@@ -1,9 +1,20 @@
 $(document).ready(function(){
 	$("#search-btn").click(function(){
+		if(!checkForm()){
+			return false;
+		}
 		$("#mainForm").attr("action", $("#base").val()+'/headpage/hifunplayground.do');
 		$("#mainForm").submit();
 	});
 });
+
+function checkForm(){
+	var shopName = $("#shopName").val();
+	if(shopName == '' || shopName.trim() == ''){
+		return false;
+	}
+	return true;
+}
 
 function locationTo(e, href){
 	ajaxGet(

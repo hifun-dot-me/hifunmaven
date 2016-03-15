@@ -34,7 +34,7 @@
 				<div class="right-top-search-div">
 					<div class="search-div">
 						<form action="" id="mainForm" method="get">
-							<input class="search-input" name="shopName" placeholder="搜索商家">
+							<input class="search-input" name="shopName" id="shopName" value="${shopName}" placeholder="搜索商家">
 							<span class="glyphicon glyphicon-search" id="search-btn"></span>
 						</form>
 					</div>

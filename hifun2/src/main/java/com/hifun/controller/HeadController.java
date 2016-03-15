@@ -137,6 +137,7 @@ public class HeadController extends BaseController {
         List<Shop> shoplist = headService
             .queryAllShopByStatus(AuditEnum.Y.getStatus(), shopName);
         view.addObject("shoplist", shoplist);
+        view.addObject("shopName", shopName);
         return view;
     }
 
