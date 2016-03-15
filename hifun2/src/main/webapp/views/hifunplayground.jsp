@@ -29,7 +29,7 @@
 		<div class="right-div">
 			<div class="right-top-div">
 				<div class="right-top-tip-div">
-					嗨翻广场火热招商中...
+					公告：嗨翻广场火热招商中...
 				</div>
 				<div class="right-top-search-div">
 					<div class="search-div">

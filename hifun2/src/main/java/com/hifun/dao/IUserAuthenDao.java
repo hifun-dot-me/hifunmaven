@@ -38,6 +38,15 @@ public interface IUserAuthenDao {
      * @create: 2016年2月1日09:20:22 yuexia
      * @param exp
      */
-	void updateUserExp(String username, int exp);
+    void updateUserExp(String username, int exp);
+
+    /**
+     * 根据用户名更新签到信息
+     * @param username
+     * @param nowdate 
+     * @create: 2016年3月15日 下午10:46:17 yuexia
+     * @history:
+     */
+    void updateUserSign(String username, String nowdate);
 
 }

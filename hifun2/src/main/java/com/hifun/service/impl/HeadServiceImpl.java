@@ -49,6 +49,8 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
         headDao.insertSign(username, nowdate, signOrder);
         // 增加经验
         userAuthenDao.updateUserExp(username, 6);
+        // 增加连续签到数
+        userAuthenDao.updateUserSign(username, nowdate);
     }
 
     @Override

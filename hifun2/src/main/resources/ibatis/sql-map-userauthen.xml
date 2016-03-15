@@ -56,4 +56,8 @@
 		update user set exp = exp + #exp# where username = #username#
 	</insert>
 	
+	<update id="updat-usersign" parameterClass="java.util.Map">
+		update user set daynum = daynum + 1, lastSignTime = #nowdate#, updateTime = #nowdate# where username = #username#
+	</update>
+	
 </sqlMap>

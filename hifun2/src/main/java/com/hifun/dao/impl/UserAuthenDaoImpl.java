@@ -37,12 +37,20 @@ public class UserAuthenDaoImpl extends BaseDao implements IUserAuthenDao {
         getSqlMapClientTemplate().insert("insert-userinfo", param);
     }
 
-	@Override
-	public void updateUserExp(String username, int exp) {
-		Map<String, Object> param = new HashMap<String, Object>();
+    @Override
+    public void updateUserExp(String username, int exp) {
+        Map<String, Object> param = new HashMap<String, Object>();
         param.put("username", username);
         param.put("exp", exp);
-		getSqlMapClientTemplate().insert("update-userexp", param);
-	}
+        getSqlMapClientTemplate().insert("update-userexp", param);
+    }
+
+    @Override
+    public void updateUserSign(String username, String nowdate) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", username);
+        param.put("nowdate", nowdate);
+        getSqlMapClientTemplate().update("updat-usersign", param);
+    }
 
 }
