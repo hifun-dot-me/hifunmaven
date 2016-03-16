@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.hifun.bean.TimeEnum;
+
 /**
  * 日期工具类
  * @author yuexia
@@ -32,7 +34,7 @@ public class DateUtil {
 
     public static Date getTimeDate(String date) {
         try {
-            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
+            return new SimpleDateFormat(TimeEnum.TIME.getFormat()).parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }

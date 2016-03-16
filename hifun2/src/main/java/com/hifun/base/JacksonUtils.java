@@ -11,6 +11,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.hifun.bean.TimeEnum;
 
 /**
  * Jackson
@@ -27,7 +28,7 @@ public abstract class JacksonUtils {
 
     static {
         // 设置默认日期格式
-        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+        objectMapper.setDateFormat(new SimpleDateFormat(TimeEnum.DATE.getFormat()));
         // 提供其它默认设置
         objectMapper
             .setFilters(new SimpleFilterProvider().setFailOnUnknownId(false));

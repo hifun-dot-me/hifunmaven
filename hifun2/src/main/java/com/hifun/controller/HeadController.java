@@ -16,6 +16,7 @@ import com.hifun.bean.Banner;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 import com.hifun.bean.Shop;
+import com.hifun.bean.TimeEnum;
 import com.hifun.service.IHeadService;
 import com.hifun.util.DateUtil;
 
@@ -58,7 +59,7 @@ public class HeadController extends BaseController {
                 headService.queryTodayIsSign(
                     ((SessionUser) sessionProvider.getUserDetail())
                         .getUsername(),
-                DateUtil.getNowTimeString("yyyy-MM-dd")));
+                DateUtil.getNowTimeString(TimeEnum.DATE.getFormat())));
         } else {
             view.addObject("isSign", 0);
         }
@@ -73,7 +74,7 @@ public class HeadController extends BaseController {
                 && sessionProvider.getUserDetail() != null) {
             // 查询今日是否已签到
             Integer issign = headService.querySignCount(
-                DateUtil.getNowTimeString("yyyy-MM-dd"),
+                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()),
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername());
             // 如果签到过
             if (issign > 0) {
@@ -81,11 +82,11 @@ public class HeadController extends BaseController {
             }
             // 查询今日总签到数
             Integer signcount = headService
-                .querySignCount(DateUtil.getNowTimeString("yyyy-MM-dd"));
+                .querySignCount(DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()));
             // 保存当前签到信息
             headService.insertSign(
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
-                DateUtil.getNowTimeString("yyyy-MM-dd HH:MM:ss"),
+                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()),
                 signcount + 1);
             return 1;
         }
@@ -101,7 +102,7 @@ public class HeadController extends BaseController {
                 && sessionProvider.getUserDetail() != null) {
             headService.insertHiThings(content,
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
-                DateUtil.getNowTimeString("yyyy-MM-dd HH:MM:ss"));
+                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
             return 1;
         }
         return 0;
@@ -116,7 +117,7 @@ public class HeadController extends BaseController {
                 && sessionProvider.getUserDetail() != null) {
             headService.insertHiPlayground(content,
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
-                DateUtil.getNowTimeString("yyyy-MM-dd HH:MM:ss"));
+                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
             return 1;
         }
         return 0;
@@ -161,7 +162,7 @@ public class HeadController extends BaseController {
                 AuditEnum.Y.getStatus());
             // 查询今天所有的赞数
             int count = headService.queryTotalZan(
-                DateUtil.getNowTimeString("yyyy-MM-dd"), username, 1);
+                DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()), username, 1);
             view.addObject("totalzan", count);
         } else {
             hithingslist = headService
@@ -226,7 +227,7 @@ public class HeadController extends BaseController {
                 return -1;
             }
             headService.insertEvaluate(username,
-                DateUtil.getNowTimeString("yyyy-MM-dd HH:mm:ss"), evaluateId,
+                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()), evaluateId,
                 evaluateTypeId, relateTypeId);
             return 1;
         }

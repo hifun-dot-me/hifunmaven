@@ -31,7 +31,7 @@ public class HttpClientUtil {
 		PostMethod postMethod = new PostMethod(loginUrl);
 
 		// 设置登陆时要求的信息，用户名和密码
-		NameValuePair[] data = { new NameValuePair("username", "powlin"),
+		NameValuePair[] data = { new NameValuePair("username", "admin"),
 				new NameValuePair("password", "123456") };
 		postMethod.setRequestBody(data);
 		postMethod.setRequestHeader("Content-Type",
@@ -62,5 +62,9 @@ public class HttpClientUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) {
+		doSign();
 	}
 }

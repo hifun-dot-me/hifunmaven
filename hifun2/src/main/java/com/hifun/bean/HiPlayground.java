@@ -69,7 +69,7 @@ public class HiPlayground {
     public String getUpdateTime() {
         if (updateTime != null) {
             updateTime = DateUtil.getTimeString(
-                DateUtil.getTimeDate(updateTime), "yyyy-MM-dd HH:mm:ss");
+                DateUtil.getTimeDate(updateTime), TimeEnum.TIME.getFormat());
         }
         return updateTime;
     }
