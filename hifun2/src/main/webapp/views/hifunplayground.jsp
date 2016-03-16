@@ -18,10 +18,24 @@
 			<div class="left-temp-div">
 				<div class="left-inside-div">
 					<div class="left-inside-top-div">
-						
+						<button type="button" class="btn btn-primary btn-lg btn-block btn-warning" 
+						onclick="locationTo(this, '/headpage/shopregister.do')">商 家 注 册</button>
 					</div>
 					<div class="left-inside-middle-div">
-						
+						<ul class="normal-ul">
+							<li>
+								菜单栏1
+							</li>
+							<li>
+								菜单栏1
+							</li>
+							<li>
+								菜单栏1
+							</li>
+							<li>
+								菜单栏1
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>

@@ -81,8 +81,8 @@ public class HeadController extends BaseController {
                 return -1;
             }
             // 查询今日总签到数
-            Integer signcount = headService
-                .querySignCount(DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()));
+            Integer signcount = headService.querySignCount(
+                DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()));
             // 保存当前签到信息
             headService.insertSign(
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername(),
@@ -162,7 +162,8 @@ public class HeadController extends BaseController {
                 AuditEnum.Y.getStatus());
             // 查询今天所有的赞数
             int count = headService.queryTotalZan(
-                DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()), username, 1);
+                DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()), username,
+                1);
             view.addObject("totalzan", count);
         } else {
             hithingslist = headService
@@ -201,6 +202,13 @@ public class HeadController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/shopregister.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView showh9() {
+        ModelAndView view = new ModelAndView("/shopregister");
+        return view;
+    }
+
     @RequestMapping(value = "/evaluate.do", method = RequestMethod.POST)
     @ResponseBody
     public int evaluate(
@@ -227,8 +235,8 @@ public class HeadController extends BaseController {
                 return -1;
             }
             headService.insertEvaluate(username,
-                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()), evaluateId,
-                evaluateTypeId, relateTypeId);
+                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()),
+                evaluateId, evaluateTypeId, relateTypeId);
             return 1;
         }
         return 0;
