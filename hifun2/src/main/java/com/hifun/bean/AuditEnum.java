@@ -13,11 +13,7 @@ public enum AuditEnum {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public static void main(String[] args) {
-        System.out.println(AuditEnum.N.getStatus());
+        System.out.println(AuditEnum.Y.getStatus());
     }
 }

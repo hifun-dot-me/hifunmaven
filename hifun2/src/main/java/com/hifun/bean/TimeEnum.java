@@ -12,10 +12,6 @@ public enum TimeEnum {
     public String getFormat() {
 		return format;
 	}
-
-	public void setFormat(String format) {
-		this.format = format;
-	}
 	
 	public static void main(String[] args) {
 		System.out.println(TimeEnum.TIME.getFormat());
