@@ -22,18 +22,18 @@
 						onclick="locationTo(this, '/headpage/shopregister.do')">商 家 注 册</button>
 					</div>
 					<div class="left-inside-middle-div">
-						<ul class="normal-ul">
-							<li>
-								菜单栏1
+						<ul class="normal-ul hiplayground-menu-ul">
+							<li class="normal-li hiplayground-menu-li">
+								嗨~吃&nbsp;&nbsp;&nbsp;美食小吃应有尽有
 							</li>
-							<li>
-								菜单栏1
+							<li class="normal-li hiplayground-menu-li">
+								嗨~穿&nbsp;&nbsp;&nbsp;好心情从穿着开始
 							</li>
-							<li>
-								菜单栏1
+							<li class="normal-li hiplayground-menu-li">
+								嗨~住&nbsp;&nbsp;&nbsp;金窝银窝都在这里
 							</li>
-							<li>
-								菜单栏1
+							<li class="normal-li hiplayground-menu-li">
+								嗨~行&nbsp;&nbsp;&nbsp;你出行，我帮砍价
 							</li>
 						</ul>
 					</div>
