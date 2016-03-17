@@ -92,6 +92,18 @@ textarea{
 	vertical-align: top;
 }
 
+.btn-right{
+	float: right;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.form-title{
+	font-size: 18px;
+	text-align: center;
+	color: #FFA042;
+}
+
 .li-spacing{
 	display: inline;
 	width: 1px;

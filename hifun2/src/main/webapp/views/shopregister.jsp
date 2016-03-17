@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <jsp:include page="../components/jsp/include.jsp" />
-<jsp:include page="../components/jsp/ueditor.jsp" />
 <script type="text/javascript" src="../components/js/shopregister.js"></script>
 <link rel="stylesheet" type="text/css" href="../components/css/shopregister.css">
 <title>shopregister</title>
@@ -15,8 +14,24 @@
 <body class="inside-body">
 	<input id="base" type="hidden" value="<%=request.getContextPath()%>">
 	<div class="middle-div">
-		<div class="form-div">
-			shopregister
+		<div class="left-div">
+			<div class="form-div">
+				<form action="" id="mainForm" method="post">
+					<span class="form-title">商家注册</span>
+					<input name="shopName" class="form-control form-normal-input" placeholder="商家名称，20字符以内"/>
+					<select id="shopType" name="shopType" class="form-control">
+						<option value="0">商家类型</option>
+					</select>
+					<input name="shopLevel" class="form-control form-normal-input" placeholder="商家级别"/>
+					<input name="shopDesc" class="form-control form-normal-input" placeholder="商家地址，50字符以内"/>
+					<textarea name="shopAddr" class="form-control form-normal-input" rows="3" placeholder="商家地址，100字符以内"></textarea>
+					<button class="btn btn-primary btn-right">提交</button>
+					<button class="btn btn-default btn-right" onclick="history.go(-1)">返回</button>
+				</form>
+			</div>
+		</div>
+		<div class="right-div">
+			
 		</div>
 	</div>
 </body>

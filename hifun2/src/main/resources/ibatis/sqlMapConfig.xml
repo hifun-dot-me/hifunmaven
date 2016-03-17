@@ -8,4 +8,5 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
 		maxSessions="10" maxTransactions="5" useStatementNamespaces="false" />
 	<sqlMap resource="ibatis/sql-map-basic.xml"/>
 	<sqlMap resource="ibatis/sql-map-userauthen.xml"/>
+	<sqlMap resource="ibatis/sql-map-dictionary.xml"/>
 </sqlMapConfig>

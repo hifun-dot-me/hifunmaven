@@ -27,8 +27,19 @@ CREATE TABLE IF NOT EXISTS `hifun`.`shop` (
 CREATE TABLE IF NOT EXISTS `hifun`.`shop_type` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `typeId` INT NOT NULL,
-  `typeName` VARCHAR(25) NOT NULL
+  `typeName` VARCHAR(25) NOT NULL,
+  `orderNum` int default 0,
+  `createTime` DATETIME NULL COMMENT '创建时间',
+  `createBy` VARCHAR(20) NULL COMMENT '创建人',
+  `updateTime` DATETIME NULL COMMENT '修改时间',
+  `updateBy` VARCHAR(20) NULL COMMENT '修改人',
+  `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
+  `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );
+
+insert into shop_type values (1, 1, '美食', 1, NOW(), 'admin', NOW(), 'admin', NOW(), null);
+insert into shop_type values (2, 2, '小吃', 2, NOW(), 'admin', NOW(), 'admin', NOW(), null);
+insert into shop_type values (3, 3, '饰品', 3, NOW(), 'admin', NOW(), 'admin', NOW(), null);
 
 
 -- -----------------------------------------------------
@@ -37,7 +48,13 @@ CREATE TABLE IF NOT EXISTS `hifun`.`shop_type` (
 CREATE TABLE IF NOT EXISTS `hifun`.`shop_level` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `levelId` INT NOT NULL COMMENT '级别编码',
-  `levelName` VARCHAR(10) NOT NULL COMMENT '级别名称'
+  `levelName` VARCHAR(10) NOT NULL COMMENT '级别名称',
+  `createTime` DATETIME NULL COMMENT '创建时间',
+  `createBy` VARCHAR(20) NULL COMMENT '创建人',
+  `updateTime` DATETIME NULL COMMENT '修改时间',
+  `updateBy` VARCHAR(20) NULL COMMENT '修改人',
+  `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
+  `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );
 
 
@@ -66,7 +83,13 @@ CREATE TABLE IF NOT EXISTS `hifun`.`total_img` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `type` INT NOT NULL COMMENT '图片类型 对应img_type',
   `shopId` INT NOT NULL COMMENT '商家编码',
-  `shopImg` VARCHAR(50) NOT NULL COMMENT '商家图片路径'
+  `shopImg` VARCHAR(50) NOT NULL COMMENT '商家图片路径',
+  `createTime` DATETIME NULL COMMENT '创建时间',
+  `createBy` VARCHAR(20) NULL COMMENT '创建人',
+  `updateTime` DATETIME NULL COMMENT '修改时间',
+  `updateBy` VARCHAR(20) NULL COMMENT '修改人',
+  `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
+  `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );
 
 
@@ -76,5 +99,11 @@ CREATE TABLE IF NOT EXISTS `hifun`.`total_img` (
 CREATE TABLE IF NOT EXISTS `hifun`.`type_img` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `imgTypeId` INT NOT NULL COMMENT '图片类型编码',
-  `imgTypeName` VARCHAR(20) NOT NULL COMMENT '图片类型名称'
+  `imgTypeName` VARCHAR(20) NOT NULL COMMENT '图片类型名称',
+  `createTime` DATETIME NULL COMMENT '创建时间',
+  `createBy` VARCHAR(20) NULL COMMENT '创建人',
+  `updateTime` DATETIME NULL COMMENT '修改时间',
+  `updateBy` VARCHAR(20) NULL COMMENT '修改人',
+  `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
+  `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap     
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"     
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="dictionary">
+	
+	<typeAlias alias="shoptype" type="com.hifun.bean.ShopType"/>
+	
+	<select id="query-shoptypelist-validate" resultClass="shoptype">
+		<![CDATA[
+		select id, typeId, typeName from shop_type 
+		where effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is null)
+		order by orderNum asc
+		]]>
+	</select>
+	
+</sqlMap>

@@ -24,16 +24,16 @@
 					<div class="left-inside-middle-div">
 						<ul class="normal-ul hiplayground-menu-ul">
 							<li class="normal-li hiplayground-menu-li">
-								嗨~吃&nbsp;&nbsp;&nbsp;美食小吃应有尽有
+								嗨~吃 美食小吃应有尽有
 							</li>
 							<li class="normal-li hiplayground-menu-li">
-								嗨~穿&nbsp;&nbsp;&nbsp;好心情从穿着开始
+								嗨~穿 好心情从穿着开始
 							</li>
 							<li class="normal-li hiplayground-menu-li">
-								嗨~住&nbsp;&nbsp;&nbsp;金窝银窝都在这里
+								嗨~住 金窝银窝都在这里
 							</li>
 							<li class="normal-li hiplayground-menu-li">
-								嗨~行&nbsp;&nbsp;&nbsp;你出行，我帮砍价
+								嗨~行 你出行，我帮砍价
 							</li>
 						</ul>
 					</div>
