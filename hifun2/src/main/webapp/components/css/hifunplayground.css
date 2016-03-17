@@ -65,6 +65,14 @@
 	width: 100%;
 	padding: 10px 0px;
 	font-size: 14px;
+	padding: 3px 6px;
+	border: 2px solid #FFFFFF;
+}
+
+.hiplayground-menu-li:hover{
+	border: 2px solid #F0AD4E;
+	cursor: pointer;
+	color: #F0AD4E;
 }
 
 .right-top-div{

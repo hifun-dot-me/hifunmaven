@@ -1,18 +1,3 @@
--- 2016年03月01日22:08:19
-create table hiPlayground(
-	id int primary key auto_increment,
-	username varchar(20) comment '用户名',
-	content text comment '内容',
-	status int default 0 comment '状态',
-	remark varchar(50) comment '备注',
-	createTime datetime comment '创建时间',
-	createBy varchar(20) comment '创建人',
-	updateTime datetime comment '修改时间',
-	updateBy varchar(20) comment '修改人',
-	effectiveFrom datetime comment '生效时间起',
-	effectiveTo datetime comment '生效时间止'
-);
-
 
 -- 功能：查询连续签到天数SQL
 -- 时间：2016年3月4日14:39:55
@@ -49,25 +34,6 @@ DATEDIFF(DATE_FORMAT(NOW(), '%Y-%m-%d'), DATE_FORMAT(MAX(t.signTime1), '%Y-%m-%d
 	GROUP BY u.username, s1.id
 ) t 
 WHERE t.signTime2 IS NULL GROUP BY t.username;
-
-
-alter table user add daynum int default 0 comment '签到总天数' after remark;
-alter table user add lastSignTime datetime default null comment '最后签到时间' after daynum;
-
-drop table if exists hiPlayground;
-CREATE TABLE hiPlayground (
-	id int(11) NOT NULL AUTO_INCREMENT,
-	shopId int comment '商家ID',
-	status int(11) DEFAULT 0 COMMENT '状态',
-	remark varchar(50) DEFAULT NULL COMMENT '备注',
-	createTime datetime DEFAULT NULL COMMENT '创建时间',
-	createBy varchar(20) DEFAULT NULL COMMENT '创建人',
-	updateTime datetime DEFAULT NULL COMMENT '修改时间',
-	updateBy varchar(20) DEFAULT NULL COMMENT '修改人',
-	effectiveFrom datetime DEFAULT NULL COMMENT '生效时间起',
-	effectiveTo datetime DEFAULT NULL COMMENT '生效时间止',
-	PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 create table shop(
 	id int primary key auto_increment,
