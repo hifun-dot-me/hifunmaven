@@ -70,5 +70,7 @@
 		</property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true" />
     
 </beans>

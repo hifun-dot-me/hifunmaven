@@ -7,10 +7,10 @@ $(document).ready(function(){
 });
 
 function doQuerySuccess(res){
-	var shoptypelist = eval(res.data);
+	var data = res.data;
 	var shoptype = "<option value='0'>商家类型</option>";
-	for(var i = 0;i < shoptypelist.length;i++){
-		shoptype = shoptype + "<option value='" + shoptypelist[i].typeId + "'>" + shoptypelist[i].typeName + "</option>";
+	for(var i = 0;i < data.length;i++){
+		shoptype = shoptype + "<option value='" + data[i].typeId + "'>" + data[i].typeName + "</option>";
 	}
 	$("#shopType").html(shoptype);
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
 import com.hifun.bean.ShopType;
 import com.hifun.service.IDictionaryService;
 
@@ -21,10 +20,9 @@ public class DictionaryController extends BaseController {
 
     @RequestMapping(value = "/querylist.do", method = RequestMethod.GET)
     @ResponseBody
-    public String querylist() {
-        List<ShopType> shoptypelist = dictionaryService
+    public List<ShopType> querylist() {
+    	return dictionaryService
             .queryShopTypeListValidate();
-        return JSON.toJSONString(shoptypelist, true);
     }
 
 }
