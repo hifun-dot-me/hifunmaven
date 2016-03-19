@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.hifun.bean.ShopType;
+import com.hifun.bean.Dictionary;
 import com.hifun.dao.BaseDao;
 import com.hifun.dao.IDictionaryDao;
 
@@ -13,9 +13,9 @@ public class DictionaryDaoImpl extends BaseDao implements IDictionaryDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<ShopType> queryShopTypeListValidate() {
+    public List<Dictionary> queryDictionaryListValidate(String dictionaryType) {
         return getSqlMapClientTemplate()
-            .queryForList("query-shoptypelist-validate");
+            .queryForList("query-dictionarylist-validate", dictionaryType);
     }
 
 }

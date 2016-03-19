@@ -184,4 +184,30 @@ public interface IHeadService {
      */
     void updateUserSignByUsername(String username, Integer daynum);
 
+    /**
+     * 保存商家注册信息
+     * @param username
+     * @param shopName
+     * @param shopType
+     * @param shopLevel
+     * @param shopDesc
+     * @param shopAddr
+     * @param status
+     * @param nowdate 
+     * @create: 2016年3月19日 下午9:15:07 yuexia
+     * @history:
+     */
+    void insertShop(String username, String shopName, int shopType,
+            int shopLevel, String shopDesc, String shopAddr, int status,
+            String nowdate);
+
+    /**
+     * 根据用户名查询商家数量
+     * @param username
+     * @return 
+     * @create: 2016年3月19日 下午11:07:10 yuexia
+     * @history:
+     */
+    Integer queryShopCountByUsername(String username);
+
 }

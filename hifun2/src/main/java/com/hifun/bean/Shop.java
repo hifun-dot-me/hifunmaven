@@ -14,8 +14,6 @@ public class Shop {
 
     private int status;// 状态
 
-    private String statusName;// 状态名称
-
     public Integer getId() {
         return id;
     }
@@ -62,14 +60,6 @@ public class Shop {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public String getStatusName() {
-        return statusName;
-    }
-
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
     }
 
 }

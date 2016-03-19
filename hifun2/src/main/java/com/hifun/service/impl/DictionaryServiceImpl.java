@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hifun.bean.ShopType;
+import com.hifun.bean.Dictionary;
 import com.hifun.dao.IDictionaryDao;
 import com.hifun.service.BaseService;
 import com.hifun.service.IDictionaryService;
@@ -21,8 +21,8 @@ public class DictionaryServiceImpl extends BaseService
     private IDictionaryDao dictionaryDao;
 
     @Override
-    public List<ShopType> queryShopTypeListValidate() {
-        return dictionaryDao.queryShopTypeListValidate();
+    public List<Dictionary> queryDictionaryListValidate(String dictionaryType) {
+        return dictionaryDao.queryDictionaryListValidate(dictionaryType);
     }
 
 }

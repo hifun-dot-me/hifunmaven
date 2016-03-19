@@ -209,6 +209,36 @@ public class HeadController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/shopregister.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int shopregister(
+            @RequestParam(value = "shopName", required = true) String shopName,
+            @RequestParam(value = "shopType", required = true) int shopType,
+            @RequestParam(value = "shopLevel", required = true) int shopLevel,
+            @RequestParam(value = "shopDesc", required = true) String shopDesc,
+            @RequestParam(value = "shopAddr", required = true) String shopAddr) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String username = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            Integer count = headService.queryShopCountByUsername(username);
+            // 用户名已注册商家
+            if (count > 0) {
+                return 2;
+            }
+            try {
+                headService.insertShop(username, shopName, shopType, shopLevel,
+                    shopDesc, shopAddr, AuditEnum.Y.getStatus(),
+                    DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
+                return 1;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return -1;
+            }
+        }
+        return 0;
+    }
+
     @RequestMapping(value = "/evaluate.do", method = RequestMethod.POST)
     @ResponseBody
     public int evaluate(

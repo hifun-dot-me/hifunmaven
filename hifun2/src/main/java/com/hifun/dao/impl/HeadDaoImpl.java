@@ -188,4 +188,27 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
         getSqlMapClientTemplate().update("update-usersign-byusername", param);
     }
 
+    @Override
+    public void insertShop(String username, String shopName, int shopType,
+            int shopLevel, String shopDesc, String shopAddr, int status,
+            String nowdate) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", username);
+        param.put("shopName", shopName);
+        param.put("shopType", shopType);
+        param.put("shopLevel", shopLevel);
+        param.put("shopDesc", shopDesc);
+        param.put("shopAddr", shopAddr);
+        param.put("status", status);
+        param.put("nowdate", nowdate);
+        getSqlMapClientTemplate().insert("insert-shop", param);
+    }
+
+    @Override
+    public Integer queryShopCountByUsername(String username) {
+        Object obj = getSqlMapClientTemplate()
+            .queryForObject("query-shopcount-byusername", username);
+        return obj == null ? 0 : (Integer) obj;
+    }
+
 }

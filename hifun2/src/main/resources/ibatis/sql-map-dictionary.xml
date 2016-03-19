@@ -4,12 +4,12 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="dictionary">
 	
-	<typeAlias alias="shoptype" type="com.hifun.bean.ShopType"/>
+	<typeAlias alias="dictionary" type="com.hifun.bean.Dictionary"/>
 	
-	<select id="query-shoptypelist-validate" resultClass="shoptype">
+	<select id="query-dictionarylist-validate" parameterClass="string" resultClass="dictionary">
 		<![CDATA[
-		select id, typeId, typeName from shop_type 
-		where effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is null)
+		select id, typeId, typeName from dictionary 
+		where dictionaryDesc = #dictionaryType# and effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is null)
 		order by orderNum asc
 		]]>
 	</select>

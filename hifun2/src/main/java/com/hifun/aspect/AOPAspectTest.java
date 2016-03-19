@@ -14,33 +14,34 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class AOPAspectTest {
 
-    public AOPAspectTest(){
-        
+    public AOPAspectTest() {
+
     }
-    
+
     @Pointcut("execution(* com.hifun.service.IHeadService.*(..))")
-    private void aspectpoint(){}
-    
+    private void aspectpoint() {
+    }
+
     /**
      * 前置通知
      * @param jp
      */
     @Before("aspectpoint()")
-    public void doBefore(JoinPoint jp){
-    	//获取方法名称
-//    	System.out.println(jp.getSignature().getName());
+    public void doBefore(JoinPoint jp) {
+        // 获取方法名称
+        // System.out.println(jp.getSignature().getName());
         System.out.println("前置通知");
     }
-    
+
     /**
      * 后置通知
      * @param jp
      */
     @AfterReturning("aspectpoint()")
-    public void doAfter(JoinPoint jp){
+    public void doAfter(JoinPoint jp) {
         System.out.println("后置通知");
     }
-    
+
     /**
      * 环绕通知
      * @param pjp
@@ -49,25 +50,25 @@ public class AOPAspectTest {
      */
     @Around("aspectpoint()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-		System.out.println("环绕通知 start..");
-		try {
-			Object obj = pjp.proceed();
-			System.out.println("环绕通知 end");
-			return obj;
-		} catch (Throwable ex) {
-			System.out.println("error in 环绕通知");
-			throw ex;
-		}
-	}
-    
+        System.out.println("环绕通知 start..");
+        try {
+            Object obj = pjp.proceed();
+            System.out.println("环绕通知 end");
+            return obj;
+        } catch (Throwable ex) {
+            System.out.println("error in 环绕通知");
+            throw ex;
+        }
+    }
+
     /**
      * 异常通知
      * @param jp
      * @param error
      */
     @AfterThrowing(pointcut = "aspectpoint()", throwing = "error")
-	public void afterThrowing(JoinPoint jp, Throwable error) {
-		System.out.println("error:" + error);
-	}
-    
+    public void afterThrowing(JoinPoint jp, Throwable error) {
+        System.out.println("error:" + error);
+    }
+
 }

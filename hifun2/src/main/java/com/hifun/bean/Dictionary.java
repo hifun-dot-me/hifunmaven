@@ -1,12 +1,12 @@
 package com.hifun.bean;
 
-public class ShopType {
+public class Dictionary {
 
     private Integer id;
 
-    private int typeId;// 商家类型
+    private int typeId;// 类型
 
-    private String typeName;// 商家名称
+    private String typeName;// 名称
 
     public Integer getId() {
         return id;

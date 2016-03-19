@@ -129,4 +129,17 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
         headDao.updateUserSignByUsername(username, daynum);
     }
 
+    @Override
+    public void insertShop(String username, String shopName, int shopType,
+            int shopLevel, String shopDesc, String shopAddr, int status,
+            String nowdate) {
+        headDao.insertShop(username, shopName, shopType, shopLevel, shopDesc,
+            shopAddr, status, nowdate);
+    }
+
+    @Override
+    public Integer queryShopCountByUsername(String username) {
+        return headDao.queryShopCountByUsername(username);
+    }
+
 }

@@ -24,8 +24,9 @@ CREATE TABLE IF NOT EXISTS `hifun`.`shop` (
 -- -----------------------------------------------------
 -- Table `hifun`.`shop_type`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hifun`.`shop_type` (
+CREATE TABLE IF NOT EXISTS `hifun`.`dictionary` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
+  `dictionaryDesc` varchar(20),
   `typeId` INT NOT NULL,
   `typeName` VARCHAR(25) NOT NULL,
   `orderNum` int default 0,
@@ -37,9 +38,20 @@ CREATE TABLE IF NOT EXISTS `hifun`.`shop_type` (
   `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );
 
-insert into shop_type values (1, 1, '美食', 1, NOW(), 'admin', NOW(), 'admin', NOW(), null);
-insert into shop_type values (2, 2, '小吃', 2, NOW(), 'admin', NOW(), 'admin', NOW(), null);
-insert into shop_type values (3, 3, '饰品', 3, NOW(), 'admin', NOW(), 'admin', NOW(), null);
+insert into dictionary values (1, 'shopType', 1, '美食', 1, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (2, 'shopType', 2, '酒店/客栈', 2, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (3, 'shopType', 3, '电影/在线选座', 3, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (4, 'shopType', 4, 'KTV', 4, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (5, 'shopType', 5, '休闲娱乐', 5, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (6, 'shopType', 6, '周边游/旅游', 6, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (7, 'shopType', 7, '生活服务', 7, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (8, 'shopType', 8, '购物', 8, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (9, 'shopType', 9, '丽人', 9, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+
+insert into dictionary values (10, 'shopLevel', 1, '授权商家', 1, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (11, 'shopLevel', 2, '银牌商家', 2, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (12, 'shopLevel', 3, '金牌商家', 3, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
+insert into dictionary values (13, 'shopLevel', 4, '白金商家', 4, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
 
 
 -- -----------------------------------------------------
