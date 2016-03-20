@@ -2,21 +2,6 @@ $(document).ready(function(){
 	
 });
 
-function locationTo(e, href){
-	ajaxGet(
-			$("#base").val()+'/userAuthen/judgeSession.do', 
-			{}, 
-			'json', function(res){
-				if(res.data){
-					iframeToURL($("#base").val() + href);
-				}else{
-					window.wxc.xcConfirm('请先登录', window.wxc.xcConfirm.typeEnum.info);
-					$(e).addClass("btn-block disabled").removeAttr("onclick");
-				}
-			}
-			);
-}
-
 function zan(e, evaluateId){
 	$(e).blur();
 	//以下用ajax提交点赞数据

@@ -86,6 +86,21 @@ function blurutil(e){
 	$(e).blur();
 }
 
+function locationTo(e, href){
+	ajaxGet(
+			$("#base").val()+'/userAuthen/judgeSession.do', 
+			{}, 
+			'json', function(res){
+				if(res.data){
+					iframeToURL($("#base").val() + href);
+				}else{
+					window.wxc.xcConfirm('请先登录', window.wxc.xcConfirm.typeEnum.info);
+					$(e).addClass("btn-block disabled").removeAttr("onclick");
+				}
+			}
+			);
+}
+
 /**
  * 文本框根据输入内容自适应高度
  * @param                {HTMLElement}        输入框元素

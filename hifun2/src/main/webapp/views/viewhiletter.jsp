@@ -13,6 +13,10 @@
 </head>
 <body class="inside-body">
 	<input id="base" type="hidden" value="<%=request.getContextPath()%>">
-	hi letter
+	<div class="body-div">
+		<div class="letter-total-div">
+			
+		</div>
+	</div>
 </body>
 </html>

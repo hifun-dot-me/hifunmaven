@@ -1,2 +1,9 @@
 @CHARSET "UTF-8";
 
+.letter-total-div{
+	width: 66%;
+	height: 80%;
+	background-color: gray;
+	margin: 40px auto;
+	min-height: 400px;
+}

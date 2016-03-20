@@ -92,11 +92,6 @@ function mailto(e){
 	$(e).blur();
 	location.href="mailto:790634031@qq.com";
 }
-function locationTo(e, loc){
-	$(".menu-li").removeClass('curr-li');
-	$(e).addClass('curr-li');
-	$("#content-frame").attr('src', $("#base").val()+loc);
-}
 function clickhitoolli(e, tooldivid){
 	$(tooldivid).show();
 	$(e).addClass("hitool-mouseclick-li");
