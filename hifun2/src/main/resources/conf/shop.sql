@@ -20,9 +20,11 @@ CREATE TABLE IF NOT EXISTS `hifun`.`shop` (
   `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );
 
+insert into shop values (1, 'waipojia', '外婆家西湖店', 1, 1, '杭帮菜家族杭帮菜杭帮菜哈哈哈哈哈哈', '...', 1, now(), '', now(), 'waipojia', now(), 'waipojia', now(), NULL);
+
 
 -- -----------------------------------------------------
--- Table `hifun`.`shop_type`
+-- Table `hifun`.`dictionary`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hifun`.`dictionary` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
@@ -53,21 +55,7 @@ insert into dictionary values (11, 'shopLevel', 2, '银牌商家', 2, NOW(), 'ad
 insert into dictionary values (12, 'shopLevel', 3, '金牌商家', 3, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
 insert into dictionary values (13, 'shopLevel', 4, '白金商家', 4, NOW(), 'admin', NOW(), 'admin', NOW(), NULL);
 
-
--- -----------------------------------------------------
--- Table `hifun`.`shop_level`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hifun`.`shop_level` (
-  `id` INT PRIMARY KEY AUTO_INCREMENT,
-  `levelId` INT NOT NULL COMMENT '级别编码',
-  `levelName` VARCHAR(10) NOT NULL COMMENT '级别名称',
-  `createTime` DATETIME NULL COMMENT '创建时间',
-  `createBy` VARCHAR(20) NULL COMMENT '创建人',
-  `updateTime` DATETIME NULL COMMENT '修改时间',
-  `updateBy` VARCHAR(20) NULL COMMENT '修改人',
-  `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
-  `effectiveTo` DATETIME NULL COMMENT '生效时间止'
-);
+-- 以上SQL已执行  2016年3月21日08:43:51
 
 
 -- -----------------------------------------------------

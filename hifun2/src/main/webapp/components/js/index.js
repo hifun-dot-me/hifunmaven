@@ -113,6 +113,11 @@ function mouseouthitoolli(e, tooldivid){
 function mouseouthitoolletterdiv(toolid, e){
 	calcposition(mousePosition().x, mousePosition().y, toolid, e);
 }
+function locationTo(e, loc){
+	$(".menu-li").removeClass('curr-li');
+	$(e).addClass('curr-li');
+	$("#content-frame").attr('src', $("#base").val()+loc);
+}
 /**
  * 计算元素位置
  */
