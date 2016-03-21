@@ -15,7 +15,19 @@
 	<input id="base" type="hidden" value="<%=request.getContextPath()%>">
 	<div class="body-div">
 		<div class="letter-total-div">
-			
+			<div class="letter-left-div">
+				<ul class="normal-ul letter-ul">
+					<li class="normal-li letter-li curr-letter-li">
+						好友1
+					</li>
+					<li class="normal-li letter-li">
+						好友2
+					</li>
+				</ul>
+			</div>
+			<div class="letter-right-div">
+				
+			</div>
 		</div>
 	</div>
 </body>
