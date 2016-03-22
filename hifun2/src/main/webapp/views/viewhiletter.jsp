@@ -20,13 +20,24 @@
 					<li class="normal-li letter-li curr-letter-li">
 						好友1
 					</li>
-					<li class="normal-li letter-li">
+					<li class="normal-li letter-li normal-letter-li">
 						好友2
 					</li>
 				</ul>
 			</div>
 			<div class="letter-right-div">
-				
+				<div class="letter-content-div">
+					
+				</div>
+				<div class="letter-tool-div">
+					
+				</div>
+				<div class="letter-write-div">
+					<textarea class="letter-textarea" name="letterWrite" id="letterWrite"></textarea>
+				</div>
+				<div class="letter-btn-div">
+					<button class="btn btn-primary btn-send" onclick="sendletter(this)">发 送</button>
+				</div>
 			</div>
 		</div>
 	</div>
