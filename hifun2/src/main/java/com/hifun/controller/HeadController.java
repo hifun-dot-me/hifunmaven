@@ -74,7 +74,7 @@ public class HeadController extends BaseController {
                 && sessionProvider.getUserDetail() != null) {
             // 查询今日是否已签到
             Integer issign = headService.querySignCount(
-                DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()),
+                DateUtil.getNowTimeString(TimeEnum.DATE.getFormat()),
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername());
             // 如果签到过
             if (issign > 0) {
