@@ -239,6 +239,11 @@
 			<artifactId>commons-httpclient</artifactId>
 			<version>3.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.1</version>
+		</dependency>
     </dependencies>
 <!-- 解决每次更新maven自动更改jdk1.5办法 -->
 <build>
