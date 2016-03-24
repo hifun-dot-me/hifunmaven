@@ -150,8 +150,8 @@
 	</update>
 	
 	<insert id="insert-shop" parameterClass="java.util.Map">
-		insert into shop (username, shopName, shopDesc, shopAddr, status, createTime, createBy, updateTime, updateBy, effectiveFrom)
-		values (#username#, #shopName#, #shopDesc#, #shopAddr#, #status#, #nowdate#, 'admin', #nowdate#, 'admin', #nowdate#)
+		insert into shop (username, shopName, shopType, shopLevel, shopDesc, shopAddr, status, createTime, createBy, updateTime, updateBy, effectiveFrom)
+		values (#username#, #shopName#, #shopType#, #shopLevel#, #shopDesc#, #shopAddr#, #status#, #nowdate#, 'admin', #nowdate#, 'admin', #nowdate#)
 	</insert>
 	
 	<select id="query-shopcount-byusername" parameterClass="string" resultClass="int">
