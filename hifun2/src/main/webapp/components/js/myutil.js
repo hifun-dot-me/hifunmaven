@@ -86,6 +86,10 @@ function blurutil(e){
 	$(e).blur();
 }
 
+function locationTo(href){
+	location.href = href;
+}
+
 function locationTo(e, href){
 	ajaxGet(
 			$("#base").val()+'/userAuthen/judgeSession.do', 

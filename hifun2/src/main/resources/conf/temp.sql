@@ -55,3 +55,13 @@ create table shop(
 insert into shop values (1, 'waipojia', '外婆家西湖店', '杭帮菜家族杭帮菜杭帮菜哈哈哈哈哈哈', '...', 1, now(), '', now(), 'waipojia', now(), 'waipojia', now(), NULL);
 insert into shop values (2, 'xinbailu', '新白鹿庆春店', '我也是杭帮菜家族杭帮菜杭帮菜哈哈哈哈哈哈', '...', 1, now(), '', now(), 'xinbailu', now(), 'xinbailu', now(), NULL);
 
+update menu set linkTo = 'firstpage' where id = 1;
+update menu set linkTo = 'hifunplayground' where id = 2;
+update menu set linkTo = 'hibar' where id = 3;
+update menu set linkTo = 'hisupermarket' where id = 5;
+update menu set linkTo = 'donate' where id = 6;
+
+update banner set path = '../components/image/png/hifunplayground20160325.png' where id = 6;
+update banner set linkType = 1, linkTo = 'hifunplayground' where id = 6;
+
+

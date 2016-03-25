@@ -37,6 +37,7 @@
 				</div>
 				<div class="letter-btn-div">
 					<button class="btn btn-primary btn-send" onclick="sendletter(this)">发 送</button>
+					<button class="btn btn-default btn-send" id="homeBtn">返 回</button>
 				</div>
 			</div>
 		</div>
