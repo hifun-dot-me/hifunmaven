@@ -26,7 +26,7 @@
 						data-toggle="modal" data-target="#registerModal"><span>免费注册</span></a>
 				</c:if>
 				<c:if test="${username != null}">
-					<a href="javascript:void(0);" onclick="userinfo(this)">${username}</a>
+					<a href="javascript:void(0);" onclick="userinfo(this, '${username}')">${username}</a>
 					<a href="javascript:void(0);" onclick="logout(this)">退出</a>
 				</c:if>
 			</div>

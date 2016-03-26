@@ -106,6 +106,15 @@ function locationTo(e, href){
 }
 
 /**
+ * 用户信息
+ * @param e
+ */
+function userinfo(e, username){
+	$(e).blur();
+	window.wxc.xcConfirm('工程师正在玩命开发中，请稍后...', window.wxc.xcConfirm.typeEnum.info);
+}
+
+/**
  * 文本框根据输入内容自适应高度
  * @param                {HTMLElement}        输入框元素
  * @param                {Number}                设置光标与输入框保持的距离(默认0)

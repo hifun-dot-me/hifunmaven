@@ -80,10 +80,6 @@ function doRegisterSuccess(res){
 		window.wxc.xcConfirm('注册失败', window.wxc.xcConfirm.typeEnum.info);
 	}
 }
-function userinfo(e){
-	$(e).blur();
-	window.wxc.xcConfirm('工程师正在玩命开发中，请稍后...', window.wxc.xcConfirm.typeEnum.info);
-}
 function logout(e){
 	$(e).blur();
 	location.href=$("#base").val()+"/userAuthen/logout.do";
