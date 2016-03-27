@@ -1,3 +1,10 @@
+$(document).ready(function(){
+
+	$("#home-link").click(function(){
+		location.href = $("#base").val()+'/headpage/index.do';
+	});
+});
+
 /**
  * 是否PC端
  * @returns {Boolean}

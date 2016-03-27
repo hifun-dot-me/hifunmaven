@@ -64,4 +64,4 @@ update menu set linkTo = 'donate' where id = 6;
 update banner set path = '../components/image/png/hifunplayground20160325.png' where id = 6;
 update banner set linkType = 1, linkTo = 'hifunplayground' where id = 6;
 
-
+insert into banner values (6, '嗨翻广场', '../components/image/png/hifunplayground20160325.png', 1, 'hifunplayground', now(), 'admin', now(), 'admin', now(), null);

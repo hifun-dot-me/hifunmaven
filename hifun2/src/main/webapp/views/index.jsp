@@ -32,7 +32,7 @@
 			</div>
 			<div class="hitool-div">
 				<ul class="normal-ul hitool-ul">
-					<li class="normal-ho-li hitool-li" id="home-li" title="主页">
+					<li class="normal-ho-li hitool-li" id="home-link" title="主页">
 						<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>">
 							<span class="glyphicon glyphicon-home hitool-icon"></span>
 						</a>
