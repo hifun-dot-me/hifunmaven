@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+.left-div{
+	width: 60%;
+	height: 100%;
+	border: 0px solid #ccc;
+	padding: 20px;
+}
+
+.form-div{
+	width: 400px;
+	height: 80%;
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 10px;
+	margin: 0px auto;
+	margin-top: 40px;
+	min-height: 340px;
+	position: relative;
+}
+
+.form-title{
+	display: flex;
+}
+
+.userinfo-ul{
+	height: 80%;
+	padding-top: 30px;
+}
+
+.form-normal-input{
+	margin-top: 8px;
+	margin-bottom: 8px;
+	position: relative;
+}
+
+.right-div{
+	width: 40%;
+	height: 100%;
+}

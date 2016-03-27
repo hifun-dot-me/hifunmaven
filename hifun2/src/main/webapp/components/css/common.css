@@ -18,6 +18,14 @@ div{
 	z-index: 1;
 }
 
+.left-div{
+	float: left;
+}
+
+.right-div{
+	float: right;
+}
+
 .curr-choice{
 	color: #66B3FF;
 }
@@ -40,6 +48,10 @@ a:visited{
 
 .normal-text, .normal-a{
 	float: left;
+}
+
+.text-label{
+	width: 60px;
 }
 
 .floatnone-a{

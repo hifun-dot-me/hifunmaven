@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$("#home-link").click(function(){
+	$(".home-link").click(function(){
 		location.href = $("#base").val()+'/headpage/index.do';
 	});
 });
@@ -118,7 +118,8 @@ function locationTo(e, href){
  */
 function userinfo(e, username){
 	$(e).blur();
-	window.wxc.xcConfirm('工程师正在玩命开发中，请稍后...', window.wxc.xcConfirm.typeEnum.info);
+//	window.wxc.xcConfirm('工程师正在玩命开发中，请稍后...', window.wxc.xcConfirm.typeEnum.info);
+	window.parent.location.href = $("#base").val() + "/userAuthen/userinfo.do?username=" + username;
 }
 
 /**

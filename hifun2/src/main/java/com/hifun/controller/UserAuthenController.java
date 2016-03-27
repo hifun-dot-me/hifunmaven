@@ -86,4 +86,14 @@ public class UserAuthenController extends BaseController {
         return false;
     }
 
+    @RequestMapping(value = "/userinfo.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView userinfo(
+            @RequestParam(value = "username", required = false) String username) {
+        ModelAndView view = new ModelAndView("/userinfo");
+        SessionUser user = userAuthenService.queryUserByUsername(username);
+        view.addObject("user", user == null ? new SessionUser(username) : user);
+        return view;
+    }
+
 }

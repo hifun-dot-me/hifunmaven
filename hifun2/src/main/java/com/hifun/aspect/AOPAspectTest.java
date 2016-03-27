@@ -10,6 +10,9 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import com.hifun.bean.TimeEnum;
+import com.hifun.util.DateUtil;
+
 @Component
 @Aspect
 public class AOPAspectTest {
@@ -29,7 +32,8 @@ public class AOPAspectTest {
     @Before("aspectpoint()")
     public void doBefore(JoinPoint jp) {
         // 获取方法名称
-        // System.out.println(jp.getSignature().getName());
+        System.out.println("method:" + jp.getSignature().getName() + "   time:"
+                + DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
         System.out.println("前置通知");
     }
 
