@@ -2,6 +2,8 @@ package com.hifun.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.dao.IUserAuthenDao;
@@ -9,6 +11,7 @@ import com.hifun.service.BaseService;
 import com.hifun.service.IUserAuthenService;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserAuthenService extends BaseService implements IUserAuthenService {
 
     @Autowired

@@ -1,5 +1,6 @@
 package com.hifun.quartz;
 
+import org.junit.Test;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -20,6 +21,11 @@ public class DoSignQuartz implements Job{
 		for(String username : usernameArr){
 			HttpClientUtil.doSign(username, "123456");
 		}
+	}
+	
+	@Test
+	public void testWork(){
+		this.work();
 	}
 
 }
