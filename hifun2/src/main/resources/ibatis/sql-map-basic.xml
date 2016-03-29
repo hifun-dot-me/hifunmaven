@@ -158,4 +158,9 @@
 		select count(1) from shop where username = #username#
 	</select>
 	
+	<insert id="insert-applyfriend" parameterClass="java.util.Map">
+		insert into applyFriend (applyTo, applyTime, username, createTime, createBy, updateTime, updateBy, effectiveFrom)
+		values (#applyTo#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#)
+	</insert>
+	
 </sqlMap>

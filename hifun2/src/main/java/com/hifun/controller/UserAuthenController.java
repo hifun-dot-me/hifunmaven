@@ -92,9 +92,11 @@ public class UserAuthenController extends BaseController {
     @RequestMapping(value = "/userinfo.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView userinfo(
-            @RequestParam(value = "username", required = false) String username) throws Exception{
+            @RequestParam(value = "username", required = false) String username)
+                    throws Exception {
         ModelAndView view = new ModelAndView("/userinfo");
-        username = URLDecoder.decode(new String(Base64.decodeBase64(username)), "UTF-8");
+        username = URLDecoder.decode(new String(Base64.decodeBase64(username)),
+            "UTF-8");
         SessionUser user = userAuthenService.queryUserByUsername(username);
         view.addObject("user", user == null ? new SessionUser(username) : user);
         return view;

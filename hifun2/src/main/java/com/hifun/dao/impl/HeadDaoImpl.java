@@ -211,4 +211,14 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
         return obj == null ? 0 : (Integer) obj;
     }
 
+    @Override
+    public void insertApplyFriend(String username, String applyusername,
+            String nowdate) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", username);
+        param.put("applyTo", applyusername);
+        param.put("nowdate", nowdate);
+        getSqlMapClientTemplate().insert("insert-applyfriend", param);
+    }
+
 }

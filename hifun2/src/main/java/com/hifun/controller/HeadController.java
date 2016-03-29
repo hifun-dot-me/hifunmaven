@@ -36,7 +36,8 @@ public class HeadController extends BaseController {
         view.addObject("menulist", menulist);
         // 记录session
         view.addObject("sessionProvider", sessionProvider);
-        if (sessionProvider.getUserDetail() != null) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
             view.addObject("username",
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername());
         }
@@ -53,7 +54,8 @@ public class HeadController extends BaseController {
         // 查询前十的数据库用户
         List<SessionUser> toptenlist = headService.queryTopTenUsers();
         view.addObject("toptenlist", toptenlist);
-        if (sessionProvider.getUserDetail() != null) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
             // 判断今日是否已经签到
             view.addObject("isSign",
                 headService.queryTodayIsSign(
@@ -284,6 +286,38 @@ public class HeadController extends BaseController {
     public ModelAndView systemsetup() {
         ModelAndView view = new ModelAndView("/systemsetup");
         return view;
+    }
+
+    @RequestMapping(value = "/showapplyfriend.do", method = RequestMethod.GET)
+    @ResponseBody
+    public int showapplyfriend(
+            @RequestParam(value = "applyusername", required = true) String applyusername) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String username = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            return username.equals(applyusername) ? -1 : 1;
+        }
+        return 0;
+    }
+
+    @RequestMapping(value = "/applyfriend.do", method = RequestMethod.GET)
+    @ResponseBody
+    public int applyfriend(
+            @RequestParam(value = "applyusername", required = true) String applyusername) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String username = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            try {
+                headService.insertApplyFriend(username, applyusername,
+                    DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
+                return 1;
+            } catch (Exception e) {
+                return -1;
+            }
+        }
+        return 0;
     }
 
 }

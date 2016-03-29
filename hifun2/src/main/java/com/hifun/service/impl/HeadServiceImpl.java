@@ -142,4 +142,10 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
         return headDao.queryShopCountByUsername(username);
     }
 
+    @Override
+    public void insertApplyFriend(String username, String applyusername,
+            String nowdate) {
+        headDao.insertApplyFriend(username, applyusername, nowdate);
+    }
+
 }

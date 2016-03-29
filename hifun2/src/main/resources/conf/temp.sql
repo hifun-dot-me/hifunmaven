@@ -65,3 +65,22 @@ update banner set path = '../components/image/png/hifunplayground20160325.png' w
 update banner set linkType = 1, linkTo = 'hifunplayground' where id = 6;
 
 insert into banner values (6, '嗨翻广场', '../components/image/png/hifunplayground20160325.png', 1, 'hifunplayground', now(), 'admin', now(), 'admin', now(), null);
+
+
+
+create table applyFriend(
+	id int primary key auto_increment,
+	applyTo varchar(20) NOT NULL comment '接收人',
+	applyTime datetime comment '申请时间',
+	username varchar(20) NOT NULL comment '用户名',
+	remark varchar(50) DEFAULT NULL COMMENT '备注',
+	createTime datetime DEFAULT NULL COMMENT '创建时间',
+	createBy varchar(20) DEFAULT NULL COMMENT '创建人',
+	updateTime datetime DEFAULT NULL COMMENT '修改时间',
+	updateBy varchar(20) DEFAULT NULL COMMENT '修改人',
+	effectiveFrom datetime DEFAULT NULL COMMENT '生效时间起',
+	effectiveTo datetime DEFAULT NULL COMMENT '生效时间止'
+);
+
+
+

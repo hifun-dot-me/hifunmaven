@@ -218,4 +218,15 @@ public interface IHeadDao {
      * @history:
      */
     Integer queryShopCountByUsername(String username);
+
+    /**
+     * 保存好友申请记录
+     * @param username
+     * @param applyusername
+     * @param nowdate 
+     * @create: 2016年3月29日 下午11:16:39 yuexia
+     * @history:
+     */
+    void insertApplyFriend(String username, String applyusername,
+            String nowdate);
 }
