@@ -24,6 +24,10 @@ function IsPC() {
     return flag;
 }
 
+function encrypt(param){
+	return $.base64.btoa(encodeURI(param));
+}
+
 /**
  * 计算鼠标位置
  * @param event
@@ -119,7 +123,7 @@ function locationTo(e, href){
 function userinfo(e, username){
 	$(e).blur();
 //	window.wxc.xcConfirm('工程师正在玩命开发中，请稍后...', window.wxc.xcConfirm.typeEnum.info);
-	window.parent.location.href = $("#base").val() + "/userAuthen/userinfo.do?username=" + username;
+	window.parent.location.href = $("#base").val() + "/userAuthen/userinfo.do?username=" + encrypt(username);
 }
 
 /**

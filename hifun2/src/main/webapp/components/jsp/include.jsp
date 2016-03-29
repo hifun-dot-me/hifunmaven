@@ -5,6 +5,7 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="../components/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 <script src="../components/js/xcConfirm.js"></script>
+<script src="../components/js/jquery.base64.js"></script>
 <script src="../components/js/myutil.js"></script>
 
 <!-- IE6-10 -->

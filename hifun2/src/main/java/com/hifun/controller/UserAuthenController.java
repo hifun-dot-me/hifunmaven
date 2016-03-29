@@ -1,5 +1,8 @@
 package com.hifun.controller;
 
+import java.net.URLDecoder;
+
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,8 +92,9 @@ public class UserAuthenController extends BaseController {
     @RequestMapping(value = "/userinfo.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView userinfo(
-            @RequestParam(value = "username", required = false) String username) {
+            @RequestParam(value = "username", required = false) String username) throws Exception{
         ModelAndView view = new ModelAndView("/userinfo");
+        username = URLDecoder.decode(new String(Base64.decodeBase64(username)), "UTF-8");
         SessionUser user = userAuthenService.queryUserByUsername(username);
         view.addObject("user", user == null ? new SessionUser(username) : user);
         return view;
