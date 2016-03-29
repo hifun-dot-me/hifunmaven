@@ -7,7 +7,8 @@ import com.hifun.util.EncodeChangeUtil;
 
 public class EncodeRequestWrapper extends HttpServletRequestWrapper {
 
-	private static final String VALIDATE_PARAMETER = "username";
+	//不做过滤的参数名称
+	private static final String VALIDATE_PARAMETER = "password";
 	
     public EncodeRequestWrapper(HttpServletRequest request) {
         super(request);
@@ -16,7 +17,7 @@ public class EncodeRequestWrapper extends HttpServletRequestWrapper {
     @Override
     public String[] getParameterValues(String name) {
     	String[] values = super.getParameterValues(name);
-    	if(VALIDATE_PARAMETER.equals(name) && values != null){
+    	if(!VALIDATE_PARAMETER.equals(name) && values != null){
     		for (int i = 0; i < values.length; i++) {
                 values[i] = EncodeChangeUtil.change(values[i]);
             }
