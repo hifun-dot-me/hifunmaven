@@ -17,9 +17,9 @@ import org.apache.commons.httpclient.methods.PostMethod;
 public class HttpClientUtil {
 
 	// 登录URL
-	private static final String LOGIN_URL = "http://localhost/userAuthen/login.do";
+	private static final String LOGIN_URL = "http://www.hifun.me/userAuthen/login.do";
 	// 登录后需访问的URL
-	private static final String DATA_URL = "http://localhost/headpage/signin.do";
+	private static final String DATA_URL = "http://www.hifun.me/headpage/signin.do";
 	
 	/**
 	 * 签到 - 后续再做封装
