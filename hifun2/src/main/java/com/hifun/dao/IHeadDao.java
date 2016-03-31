@@ -239,4 +239,13 @@ public interface IHeadDao {
      * @history:
      */
     int queryApplyFriendCount(String username, String applyTo);
+
+    /**
+     * 根据被申请人查询申请申请数量
+     * @param applyTo
+     * @return 
+     * @create: 2016年3月31日 下午11:23:14 yuexia
+     * @history:
+     */
+    int queryApplyFriendCountByApplyTo(String applyTo);
 }

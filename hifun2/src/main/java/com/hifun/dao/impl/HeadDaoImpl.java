@@ -231,4 +231,11 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
         return obj == null ? 0 : (Integer) obj;
     }
 
+    @Override
+    public int queryApplyFriendCountByApplyTo(String applyTo) {
+        Object obj = getSqlMapClientTemplate()
+            .queryForObject("query-applyfriendcount-byapplyto", applyTo);
+        return obj == null ? 0 : (Integer) obj;
+    }
+
 }

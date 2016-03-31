@@ -170,4 +170,11 @@
 		]]>
 	</select>
 	
+	<select id="query-applyfriendcount-byapplyto" parameterClass="string" resultClass="int">
+		select count(1) from applyFriend where applyStatus = 1 and applyTo = #applyTo#
+		<![CDATA[
+			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
+		]]>
+	</select>
+	
 </sqlMap>

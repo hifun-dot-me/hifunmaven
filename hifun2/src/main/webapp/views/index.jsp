@@ -51,10 +51,10 @@
 		<div class="hitool-temp-div" id="hitool-letter-div" onmouseout="mouseouthitoolletterdiv('#letter-li', this)">
 			<ul class="normal-ul hitooldiv-ul">
 				<li class="normal-ve-li hitooldiv-li">
-					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/viewhiletter.do">查看嗨信</a>
+					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/viewhiletter.do" id="viewhiletter">查看嗨信</a>
 				</li>
 				<li class="normal-ve-li hitooldiv-li">
-					嗨友申请
+					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/hiapply.do" id="hiapply">嗨友申请</a>
 				</li>
 			</ul>
 		</div>

@@ -90,6 +90,10 @@ textarea{
 	padding: 0px;
 }
 
+.red{
+	color: red;
+}
+
 .normal-ho-li{
 	float: left;
 	display: inline;

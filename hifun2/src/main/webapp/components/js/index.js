@@ -1,7 +1,11 @@
 var second = 2;//跳转时间间隔
 $(document).ready(function(){
 	$(".menu-li").first().addClass('curr-li');
-	
+	ajaxGet(
+			$("#base").val()+'/headpage/queryApplyFriend.do', 
+			{}, 
+			'json', doQueryApplyFriendSuccess
+			);
 	
 	//登录按钮
 	$("#loginBtn").click(function(){
@@ -61,6 +65,12 @@ function checkForm2(){
 		return false;
 	}
 	return true;
+}
+function doQueryApplyFriendSuccess(res){
+	if(res.data > 0){
+		var vh = $("#hiapply").text();
+		$("#hiapply").text(vh + " (" + res.data + ")");
+	}
 }
 function doLoginSuccess(res){
 	if(res.data){

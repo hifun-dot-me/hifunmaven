@@ -29,5 +29,5 @@ function doApplyFriendSucc(res){
 }
 
 function applying(){
-	$("#apply").html("<span class=''>申请中...</span>");
+	$("#apply").html("<span class='red'>申请中...</span>");
 }

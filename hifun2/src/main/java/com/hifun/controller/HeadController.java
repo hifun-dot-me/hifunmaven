@@ -281,6 +281,13 @@ public class HeadController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/hiapply.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView hiapply() {
+        ModelAndView view = new ModelAndView("/hiapply");
+        return view;
+    }
+
     @RequestMapping(value = "/systemsetup.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView systemsetup() {
@@ -318,6 +325,22 @@ public class HeadController extends BaseController {
                 headService.insertApplyFriend(username, applyTo,
                     DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
                 return 1;
+            } catch (Exception e) {
+                return -1;
+            }
+        }
+        return 0;
+    }
+
+    @RequestMapping(value = "/queryApplyFriend.do", method = RequestMethod.GET)
+    @ResponseBody
+    public int queryApplyFriend() {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String applyTo = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            try {
+                return headService.queryApplyFriendCountByApplyTo(applyTo);
             } catch (Exception e) {
                 return -1;
             }

@@ -231,4 +231,13 @@ public interface IHeadService {
      */
     int queryApplyFriendCount(String username, String applyTo);
 
+    /**
+     * 根据被申请人查询申请申请数量
+     * @param applyTo
+     * @return 
+     * @create: 2016年3月31日 下午9:47:15 yuexia
+     * @history:
+     */
+    int queryApplyFriendCountByApplyTo(String applyTo);
+
 }
