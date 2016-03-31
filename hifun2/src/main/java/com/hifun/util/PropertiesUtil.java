@@ -15,7 +15,7 @@ import java.util.Properties;
 public class PropertiesUtil {
 
 	public static Properties prop;
-	public static final String FILE_PATH = "/WEB-INF/conf/jdbc.properties";
+	public static final String FILE_PATH = "/conf/jdbc.properties";
 	
 	static{
 		prop = new Properties();
