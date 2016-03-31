@@ -60,7 +60,7 @@
         </property>
         <!--秒 	分 	时	 月内日期	    月   周内日期	年（可选字段）  -->
         <property name="cronExpression">
-            <value>0 0 0 * * ?</value><!-- 表示每天0点0分触发一次 -->
+            <value>5 0 0 * * ?</value><!-- 表示每天0点0分5秒触发一次 -->
         </property>
     </bean>
     
