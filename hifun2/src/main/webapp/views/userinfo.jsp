@@ -19,7 +19,7 @@
 				<span class="form-title">用户信息</span>
 				<ul class="normal-ul userinfo-ul">
 					<li class="normal-li">
-						<label class="text-label">用户名：</label><span id="applyusername">${user.username}</span>
+						<label class="text-label">用户名：</label><span id="applyTo">${user.username}</span>
 						<span id="apply"></span>
 					</li>
 					<li class="normal-li">

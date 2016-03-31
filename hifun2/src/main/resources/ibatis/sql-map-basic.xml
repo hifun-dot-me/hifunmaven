@@ -159,8 +159,15 @@
 	</select>
 	
 	<insert id="insert-applyfriend" parameterClass="java.util.Map">
-		insert into applyFriend (applyTo, applyTime, username, createTime, createBy, updateTime, updateBy, effectiveFrom)
-		values (#applyTo#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#)
+		insert into applyFriend (applyTo, applyTime, applyStatus, username, createTime, createBy, updateTime, updateBy, effectiveFrom)
+		values (#applyTo#, #nowdate#, 1, #username#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#)
 	</insert>
+	
+	<select id="query-applyfriend-count" parameterClass="java.util.Map" resultClass="int">
+		select count(1) from applyFriend where username = #username# and applyTo = #applyTo#
+		<![CDATA[
+			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
+		]]>
+	</select>
 	
 </sqlMap>

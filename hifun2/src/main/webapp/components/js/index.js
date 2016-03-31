@@ -1,6 +1,8 @@
 var second = 2;//跳转时间间隔
 $(document).ready(function(){
 	$(".menu-li").first().addClass('curr-li');
+	
+	
 	//登录按钮
 	$("#loginBtn").click(function(){
 		if(!checkForm()){

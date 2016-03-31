@@ -72,6 +72,8 @@ create table applyFriend(
 	id int primary key auto_increment,
 	applyTo varchar(20) NOT NULL comment '接收人',
 	applyTime datetime comment '申请时间',
+	applyStatus int default 0 comment '申请状态',
+	passTime datetime comment '通过时间',
 	username varchar(20) NOT NULL comment '用户名',
 	remark varchar(50) DEFAULT NULL COMMENT '备注',
 	createTime datetime DEFAULT NULL COMMENT '创建时间',

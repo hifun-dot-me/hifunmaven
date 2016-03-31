@@ -229,4 +229,14 @@ public interface IHeadDao {
      */
     void insertApplyFriend(String username, String applyusername,
             String nowdate);
+
+    /**
+     * 查询是否已申请过
+     * @param username
+     * @param applyTo
+     * @return 
+     * @create: 2016年3月31日 下午9:48:10 yuexia
+     * @history:
+     */
+    int queryApplyFriendCount(String username, String applyTo);
 }

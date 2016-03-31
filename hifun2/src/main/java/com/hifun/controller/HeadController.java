@@ -291,12 +291,17 @@ public class HeadController extends BaseController {
     @RequestMapping(value = "/showapplyfriend.do", method = RequestMethod.GET)
     @ResponseBody
     public int showapplyfriend(
-            @RequestParam(value = "applyusername", required = true) String applyusername) {
+            @RequestParam(value = "applyTo", required = true) String applyTo) {
         if (sessionProvider != null
                 && sessionProvider.getUserDetail() != null) {
             String username = ((SessionUser) sessionProvider.getUserDetail())
                 .getUsername();
-            return username.equals(applyusername) ? -1 : 1;
+            int count = headService.queryApplyFriendCount(username, applyTo);
+            if (count > 0) {
+                // 已申请
+                return 2;
+            }
+            return username.equals(applyTo) ? -1 : 1;
         }
         return 0;
     }
@@ -304,13 +309,13 @@ public class HeadController extends BaseController {
     @RequestMapping(value = "/applyfriend.do", method = RequestMethod.GET)
     @ResponseBody
     public int applyfriend(
-            @RequestParam(value = "applyusername", required = true) String applyusername) {
+            @RequestParam(value = "applyTo", required = true) String applyTo) {
         if (sessionProvider != null
                 && sessionProvider.getUserDetail() != null) {
             String username = ((SessionUser) sessionProvider.getUserDetail())
                 .getUsername();
             try {
-                headService.insertApplyFriend(username, applyusername,
+                headService.insertApplyFriend(username, applyTo,
                     DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
                 return 1;
             } catch (Exception e) {

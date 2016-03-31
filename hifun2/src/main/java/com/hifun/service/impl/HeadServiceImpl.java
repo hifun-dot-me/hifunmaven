@@ -148,4 +148,9 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
         headDao.insertApplyFriend(username, applyusername, nowdate);
     }
 
+    @Override
+    public int queryApplyFriendCount(String username, String applyTo) {
+        return headDao.queryApplyFriendCount(username, applyTo);
+    }
+
 }

@@ -221,4 +221,14 @@ public interface IHeadService {
     void insertApplyFriend(String username, String applyusername,
             String nowdate);
 
+    /**
+     * 查询是否已申请过
+     * @param username
+     * @param applyTo
+     * @return 
+     * @create: 2016年3月31日 下午9:47:15 yuexia
+     * @history:
+     */
+    int queryApplyFriendCount(String username, String applyTo);
+
 }
