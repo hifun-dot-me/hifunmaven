@@ -14,7 +14,7 @@
 <body class="inside-body">
 	<input id="base" type="hidden" value="<%=request.getContextPath()%>">
 	<div class="middle-div">
-		<div class="left-div">
+		<div class="left">
 			<div class="form-div">
 				<form action="" id="mainForm" method="post">
 					<span class="form-title">商家注册</span>
@@ -32,7 +32,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="right-div">
+		<div class="right">
 			
 		</div>
 	</div>

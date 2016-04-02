@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import com.hifun.base.session.SessionUser;
+import com.hifun.bean.ApplyFriend;
 import com.hifun.bean.Banner;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
@@ -222,20 +223,31 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
     }
 
     @Override
-    public int queryApplyFriendCount(String username, String applyTo) {
+    public int queryApplyFriendApplyStatus(String username, String applyTo) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("username", username);
         param.put("applyTo", applyTo);
         Object obj = getSqlMapClientTemplate()
-            .queryForObject("query-applyfriend-count", param);
+            .queryForObject("query-applyfriend-applystatus", param);
         return obj == null ? 0 : (Integer) obj;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public int queryApplyFriendCountByApplyTo(String applyTo) {
-        Object obj = getSqlMapClientTemplate()
-            .queryForObject("query-applyfriendcount-byapplyto", applyTo);
-        return obj == null ? 0 : (Integer) obj;
+    public List<ApplyFriend> queryApplyFriendByApplyTo(String applyTo) {
+        return getSqlMapClientTemplate()
+            .queryForList("query-applyfriend-byapplyto", applyTo);
+    }
+
+    @Override
+    public void updateApplyFriendByUsername(String username, String applyTo,
+            String nowdate) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", username);
+        param.put("applyTo", applyTo);
+        param.put("nowdate", nowdate);
+        getSqlMapClientTemplate().update("update-applyfriend-byusername",
+            param);
     }
 
 }

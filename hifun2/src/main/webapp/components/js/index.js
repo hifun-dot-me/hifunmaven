@@ -72,9 +72,24 @@ function checkForm2(){
 	return true;
 }
 function doQueryApplyFriendSuccess(res){
-	if(res.data > 0){
+	var list = res.data;
+	if(list.length > 0){
 		var vh = $("#hiapply").text();
-		$("#hiapply").text(vh + " (" + res.data + ")");
+		$("#hiapply").text(vh + " (" + list.length + ")");
+		
+		var html = "";
+		for(var i = 0;i < list.length;i++){
+			html = html + "<ul class='normal-ul apply-ul'>" +
+								"<li class='normal-li menu-horizontal apply-li' title='申请人'>" +
+									"<a class='normal-a floatnone-a cursor-a user-link' onclick=\"userinfo(this, '" + list[i].username + "')\">" + list[i].username + "</a>" +
+								"</li>" +
+								"<li class='normal-li menu-horizontal apply-li' title='申请时间'>" + list[i].applyTime + "</li>" +
+								"<li class='normal-li menu-horizontal apply-li right' title='操作'>" +
+									"<a class='normal-a cursor-a user-link' onclick=\"agreeApplyFriend(this, '" + list[i].username + "')\">同意</a>" +
+								"</li>" +
+							"</ul>";
+		}
+		$("#hiapply-div").html(html);
 	}
 }
 function doLoginSuccess(res){
@@ -135,6 +150,28 @@ function locationTo(e, loc){
 	$(".menu-li").removeClass('curr-li');
 	$(e).addClass('curr-li');
 	$("#content-frame").attr('src', $("#base").val()+loc);
+}
+function agreeApplyFriend(e, username){
+	var this_ = $(e);
+	$(e).blur();
+	ajaxGet(
+			$("#base").val()+'/headpage/agreeApplyFriend.do', 
+			{username : username}, 
+			'json', function(res){
+				doAgreeApplyFriendSuccess(res, this_);
+			}
+			);
+}
+function doAgreeApplyFriendSuccess(res, e){
+	if(res.data == 1){
+		$(e).removeAttr("onclick").addClass("red").text("已同意");
+	}else if(res.data == -1){
+		window.wxc.xcConfirm('操作失败，请联系管理员', window.wxc.xcConfirm.typeEnum.info);
+	}else if(res.data == 0){
+		window.wxc.xcConfirm('请先登录', window.wxc.xcConfirm.typeEnum.info);
+	}else{
+		window.wxc.xcConfirm('系统访问出错，请联系管理员！', window.wxc.xcConfirm.typeEnum.error);
+	}
 }
 /**
  * 计算元素位置

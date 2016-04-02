@@ -19,10 +19,10 @@
 			<div class="headlogin-div">
 				<span class="normal-text">欢迎访问，</span>
 				<c:if test="${username == null }">
-					<a target="_self" class="normal-a curson-a" 
+					<a target="_self" class="normal-a cursor-a" 
 						data-toggle="modal" data-target="#loginModal"><span>请登录</span></a>
 					<span class="li-spacing"></span>
-					<a target="_self" class="normal-a curson-a" 
+					<a target="_self" class="normal-a cursor-a" 
 						data-toggle="modal" data-target="#registerModal"><span>免费注册</span></a>
 				</c:if>
 				<c:if test="${username != null}">
@@ -54,7 +54,7 @@
 					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/viewhiletter.do" id="viewhiletter">查看嗨信</a>
 				</li>
 				<li class="normal-ve-li hitooldiv-li">
-					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/hiapply.do" id="hiapply">嗨友申请</a>
+					<a target="_self" class="normal-a floatnone-a cursor-a" data-toggle="modal" data-target="#hiapplyModal" id="hiapply"><span>嗨友申请</span></a>
 				</li>
 			</ul>
 		</div>
@@ -159,6 +159,27 @@
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 		
+		<!-- 嗨友申请（Modal） -->
+		<div class="modal fade" id="hiapplyModal" tabindex="-1" role="dialog" 
+		   aria-labelledby="hiapplyModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="hiapplyModalLabel">
+			               	嗨 友 申 请
+			            </h4>
+					</div>
+					<div class="modal-body" style="overflow-y: scroll;">
+						<div id="hiapply-div">
+							
+						</div>
+					</div>
+					<div class="modal-footer"></div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
 		<div class="second-div">
 			<a href="<%=request.getContextPath()%>">
 				<div class="logo-div"></div>
@@ -176,7 +197,7 @@
 		<iframe src="<%=request.getContextPath()%>/headpage/firstpage.do" id="content-frame" class="content-frame"></iframe>
 		<div class="bottom-div">
 			©2016 嗨翻工作室 联系邮箱:<a class="mail-a" href="javascript:void(0);" onclick="mailto(this)">790634031@qq.com</a><br/>
-			<a class="curson-a mail-a" target="_blank" onclick="jumpTo(this, 'http://www.miitbeian.gov.cn/')">浙ICP备15004293号-2</a>
+			<a class="cursor-a mail-a" target="_blank" onclick="jumpTo(this, 'http://www.miitbeian.gov.cn/')">浙ICP备15004293号-2</a>
 		</div>
 	</div>
 </body>

@@ -1,5 +1,6 @@
 package com.hifun.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hifun.base.session.SessionUser;
+import com.hifun.bean.ApplyFriend;
 import com.hifun.bean.AuditEnum;
 import com.hifun.bean.Banner;
 import com.hifun.bean.HiThings;
@@ -309,12 +311,11 @@ public class HeadController extends BaseController {
                 && sessionProvider.getUserDetail() != null) {
             String username = ((SessionUser) sessionProvider.getUserDetail())
                 .getUsername();
-            int count = headService.queryApplyFriendCount(username, applyTo);
-            if (count > 0) {
-                // 已申请
-                return 2;
-            }
-            return username.equals(applyTo) ? -1 : 1;
+            int applyStatus = headService.queryApplyFriendApplyStatus(username,
+                applyTo);
+            // 已申请
+            return applyStatus > 0 ? (applyStatus + 1)
+                    : (username.equals(applyTo) ? -1 : 1);
         }
         return 0;
     }
@@ -344,13 +345,33 @@ public class HeadController extends BaseController {
 
     @RequestMapping(value = "/queryApplyFriend.do", method = RequestMethod.GET)
     @ResponseBody
-    public int queryApplyFriend() {
+    public List<ApplyFriend> queryApplyFriend() {
+        List<ApplyFriend> list = new ArrayList<ApplyFriend>();
         if (sessionProvider != null
                 && sessionProvider.getUserDetail() != null) {
             String applyTo = ((SessionUser) sessionProvider.getUserDetail())
                 .getUsername();
             try {
-                return headService.queryApplyFriendCountByApplyTo(applyTo);
+                return headService.queryApplyFriendByApplyTo(applyTo);
+            } catch (Exception e) {
+                return list;
+            }
+        }
+        return list;
+    }
+
+    @RequestMapping(value = "/agreeApplyFriend.do", method = RequestMethod.GET)
+    @ResponseBody
+    public int agreeApplyFriend(
+            @RequestParam(value = "username", required = true) String username) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String applyTo = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            try {
+                headService.updateApplyFriendByUsername(username, applyTo,
+                    DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
+                return 1;
             } catch (Exception e) {
                 return -1;
             }

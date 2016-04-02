@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hifun.base.session.SessionUser;
+import com.hifun.bean.ApplyFriend;
 import com.hifun.bean.Banner;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
@@ -222,22 +223,33 @@ public interface IHeadService {
             String nowdate);
 
     /**
-     * 查询是否已申请过
+     * 查询申请状态
      * @param username
      * @param applyTo
      * @return 
      * @create: 2016年3月31日 下午9:47:15 yuexia
      * @history:
      */
-    int queryApplyFriendCount(String username, String applyTo);
+    int queryApplyFriendApplyStatus(String username, String applyTo);
 
     /**
-     * 根据被申请人查询申请申请数量
+     * 根据被申请人查询申请清单
      * @param applyTo
      * @return 
      * @create: 2016年3月31日 下午9:47:15 yuexia
      * @history:
      */
-    int queryApplyFriendCountByApplyTo(String applyTo);
+    List<ApplyFriend> queryApplyFriendByApplyTo(String applyTo);
+
+    /**
+     * 根据申请人及被申请人更新申请状态
+     * @param username
+     * @param applyTo
+     * @param nowTimeString 
+     * @create: 2016年4月2日 下午11:46:50 yuexia
+     * @history:
+     */
+    void updateApplyFriendByUsername(String username, String applyTo,
+            String nowTimeString);
 
 }

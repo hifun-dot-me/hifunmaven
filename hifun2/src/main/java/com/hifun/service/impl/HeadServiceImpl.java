@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hifun.base.session.SessionUser;
+import com.hifun.bean.ApplyFriend;
 import com.hifun.bean.Banner;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
@@ -149,13 +150,19 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
     }
 
     @Override
-    public int queryApplyFriendCount(String username, String applyTo) {
-        return headDao.queryApplyFriendCount(username, applyTo);
+    public int queryApplyFriendApplyStatus(String username, String applyTo) {
+        return headDao.queryApplyFriendApplyStatus(username, applyTo);
     }
 
     @Override
-    public int queryApplyFriendCountByApplyTo(String applyTo) {
-        return headDao.queryApplyFriendCountByApplyTo(applyTo);
+    public List<ApplyFriend> queryApplyFriendByApplyTo(String applyTo) {
+        return headDao.queryApplyFriendByApplyTo(applyTo);
+    }
+
+    @Override
+    public void updateApplyFriendByUsername(String username, String applyTo,
+            String nowdate) {
+        headDao.updateApplyFriendByUsername(username, applyTo, nowdate);
     }
 
 }

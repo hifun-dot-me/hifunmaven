@@ -10,6 +10,7 @@
 	<typeAlias alias="hithings" type="com.hifun.bean.HiThings"/>
 	<typeAlias alias="hiplayground" type="com.hifun.bean.HiPlayground"/>
 	<typeAlias alias="shop" type="com.hifun.bean.Shop"/>
+	<typeAlias alias="applyfriend" type="com.hifun.bean.ApplyFriend"/>
 	
 	<select id="query-banner-validatelist" resultClass="banner">
 		<![CDATA[
@@ -163,18 +164,29 @@
 		values (#applyTo#, #nowdate#, 1, #username#, #nowdate#, #username#, #nowdate#, #username#, #nowdate#)
 	</insert>
 	
-	<select id="query-applyfriend-count" parameterClass="java.util.Map" resultClass="int">
-		select count(1) from applyFriend where username = #username# and applyTo = #applyTo#
+	<select id="query-applyfriend-applystatus" parameterClass="java.util.Map" resultClass="int">
+		select applyStatus from applyFriend 
+		where ((username = #username# and applyTo = #applyTo#) or (applyTo = #username# and username = #applyTo#))
+		<![CDATA[
+			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
+		]]>
+		limit 1
+	</select>
+	
+	<select id="query-applyfriend-byapplyto" parameterClass="string" resultClass="applyfriend">
+		select id, applyTo, applyTime, applyStatus, passTime, username, remark 
+		from applyFriend where applyStatus = 1 and applyTo = #applyTo#
 		<![CDATA[
 			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
 		]]>
 	</select>
 	
-	<select id="query-applyfriendcount-byapplyto" parameterClass="string" resultClass="int">
-		select count(1) from applyFriend where applyStatus = 1 and applyTo = #applyTo#
+	<update id="update-applyfriend-byusername" parameterClass="java.util.Map">
+		update applyFriend set applyStatus = 2, passTime = #nowdate#
+		where applyTo = #applyTo# and username = #username#
 		<![CDATA[
 			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
-		]]>
-	</select>
+		]]> 
+	</update>
 	
 </sqlMap>

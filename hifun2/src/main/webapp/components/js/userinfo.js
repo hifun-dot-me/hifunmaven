@@ -20,9 +20,11 @@ function applyFriend(){
 
 function doShowApplyFriendSucc(res){
 	if(res.data == 1){
-		$("#apply").html("<a class='normal-a floatnone-a curson-a user-link' id='applyFriend' onclick='applyFriend()'>加为好友</a>");
+		$("#apply").html("<a class='normal-a floatnone-a cursor-a user-link' id='applyFriend' onclick='applyFriend()'>加为好友</a>");
 	}else if(res.data == 2){
 		applying();
+	}else if(res.data == 3){
+		friendalready();
 	}
 }
 
@@ -36,4 +38,8 @@ function doApplyFriendSucc(res){
 
 function applying(){
 	$("#apply").html("<span class='red'>申请中...</span>");
+}
+
+function friendalready(){
+	$("#apply").html("<span class='user-link'>已是好友</span>");
 }
