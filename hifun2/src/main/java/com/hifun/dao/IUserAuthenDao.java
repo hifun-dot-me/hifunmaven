@@ -26,11 +26,12 @@ public interface IUserAuthenDao {
     /**
      * 保存用户名和密码
      * @param username
+     * @param nickname
      * @param password 
      * @create: 2016年1月29日 下午9:32:50 yuexia
      * @history:
      */
-    void insertUserInfo(String username, String password);
+    void insertUserInfo(String username, String nickname, String password);
 
     /**
      * 增加用户经验
@@ -48,5 +49,14 @@ public interface IUserAuthenDao {
      * @history:
      */
     void updateUserSign(String username, String nowdate);
+
+    /**
+     * 根据昵称查询用户数量
+     * @param nickname
+     * @return 
+     * @create: 2016年4月2日 下午5:11:46 yuexia
+     * @history:
+     */
+    Integer queryUserCountByNickname(String nickname);
 
 }

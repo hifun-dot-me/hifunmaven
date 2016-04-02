@@ -30,9 +30,11 @@ public class UserAuthenDaoImpl extends BaseDao implements IUserAuthenDao {
     }
 
     @Override
-    public void insertUserInfo(String username, String password) {
+    public void insertUserInfo(String username, String nickname,
+            String password) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("username", username);
+        param.put("nickname", nickname);
         param.put("password", password);
         getSqlMapClientTemplate().insert("insert-userinfo", param);
     }
@@ -51,6 +53,13 @@ public class UserAuthenDaoImpl extends BaseDao implements IUserAuthenDao {
         param.put("username", username);
         param.put("nowdate", nowdate);
         getSqlMapClientTemplate().update("updat-usersign", param);
+    }
+
+    @Override
+    public Integer queryUserCountByNickname(String nickname) {
+        Object obj = getSqlMapClientTemplate()
+            .queryForObject("query-usercount-bynickname", nickname);
+        return obj == null ? null : (Integer) obj;
     }
 
 }

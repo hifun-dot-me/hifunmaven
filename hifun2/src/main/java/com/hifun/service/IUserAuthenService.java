@@ -24,12 +24,22 @@ public interface IUserAuthenService {
     SessionUser queryUserByUsername(String username);
 
     /**
+     * 根据昵称查询用户数量
+     * @param nickname
+     * @return 
+     * @create: 2016年1月29日 下午9:22:20 yuexia
+     * @history:
+     */
+    Integer queryUserCountByNickname(String nickname);
+
+    /**
      * 保存用户名和密码
      * @param username
+     * @param nickname
      * @param password 
      * @create: 2016年1月29日 下午9:32:00 yuexia
      * @history:
      */
-    void insertUserInfo(String username, String password);
+    void insertUserInfo(String username, String nickname, String password);
 
 }

@@ -12,7 +12,8 @@ import com.hifun.service.IUserAuthenService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class UserAuthenService extends BaseService implements IUserAuthenService {
+public class UserAuthenServiceImpl extends BaseService
+        implements IUserAuthenService {
 
     @Autowired
     private IUserAuthenDao userAuthenDao;
@@ -28,8 +29,14 @@ public class UserAuthenService extends BaseService implements IUserAuthenService
     }
 
     @Override
-    public void insertUserInfo(String username, String password) {
-        userAuthenDao.insertUserInfo(username, password);
+    public void insertUserInfo(String username, String nickname,
+            String password) {
+        userAuthenDao.insertUserInfo(username, nickname, password);
+    }
+
+    @Override
+    public Integer queryUserCountByNickname(String nickname) {
+        return userAuthenDao.queryUserCountByNickname(nickname);
     }
 
 }

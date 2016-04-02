@@ -46,10 +46,15 @@ function checkForm(){
 }
 function checkForm2(){
 	var username = $("#register-username").val();
+	var nickname = $("#register-nickname").val();
 	var password = $("#register-password").val();
 	var passwordr = $("#register-passwordr").val();
 	if(username == '' || username.length > 20){
 		window.wxc.xcConfirm('用户名输入不合法', window.wxc.xcConfirm.typeEnum.info);
+		return false;
+	}
+	if(nickname == '' || nickname.length > 20){
+		window.wxc.xcConfirm('昵称输入不合法', window.wxc.xcConfirm.typeEnum.info);
 		return false;
 	}
 	if(password == '' || password.length > 32){
@@ -79,16 +84,21 @@ function doLoginSuccess(res){
 			location.href=$("#base").val()+"/userAuthen/main.do";
 		}, second*1000);
 	}else{
-		window.wxc.xcConfirm('用户名或密码错误', window.wxc.xcConfirm.typeEnum.info);
+		window.wxc.xcConfirm('输入信息有误', window.wxc.xcConfirm.typeEnum.info);
 	}
 }
 function doRegisterSuccess(res){
-	if(res.data){
+	if(res.data == 1){
 		window.wxc.xcConfirm('注册成功，'+second+'秒后自动跳转', window.wxc.xcConfirm.typeEnum.success);
 		setTimeout(function(){
 			location.href=$("#base").val()+"/userAuthen/main.do";
 		}, second*1000);
-	}else{
+	}else if(res.data == -2){
+		window.wxc.xcConfirm('输入信息有误', window.wxc.xcConfirm.typeEnum.info);
+	}else if(res.data == -1){
+		window.wxc.xcConfirm('昵称已被使用过', window.wxc.xcConfirm.typeEnum.info);
+		$("#register-nickname").val("");
+	}else if(res.data == 0){
 		window.wxc.xcConfirm('注册失败', window.wxc.xcConfirm.typeEnum.info);
 	}
 }

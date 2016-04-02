@@ -33,6 +33,11 @@ public class SessionUser extends AUserDetail {
         this.username = username;
     }
 
+    public SessionUser(String username, String nickname) {
+        this.username = username;
+        this.nickname = nickname;
+    }
+
     public String getUsername() {
         return username;
     }

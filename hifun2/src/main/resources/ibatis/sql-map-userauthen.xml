@@ -23,8 +23,8 @@
 	</select>
 	
 	<insert id="insert-userinfo" parameterClass="java.util.Map">
-		insert into user (username, password, createTime, createBy, updateTime, updateBy, effectiveFrom)
-		values (#username#, #password#, NOW(), #username#, NOW(), #username#, NOW())
+		insert into user (username, nickname, password, createTime, createBy, updateTime, updateBy, effectiveFrom)
+		values (#username#, #nickname#, #password#, NOW(), #username#, NOW(), #username#, NOW())
 	</insert>
 	
 	<select id="query-todayissign" parameterClass="java.util.Map" resultClass="int">
@@ -59,5 +59,13 @@
 	<update id="updat-usersign" parameterClass="java.util.Map">
 		update user set daynum = daynum + 1, lastSignTime = #nowdate#, updateTime = #nowdate# where username = #username#
 	</update>
+	
+	<select id="query-usercount-bynickname" parameterClass="string" resultClass="int">
+		select count(1) from user where nickname = #nickname# 
+		<![CDATA[
+			and effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is NULL)
+		]]>
+		limit 1
+	</select>
 	
 </sqlMap>

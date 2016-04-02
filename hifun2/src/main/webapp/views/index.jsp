@@ -26,7 +26,7 @@
 						data-toggle="modal" data-target="#registerModal"><span>免费注册</span></a>
 				</c:if>
 				<c:if test="${username != null}">
-					<a href="javascript:void(0);" onclick="userinfo(this, '${username}')">${username}</a>
+					<a href="javascript:void(0);" onclick="userinfo(this, '${username}')">${nickname}</a>
 					<a href="javascript:void(0);" onclick="logout(this)">退出</a>
 				</c:if>
 			</div>
@@ -123,19 +123,25 @@
 						<form action="" id="mainForm2" method="post">
 							<div class="form-group">
 								<div class="form-group-line">
-									<label class="glyphicons-label inline-html form-group-line-label" title="用户名">
+									<label class="glyphicons-label inline-html form-group-line-label" title="用户名" for="register-username">
 										<span class="glyphicon glyphicon-user"></span>
 									</label>
 					            	<input class="inline-html form-input focus-remove-input" type="text" name="username" id="register-username" placeholder="请输入用户名，20字符以内"><br/>
 								</div>
 								<div class="form-group-line">
-					            	<label class="glyphicons-label inline-html form-group-line-label" title="密码">
+									<label class="glyphicons-label inline-html form-group-line-label" title="昵称" for="register-nickname">
+										<span class="glyphicon glyphicon-user"></span>
+									</label>
+					            	<input class="inline-html form-input focus-remove-input" type="text" name="nickname" id="register-nickname" placeholder="请输入昵称，20字符以内"><br/>
+								</div>
+								<div class="form-group-line">
+					            	<label class="glyphicons-label inline-html form-group-line-label" title="密码" for="register-password">
 										<span class="glyphicon glyphicon-lock"></span>
 									</label>
 					            	<input class="inline-html form-input focus-remove-input" type="password" name="password" id="register-password" placeholder="请输入密码，32字符以内">
 								</div>
 								<div class="form-group-line">
-					            	<label class="glyphicons-label inline-html form-group-line-label" title="密码">
+					            	<label class="glyphicons-label inline-html form-group-line-label" title="密码" for="register-passwordr">
 										<span class="glyphicon glyphicon-lock"></span>
 									</label>
 					            	<input class="inline-html form-input focus-remove-input" type="password" name="passwordr" id="register-passwordr" placeholder="请确认密码，32字符以内">

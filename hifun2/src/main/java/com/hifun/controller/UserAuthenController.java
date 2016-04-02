@@ -40,25 +40,33 @@ public class UserAuthenController extends BaseController {
 
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
     @ResponseBody
-    public boolean register(
-            @RequestParam(value = "username", required = false) String username,
-            @RequestParam(value = "password", required = false) String password,
-            @RequestParam(value = "passwordr", required = false) String passwordr) {
-        if (username == null || password == null || passwordr == null
-                || !password.equals(passwordr)) {
-            return false;
+    public int register(
+            @RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "nickname", required = true) String nickname,
+            @RequestParam(value = "password", required = true) String password,
+            @RequestParam(value = "passwordr", required = true) String passwordr) {
+        if (username == null || nickname == null || password == null
+                || passwordr == null || !password.equals(passwordr)) {
+            return -2;
         }
         // 查询用户名是否已经注册
         SessionUser u = userAuthenService.queryUserByUsername(username);
         if (u == null) {
+            // 查询昵称是否被使用过
+            Integer count = userAuthenService
+                .queryUserCountByNickname(nickname);
+            if (count > 0) {
+                // 昵称被使用过
+                return -1;
+            }
             // 用户为空，新增到用户表
-            userAuthenService.insertUserInfo(username,
+            userAuthenService.insertUserInfo(username, nickname,
                 MD5Util.getMD5(password));
-            u = new SessionUser(username);
+            u = new SessionUser(username, nickname);
             sessionProvider.setUserDetail(u);
-            return true;
+            return 1;
         }
-        return false;
+        return 0;
     }
 
     @RequestMapping(value = "/main.do", method = RequestMethod.GET)
@@ -92,11 +100,14 @@ public class UserAuthenController extends BaseController {
     @RequestMapping(value = "/userinfo.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView userinfo(
-            @RequestParam(value = "username", required = false) String username)
-                    throws Exception {
+            @RequestParam(value = "username", required = false) String username) {
         ModelAndView view = new ModelAndView("/userinfo");
-        username = URLDecoder.decode(new String(Base64.decodeBase64(username)),
-            "UTF-8");
+        try {
+            username = URLDecoder
+                .decode(new String(Base64.decodeBase64(username)), "UTF-8");
+        } catch (Exception e) {
+            username = "";
+        }
         SessionUser user = userAuthenService.queryUserByUsername(username);
         view.addObject("user", user == null ? new SessionUser(username) : user);
         return view;

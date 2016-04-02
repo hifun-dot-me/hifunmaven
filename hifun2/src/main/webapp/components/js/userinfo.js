@@ -1,17 +1,21 @@
 $(document).ready(function(){
-	ajaxGet(
-			$("#base").val()+'/headpage/showapplyfriend.do', 
-			{applyTo : $("#applyTo").text()}, 
-			'json', doShowApplyFriendSucc
-			);
+	if($("#applyTo").text() != ''){
+		ajaxGet(
+				$("#base").val()+'/headpage/showapplyfriend.do', 
+				{applyTo : $("#applyTo").text()}, 
+				'json', doShowApplyFriendSucc
+		);
+	}
 });
 
 function applyFriend(){
-	ajaxGet(
-			$("#base").val()+'/headpage/applyfriend.do', 
-			{applyTo : $("#applyTo").text()}, 
-			'json', doApplyFriendSucc
-			);
+	if($("#applyTo").text() != ''){
+		ajaxGet(
+				$("#base").val()+'/headpage/applyfriend.do', 
+				{applyTo : $("#applyTo").text()}, 
+				'json', doApplyFriendSucc
+		);
+	}
 }
 
 function doShowApplyFriendSucc(res){
@@ -25,6 +29,8 @@ function doShowApplyFriendSucc(res){
 function doApplyFriendSucc(res){
 	if(res.data == 1){
 		applying();
+	}else if(res.data == -2){
+		window.wxc.xcConfirm('系统访问出错，请联系管理员！', window.wxc.xcConfirm.typeEnum.error);
 	}
 }
 

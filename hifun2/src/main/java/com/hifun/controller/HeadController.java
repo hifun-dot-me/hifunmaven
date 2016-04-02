@@ -18,6 +18,7 @@ import com.hifun.bean.Menu;
 import com.hifun.bean.Shop;
 import com.hifun.bean.TimeEnum;
 import com.hifun.service.IHeadService;
+import com.hifun.service.IUserAuthenService;
 import com.hifun.util.DateUtil;
 
 @Controller
@@ -26,6 +27,9 @@ public class HeadController extends BaseController {
 
     @Autowired
     private IHeadService headService;
+
+    @Autowired
+    private IUserAuthenService userAuthenService;
 
     @RequestMapping(value = "/index.do", method = RequestMethod.GET)
     @ResponseBody
@@ -40,6 +44,8 @@ public class HeadController extends BaseController {
                 && sessionProvider.getUserDetail() != null) {
             view.addObject("username",
                 ((SessionUser) sessionProvider.getUserDetail()).getUsername());
+            view.addObject("nickname",
+                ((SessionUser) sessionProvider.getUserDetail()).getNickname());
         }
         return view;
     }
@@ -317,6 +323,10 @@ public class HeadController extends BaseController {
     @ResponseBody
     public int applyfriend(
             @RequestParam(value = "applyTo", required = true) String applyTo) {
+        SessionUser u = userAuthenService.queryUserByUsername(applyTo);
+        if (u == null) {
+            return -2;
+        }
         if (sessionProvider != null
                 && sessionProvider.getUserDetail() != null) {
             String username = ((SessionUser) sessionProvider.getUserDetail())
