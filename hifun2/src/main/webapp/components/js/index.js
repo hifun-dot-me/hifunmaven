@@ -1,5 +1,7 @@
 var second = 2;//跳转时间间隔
 $(document).ready(function(){
+	//加载好友申请信息
+	initApplyFriend();
 	//首页加载选择第一个菜单栏
 	$(".menu-li").first().addClass('curr-li');
 	$("#content-frame").attr("src", $("#base").val() + "/headpage/firstpage.do");
