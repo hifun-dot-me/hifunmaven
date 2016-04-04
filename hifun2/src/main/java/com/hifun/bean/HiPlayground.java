@@ -1,5 +1,6 @@
 package com.hifun.bean;
 
+import com.hifun.bean.data.TimeEnum;
 import com.hifun.util.DateUtil;
 
 public class HiPlayground {

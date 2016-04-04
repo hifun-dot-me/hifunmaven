@@ -1,4 +1,4 @@
-package com.hifun.bean;
+package com.hifun.bean.data;
 
 public enum AuditEnum {
 

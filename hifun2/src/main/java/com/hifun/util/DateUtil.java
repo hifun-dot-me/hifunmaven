@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.hifun.bean.TimeEnum;
+import com.hifun.bean.data.TimeEnum;
 
 /**
  * 日期工具类

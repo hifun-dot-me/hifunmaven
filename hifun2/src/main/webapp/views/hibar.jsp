@@ -16,7 +16,8 @@ $(document).ready(function(){
 </head>
 <body>
 	<div>
-		
+		this is hibar.<br/>
+		we are developing...
 	</div>
 </body>
 </html>

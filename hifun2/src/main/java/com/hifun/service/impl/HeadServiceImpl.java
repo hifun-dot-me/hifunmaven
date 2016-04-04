@@ -161,8 +161,15 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
 
     @Override
     public void updateApplyFriendByUsername(String username, String applyTo,
-            String nowdate) {
-        headDao.updateApplyFriendByUsername(username, applyTo, nowdate);
+            int applyStatus, String nowdate) {
+        headDao.updateApplyFriendByUsername(username, applyTo, applyStatus,
+            nowdate);
+    }
+
+    @Override
+    public List<ApplyFriend> queryApplyFriendByUsername(String username,
+            int applyStatus) {
+        return headDao.queryApplyFriendByUsername(username, applyStatus);
     }
 
 }

@@ -174,19 +174,45 @@
 	</select>
 	
 	<select id="query-applyfriend-byapplyto" parameterClass="string" resultClass="applyfriend">
-		select id, applyTo, applyTime, applyStatus, passTime, username, remark 
-		from applyFriend where applyStatus = 1 and applyTo = #applyTo#
+		select af.id, af.applyTo, af.applyTime, af.applyStatus, af.passTime, af.username, u.nickname, af.remark 
+		from applyFriend af left join user u on u.username = af.username
+		where af.applyStatus = 1 and af.applyTo = #applyTo#
 		<![CDATA[
-			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
+			and af.effectiveFrom <= now() and (af.effectiveTo >= now() or af.effectiveTo is null)
 		]]>
 	</select>
 	
 	<update id="update-applyfriend-byusername" parameterClass="java.util.Map">
-		update applyFriend set applyStatus = 2, passTime = #nowdate#
+		update applyFriend set applyStatus = #applyStatus#, passTime = #nowdate#
+		<isEqual property="applyStatus" compareValue="-1" prepend=",">
+			effectiveTo = #nowdate#
+		</isEqual>
 		where applyTo = #applyTo# and username = #username#
 		<![CDATA[
 			and effectiveFrom <= now() and (effectiveTo >= now() or effectiveTo is null)
 		]]> 
 	</update>
+	
+	<resultMap class="applyfriend" id="applyfriend">
+		<result property="fusername" column="fusername"/>
+		<result property="nickname" column="nickname"/>
+	</resultMap>
+	<select id="query-applyfriend-byusername" parameterClass="java.util.Map" resultMap="applyfriend">
+		select t.fusername, t.nickname from(
+			select af.applyTo fusername, u.nickname nickname
+			from applyFriend af left join user u on u.username = af.applyTo
+			where af.username = #username# and af.applyStatus = #applyStatus#
+			<![CDATA[
+				and af.effectiveFrom <= now() and (af.effectiveTo >= now() or af.effectiveTo is null)
+			]]> 
+			union all
+			select af.username fusername, u.nickname nickname
+			from applyFriend af left join user u on u.username = af.username
+			where af.applyTo = #username# and af.applyStatus = #applyStatus#
+			<![CDATA[
+				and af.effectiveFrom <= now() and (af.effectiveTo >= now() or af.effectiveTo is null)
+			]]> 
+		) t
+	</select>
 	
 </sqlMap>

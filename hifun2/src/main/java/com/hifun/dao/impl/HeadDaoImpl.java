@@ -241,13 +241,25 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
 
     @Override
     public void updateApplyFriendByUsername(String username, String applyTo,
-            String nowdate) {
+            int applyStatus, String nowdate) {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("username", username);
         param.put("applyTo", applyTo);
+        param.put("applyStatus", applyStatus);
         param.put("nowdate", nowdate);
         getSqlMapClientTemplate().update("update-applyfriend-byusername",
             param);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<ApplyFriend> queryApplyFriendByUsername(String username,
+            int applyStatus) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", username);
+        param.put("applyStatus", applyStatus);
+        return getSqlMapClientTemplate()
+            .queryForList("query-applyfriend-byusername", param);
     }
 
 }

@@ -86,6 +86,14 @@ textarea{
 	color: red;
 }
 
+.position-relative{
+	position: relative;
+}
+
+.margin-left10{
+	margin-left: 10px;
+}
+
 .normal-ho-li{
 	float: left;
 	display: inline;
@@ -223,6 +231,17 @@ textarea{
 	cursor: pointer;
 	background-color: #ADADAD;
 	color: #FFFFFF;
+}
+
+.hitooltip-span{
+	position: absolute;
+	border-radius: 7px;
+	background-color: red;
+	width: 18px;
+	height: 14px;
+	line-height: 16px;
+	left: 15px;
+	top: 2px;
 }
 
 .hitool-mouseclick-li{

@@ -13,15 +13,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hifun.base.session.SessionUser;
 import com.hifun.bean.ApplyFriend;
-import com.hifun.bean.AuditEnum;
 import com.hifun.bean.Banner;
 import com.hifun.bean.HiThings;
 import com.hifun.bean.Menu;
 import com.hifun.bean.Shop;
-import com.hifun.bean.TimeEnum;
+import com.hifun.bean.data.ApplyFriendApplyStatusEnum;
+import com.hifun.bean.data.AuditEnum;
+import com.hifun.bean.data.TimeEnum;
 import com.hifun.service.IHeadService;
 import com.hifun.service.IUserAuthenService;
 import com.hifun.util.DateUtil;
+import com.hifun.util.ParamUtil;
 
 @Controller
 @RequestMapping(value = "/headpage")
@@ -286,6 +288,17 @@ public class HeadController extends BaseController {
     @ResponseBody
     public ModelAndView viewhiletter() {
         ModelAndView view = new ModelAndView("/viewhiletter");
+        List<ApplyFriend> list;
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String username = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            list = headService.queryApplyFriendByUsername(username,
+                ApplyFriendApplyStatusEnum.PASS.getApplyStatus());
+        } else {
+            list = new ArrayList<ApplyFriend>();
+        }
+        view.addObject("list", list);
         return view;
     }
 
@@ -360,20 +373,23 @@ public class HeadController extends BaseController {
         return list;
     }
 
-    @RequestMapping(value = "/agreeApplyFriend.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/agreeApplyFriend.do", method = RequestMethod.POST)
     @ResponseBody
     public int agreeApplyFriend(
-            @RequestParam(value = "username", required = true) String username) {
+            @RequestParam(value = "username", required = true) String username,
+            @RequestParam(value = "applyStatus", required = true) int applyStatus) {
         if (sessionProvider != null
                 && sessionProvider.getUserDetail() != null) {
             String applyTo = ((SessionUser) sessionProvider.getUserDetail())
                 .getUsername();
             try {
+                ParamUtil.checkApplyFriendApplyStatus(applyStatus);
                 headService.updateApplyFriendByUsername(username, applyTo,
+                    applyStatus,
                     DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
-                return 1;
+                return applyStatus;
             } catch (Exception e) {
-                return -1;
+                return -2;
             }
         }
         return 0;

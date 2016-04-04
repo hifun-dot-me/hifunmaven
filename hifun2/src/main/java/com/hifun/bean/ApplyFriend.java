@@ -2,6 +2,7 @@ package com.hifun.bean;
 
 import java.util.Date;
 
+import com.hifun.bean.data.TimeEnum;
 import com.hifun.util.DateUtil;
 
 public class ApplyFriend {
@@ -18,7 +19,12 @@ public class ApplyFriend {
 
     private String username;// 申请人
 
+    private String nickname;// 昵称
+
     private String remark;// 备注
+
+    // 辅助字段
+    private String fusername;// 好友名（用户名）
 
     public Integer getId() {
         return id;
@@ -78,6 +84,22 @@ public class ApplyFriend {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getFusername() {
+        return fusername;
+    }
+
+    public void setFusername(String fusername) {
+        this.fusername = fusername;
     }
 
 }

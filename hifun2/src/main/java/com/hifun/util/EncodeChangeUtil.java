@@ -3,12 +3,12 @@ package com.hifun.util;
 public class EncodeChangeUtil {
 
     // 原始字符数组
-    private static char[] oldchars = { '<', '>', '+', '-', '$', '@', '%', '&',
-            '*', '(', ')', '!', '~', '{', '}', '[', ']', '#', '/' };
+    private static char[] oldchars = { '<', '>', '$', '@', '%', '&', '*', '(',
+            ')', '!', '~', '{', '}', '[', ']', '#', '/' };
 
     // 更改字符数组
-    private static char[] newchars = { '＜', '＞', '＋', '－', '￥', '＠', '％', '＆',
-            '×', '（', '）', '！', '～', '｛', '｝', '【', '】', '＃', '／' };
+    private static char[] newchars = { '＜', '＞', '￥', '＠', '％', '＆', '×', '（',
+            '）', '！', '～', '｛', '｝', '【', '】', '＃', '／' };
 
     public static String change(String parameter) {
         if (parameter == null) {

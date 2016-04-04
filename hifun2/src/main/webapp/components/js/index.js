@@ -1,11 +1,8 @@
 var second = 2;//跳转时间间隔
 $(document).ready(function(){
+	//首页加载选择第一个菜单栏
 	$(".menu-li").first().addClass('curr-li');
-	ajaxGet(
-			$("#base").val()+'/headpage/queryApplyFriend.do', 
-			{}, 
-			'json', doQueryApplyFriendSuccess
-			);
+	$("#content-frame").attr("src", $("#base").val() + "/headpage/firstpage.do");
 	
 	//登录按钮
 	$("#loginBtn").click(function(){
@@ -29,6 +26,18 @@ $(document).ready(function(){
 				$("#mainForm2").serialize(), 
 				'json', doRegisterSuccess
 				);
+	});
+	
+	$('#loginModal').on('hidden.bs.modal', function () {
+		initLoginForm();
+	});
+	
+	$('#registerModal').on('hidden.bs.modal', function () {
+		initRegisterForm();
+	});
+	
+	$('#hiapplyModal').on('hidden.bs.modal', function () {
+		initApplyFriend();
 	});
 });
 function checkForm(){
@@ -71,26 +80,53 @@ function checkForm2(){
 	}
 	return true;
 }
+
+function initLoginForm(){
+	$("#login-username").val("");
+	$("#login-password").val("");
+}
+
+function initRegisterForm(){
+	$("#register-username").val("");
+	$("#register-nickname").val("");
+	$("#register-password").val("");
+	$("#register-passwordr").val("");
+}
+
+function initApplyFriend(){
+	ajaxGet(
+			$("#base").val()+'/headpage/queryApplyFriend.do', 
+			{}, 
+			'json', doQueryApplyFriendSuccess
+			);
+}
+
 function doQueryApplyFriendSuccess(res){
 	var list = res.data;
+	var html = "";
+	$(".num-record").remove();
 	if(list.length > 0){
-		var vh = $("#hiapply").text();
-		$("#hiapply").text(vh + " (" + list.length + ")");
+		$("#hiapply-span").after("<span class='num-record'> (" + list.length + ")</span>");
+		//嗨信icon
+		$("#hiletter-span").after("<span class='hitooltip-span num-record'>" + list.length + "</span>");
 		
-		var html = "";
 		for(var i = 0;i < list.length;i++){
 			html = html + "<ul class='normal-ul apply-ul'>" +
 								"<li class='normal-li menu-horizontal apply-li' title='申请人'>" +
-									"<a class='normal-a floatnone-a cursor-a user-link' onclick=\"userinfo(this, '" + list[i].username + "')\">" + list[i].username + "</a>" +
+									"<a class='normal-a floatnone-a cursor-a user-link' onclick=\"userinfo(this, '" + list[i].username + "')\">" + list[i].nickname + "</a>" +
 								"</li>" +
 								"<li class='normal-li menu-horizontal apply-li' title='申请时间'>" + list[i].applyTime + "</li>" +
 								"<li class='normal-li menu-horizontal apply-li right' title='操作'>" +
-									"<a class='normal-a cursor-a user-link' onclick=\"agreeApplyFriend(this, '" + list[i].username + "')\">同意</a>" +
+									"<a class='normal-a cursor-a user-link' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '2')\">同意</a>" +
+									"<a class='normal-a cursor-a user-link margin-left10' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '-1')\">拒绝</a>" +
 								"</li>" +
 							"</ul>";
 		}
-		$("#hiapply-div").html(html);
 	}
+	if(html == ''){
+		html = "暂无数据.";
+	}
+	$("#hiapply-div").html(html);
 }
 function doLoginSuccess(res){
 	if(res.data){
@@ -151,21 +187,25 @@ function locationTo(e, loc){
 	$(e).addClass('curr-li');
 	$("#content-frame").attr('src', $("#base").val()+loc);
 }
-function agreeApplyFriend(e, username){
+function agreeApplyFriend(e, username, applyStatus){
 	var this_ = $(e);
 	$(e).blur();
-	ajaxGet(
+	ajaxPost(
 			$("#base").val()+'/headpage/agreeApplyFriend.do', 
-			{username : username}, 
-			'json', function(res){
+			{
+				username : username, 
+				applyStatus : applyStatus
+			}, 'json', function(res){
 				doAgreeApplyFriendSuccess(res, this_);
 			}
 			);
 }
 function doAgreeApplyFriendSuccess(res, e){
-	if(res.data == 1){
-		$(e).removeAttr("onclick").addClass("red").text("已同意");
-	}else if(res.data == -1){
+	if(res.data == -1){
+		$(e).parent().html("<span class='red'>已拒绝</span>");
+	}else if(res.data == 2){
+		$(e).parent().html("<span class='red'>已同意</span>");
+	}else if(res.data == -2){
 		window.wxc.xcConfirm('操作失败，请联系管理员', window.wxc.xcConfirm.typeEnum.info);
 	}else if(res.data == 0){
 		window.wxc.xcConfirm('请先登录', window.wxc.xcConfirm.typeEnum.info);

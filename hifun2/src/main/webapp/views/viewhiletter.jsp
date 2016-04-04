@@ -17,12 +17,23 @@
 		<div class="letter-total-div">
 			<div class="letter-left-div">
 				<ul class="normal-ul letter-ul">
-					<li class="normal-li letter-li curr-letter-li">
-						好友1
-					</li>
-					<li class="normal-li letter-li normal-letter-li">
-						好友2
-					</li>
+					<c:if test="${empty list}">
+						<li class="normal-li letter-li">
+							暂无好友哦
+						</li>
+					</c:if>
+					<c:forEach items="${list}" var="l" varStatus="i">
+						<c:if test="${i.index == 0}">
+							<li class="normal-li letter-li curr-letter-li">
+								${l.nickname}
+							</li>
+						</c:if>
+						<c:if test="${i.index > 0}">
+							<li class="normal-li letter-li">
+								${l.nickname}
+							</li>
+						</c:if>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="letter-right-div">
@@ -36,7 +47,9 @@
 					<textarea class="letter-textarea" name="letterWrite" id="letterWrite"></textarea>
 				</div>
 				<div class="letter-btn-div">
-					<button class="btn btn-primary btn-send" onclick="sendletter(this)">发 送</button>
+					<c:if test="${!empty list}">
+						<button class="btn btn-primary btn-send" onclick="sendletter(this)">发 送</button>
+					</c:if>
 					<button class="btn btn-default btn-send home-link">返回首页</button>
 				</div>
 			</div>

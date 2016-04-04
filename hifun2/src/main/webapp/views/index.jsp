@@ -37,9 +37,9 @@
 							<span class="glyphicon glyphicon-home hitool-icon"></span>
 						</a>
 					</li>
-					<li class="normal-ho-li hitool-li" onclick="clickhitoolli(this, '#hitool-letter-div')" 
+					<li class="normal-ho-li hitool-li position-relative" onclick="clickhitoolli(this, '#hitool-letter-div')" 
 						onmouseout="mouseouthitoolli(this, '#hitool-letter-div')" id="letter-li" title="嗨信">
-						<span class="glyphicon glyphicon-envelope hitool-icon"></span>
+						<span class="glyphicon glyphicon-envelope hitool-icon" id="hiletter-span"></span>
 					</li>
 					<li class="normal-ho-li hitool-li" onclick="clickhitoolli(this, '#hitool-setup-div')" 
 						onmouseout="mouseouthitoolli(this, '#hitool-setup-div')" id="setup-li" title="设置">
@@ -54,7 +54,9 @@
 					<a class="normal-a floatnone-a" href="<%=request.getContextPath()%>/headpage/viewhiletter.do" id="viewhiletter">查看嗨信</a>
 				</li>
 				<li class="normal-ve-li hitooldiv-li">
-					<a target="_self" class="normal-a floatnone-a cursor-a" data-toggle="modal" data-target="#hiapplyModal" id="hiapply"><span>嗨友申请</span></a>
+					<a target="_self" class="normal-a floatnone-a cursor-a" data-toggle="modal" data-target="#hiapplyModal" id="hiapply">
+						<span id="hiapply-span">嗨友申请</span>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -171,9 +173,7 @@
 			            </h4>
 					</div>
 					<div class="modal-body" style="overflow-y: scroll;">
-						<div id="hiapply-div">
-							
-						</div>
+						<div id="hiapply-div"></div>
 					</div>
 					<div class="modal-footer"></div>
 				</div><!-- /.modal-content -->

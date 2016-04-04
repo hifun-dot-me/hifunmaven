@@ -254,10 +254,22 @@ public interface IHeadDao {
      * 根据申请人及被申请人更新申请状态
      * @param username
      * @param applyTo
+     * @param applyStatus
      * @param nowdate 
      * @create: 2016年4月2日 下午11:50:47 yuexia
      * @history:
      */
     void updateApplyFriendByUsername(String username, String applyTo,
-            String nowdate);
+            int applyStatus, String nowdate);
+
+    /**
+     * 根据用户名或申请人及申请状态查询好友列表
+     * @param username
+     * @param applyStatus
+     * @return 
+     * @create: 2016年4月4日 下午3:33:54 yuexia
+     * @history:
+     */
+    List<ApplyFriend> queryApplyFriendByUsername(String username,
+            int applyStatus);
 }

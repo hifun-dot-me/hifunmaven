@@ -5,7 +5,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.hifun.base.SpringContext;
-import com.hifun.bean.TimeEnum;
+import com.hifun.bean.data.TimeEnum;
 import com.hifun.service.IHeadService;
 import com.hifun.service.impl.HeadServiceImpl;
 import com.hifun.util.DateUtil;
