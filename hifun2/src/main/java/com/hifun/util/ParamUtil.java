@@ -21,4 +21,16 @@ public class ParamUtil {
         }
     }
 
+    /**
+     * 检验username字段，返回安全字符串
+     * @param username
+     */
+	public static String checkUsername(String username) {
+		if(username != null && username.length() != 0 && username.length() <= 20){
+			return EncodeChangeUtil.change(username);
+		}else{
+			throw new RuntimeException("username参数输入有误");
+		}
+	}
+
 }

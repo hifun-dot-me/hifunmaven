@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hifun.base.session.SessionUser;
 import com.hifun.service.IUserAuthenService;
 import com.hifun.util.MD5Util;
+import com.hifun.util.ParamUtil;
 
 @Controller
 @RequestMapping(value = "/userAuthen")
@@ -108,6 +109,7 @@ public class UserAuthenController extends BaseController {
         } catch (Exception e) {
             username = "";
         }
+        username = ParamUtil.checkUsername(username);
         SessionUser user = userAuthenService.queryUserByUsername(username);
         view.addObject("user", user == null ? new SessionUser(username) : user);
         return view;
