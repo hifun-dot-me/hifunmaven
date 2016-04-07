@@ -21,7 +21,7 @@ public class AOPAspectTest {
 
     }
 
-    @Pointcut("execution(* com.hifun.service.IHeadService.*(..))")
+    @Pointcut("execution(* com.hifun.service.*.*(..))")
     private void aspectpoint() {
     }
 
