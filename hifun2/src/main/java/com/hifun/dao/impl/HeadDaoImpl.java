@@ -262,4 +262,11 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
             .queryForList("query-applyfriend-byusername", param);
     }
 
+    @Override
+    public Shop queryShopById(int shopid) {
+        Object obj = getSqlMapClientTemplate().queryForObject("query-shop-byid",
+            shopid);
+        return obj == null ? null : (Shop) obj;
+    }
+
 }

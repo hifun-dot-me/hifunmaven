@@ -215,4 +215,19 @@
 		) t
 	</select>
 	
+	<resultMap class="shop" id="shop">
+		<result property="id" column="id" nullValue="0"/>
+		<result property="username" column="username"/>
+		<result property="nickName" column="nickName"/>
+		<result property="shopName" column="shopName"/>
+		<result property="shopDesc" column="shopDesc"/>
+		<result property="shopAddr" column="shopAddr"/>
+		<result property="status" column="status" nullValue="0"/>
+	</resultMap>
+	<select id="query-shop-byid" parameterClass="int" resultMap="shop">
+		select s.id, s.username, u.nickName, s.shopName, s.shopDesc, s.shopAddr, s.status from shop s
+		left join user u on s.username = u.username
+		where s.id = #id# limit 1
+	</select>
+	
 </sqlMap>

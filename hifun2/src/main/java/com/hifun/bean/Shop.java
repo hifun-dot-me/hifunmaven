@@ -6,6 +6,8 @@ public class Shop {
 
     private String username;// 用户名
 
+    private String nickName;// 昵称
+
     private String shopName;// 商家名称
 
     private String shopDesc;// 商家描述
@@ -60,6 +62,14 @@ public class Shop {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
 }

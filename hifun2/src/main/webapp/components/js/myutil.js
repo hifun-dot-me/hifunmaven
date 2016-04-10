@@ -97,7 +97,7 @@ function blurutil(e){
 	$(e).blur();
 }
 
-function locationTo(href){
+function locationToNoSession(href){
 	location.href = href;
 }
 

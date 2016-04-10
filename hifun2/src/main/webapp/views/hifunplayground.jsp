@@ -19,7 +19,7 @@
 				<div class="left-inside-div">
 					<div class="left-inside-top-div">
 						<button type="button" class="btn btn-primary btn-lg btn-block btn-warning" 
-						onclick="locationTo(this, '/headpage/shopregister.do')">商 家 注 册</button>
+						onclick="locationTo(this, '/headpage/shopregister.do')">成 为 嗨 商</button>
 					</div>
 					<div class="left-inside-middle-div">
 						<ul class="normal-ul hiplayground-menu-ul">
@@ -48,7 +48,7 @@
 				<div class="right-top-search-div">
 					<div class="search-div">
 						<form action="" id="mainForm" method="get">
-							<input class="search-input" name="shopName" id="shopName" value="${shopName}" placeholder="搜索商家">
+							<input class="search-input" name="shopName" id="shopName" value="${shopName}" placeholder="搜索嗨商">
 							<span class="glyphicon glyphicon-search" id="search-btn"></span>
 						</form>
 					</div>
@@ -58,7 +58,7 @@
 				<ul class="normal-ul hiplayground-ul">
 					<c:forEach items="${shoplist}" var="s">
 						<li class="hiplayground-li">
-							<div class="hiplayground-div" onmouseover="mouseonblackboard(this)">
+							<div class="hiplayground-div" onmouseover="mouseonblackboard(this)" onclick="locationToNoSession('<%=request.getContextPath()%>/headpage/shop_detail.do?shopid=${s.id}')">
 								<img alt="blackboard" title="${s.shopDesc}" src="../components/image/png/blackboard.png" width="100%" height="100%">
 								<div class="hiplayground-tip-div" id="hiplayground-tip-div">
 									<span class="shop-title">

@@ -1,3 +1,5 @@
+var letter = '';
+
 $(document).ready(function(){
 	$(".letter-li").click(function(){
 		$(".letter-li").removeClass('curr-letter-li').addClass('normal-letter-li');
@@ -6,6 +8,13 @@ $(document).ready(function(){
 	$("#homeBtn").click(function(){
 		locationTo($("#base").val());
 	});
+});
+
+UE.getEditor('letter', {
+	toolbars:[['emotion']]
+}).ready(function() {
+    //this是当前创建的编辑器实例
+	letter = this.getContent();
 });
 
 function sendletter(e){

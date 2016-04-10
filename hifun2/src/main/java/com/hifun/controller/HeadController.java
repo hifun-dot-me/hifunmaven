@@ -154,6 +154,17 @@ public class HeadController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/shop_detail.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView shopDetail(
+            @RequestParam(value = "shopid", required = false) int shopid) {
+        ModelAndView view = new ModelAndView("/shopDetail");
+        Shop shop = headService.queryShopById(shopid);
+        view.addObject("shop", shop);
+        view.addObject("shopid", shopid);
+        return view;
+    }
+
     @RequestMapping(value = "/hibar.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView showh3() {
