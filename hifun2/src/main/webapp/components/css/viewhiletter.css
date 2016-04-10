@@ -58,17 +58,10 @@
 	font-size: 14px;
 }
 
-.letter-tool-div{
-	width: 98%;
-	height: 8%;
-	border: 0px solid #CCC;
-	margin: 0px auto;
-}
-
 .letter-write-div{
 	width: 98%;
 	height: 15%;
-	border: 1px solid #CCC;
+	border: 0px solid #CCC;
 	margin: 0px auto;
 }
 
@@ -77,6 +70,7 @@
 	height: 12%;
 	border: 0px solid #CCC;
 	margin: 0px auto;
+	margin-top: 40px;
 }
 
 .btn-send{

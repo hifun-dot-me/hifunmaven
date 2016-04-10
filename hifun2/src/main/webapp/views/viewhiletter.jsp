@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <jsp:include page="../components/jsp/include.jsp" />
+<jsp:include page="../components/jsp/ueditor.jsp" />
 <script type="text/javascript" src="../components/js/viewhiletter.js"></script>
 <link rel="stylesheet" type="text/css" href="../components/css/viewhiletter.css">
 <title>嗨信</title>
@@ -40,11 +41,8 @@
 				<div class="letter-content-div">
 					
 				</div>
-				<div class="letter-tool-div">
-					
-				</div>
 				<div class="letter-write-div">
-					<textarea class="letter-textarea" name="letterWrite" id="letterWrite"></textarea>
+					<script id="letter" name="letterWrite" type="text/plain" style="width:100%;height:0px;"></script>
 				</div>
 				<div class="letter-btn-div">
 					<c:if test="${!empty list}">

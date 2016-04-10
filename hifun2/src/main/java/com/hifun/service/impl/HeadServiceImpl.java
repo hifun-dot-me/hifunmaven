@@ -172,4 +172,9 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
         return headDao.queryApplyFriendByUsername(username, applyStatus);
     }
 
+    @Override
+    public Shop queryShopById(int shopid) {
+        return headDao.queryShopById(shopid);
+    }
+
 }

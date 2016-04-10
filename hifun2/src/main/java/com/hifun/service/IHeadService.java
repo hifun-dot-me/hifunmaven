@@ -264,4 +264,13 @@ public interface IHeadService {
     List<ApplyFriend> queryApplyFriendByUsername(String username,
             int applyStatus);
 
+    /**
+     * 根据id查询商家信息
+     * @param shopid
+     * @return 
+     * @create: 2016年4月10日 下午9:11:10 yuexia
+     * @history:
+     */
+    Shop queryShopById(int shopid);
+
 }

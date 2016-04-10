@@ -58,7 +58,7 @@
 				<ul class="normal-ul hiplayground-ul">
 					<c:forEach items="${shoplist}" var="s">
 						<li class="hiplayground-li">
-							<div class="hiplayground-div" onmouseover="mouseonblackboard(this)">
+							<div class="hiplayground-div" onmouseover="mouseonblackboard(this)" onclick="locationTo(this, '/headpage/shop_detail.do?shopid=${s.id}')">
 								<img alt="blackboard" title="${s.shopDesc}" src="../components/image/png/blackboard.png" width="100%" height="100%">
 								<div class="hiplayground-tip-div" id="hiplayground-tip-div">
 									<span class="shop-title">
