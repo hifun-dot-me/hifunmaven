@@ -490,7 +490,7 @@ textarea{
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	display: inline;
+	display: block;
 }
 
 .label-div{

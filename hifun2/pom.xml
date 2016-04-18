@@ -244,6 +244,11 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.1</version>
 		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.7.3</version>
+		</dependency>
     </dependencies>
 <!-- 解决每次更新maven自动更改jdk1.5办法 -->
 <build>
