@@ -70,9 +70,9 @@ public class AOPAspectTest {
      * @param jp
      * @param error
      */
-    @AfterThrowing(pointcut = "aspectpoint()", throwing = "error")
-    public void afterThrowing(JoinPoint jp, Throwable error) {
-        System.out.println("error:" + error);
+    @AfterThrowing(pointcut = "aspectpoint()", throwing = "exception")
+    public void afterThrowing(JoinPoint jp, Exception exception) {
+        System.out.println("exception:" + exception.getMessage());
     }
 
 }

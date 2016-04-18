@@ -43,7 +43,7 @@ a:visited{
 }
 
 .text-label{
-	width: 60px;
+	width: 65px;
 }
 
 .floatnone-a{
@@ -503,3 +503,6 @@ textarea{
 	display: none;
 }
 
+.display-inline{
+	display: inline;
+}

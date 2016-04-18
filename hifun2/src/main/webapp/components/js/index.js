@@ -119,8 +119,8 @@ function doQueryApplyFriendSuccess(res){
 								"</li>" +
 								"<li class='normal-li menu-horizontal apply-li' title='申请时间'>" + list[i].applyTime + "</li>" +
 								"<li class='normal-li menu-horizontal apply-li right' title='操作'>" +
-									"<a class='normal-a cursor-a user-link' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '2')\">同意</a>" +
-									"<a class='normal-a cursor-a user-link margin-left10' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '-1')\">拒绝</a>" +
+									"<a class='normal-a cursor-a user-link' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '2')\">愉快同意</a>" +
+									"<a class='normal-a cursor-a user-link margin-left10' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '-1')\">无情拒绝</a>" +
 								"</li>" +
 							"</ul>";
 		}

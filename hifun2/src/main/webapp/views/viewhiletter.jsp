@@ -19,7 +19,7 @@
 			<div class="letter-left-div">
 				<ul class="normal-ul letter-ul">
 					<c:if test="${empty list}">
-						<li class="normal-li letter-li">
+						<li class="normal-li letter-li nofriend">
 							暂无好友哦
 						</li>
 					</c:if>

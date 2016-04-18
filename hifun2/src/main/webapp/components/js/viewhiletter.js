@@ -1,7 +1,7 @@
 var letter = '';
 
 $(document).ready(function(){
-	$(".letter-li").click(function(){
+	$(".letter-li").not(".nofriend").click(function(){
 		$(".letter-li").removeClass('curr-letter-li').addClass('normal-letter-li');
 		$(this).addClass('curr-letter-li');
 	});

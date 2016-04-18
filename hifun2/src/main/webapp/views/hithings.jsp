@@ -31,7 +31,7 @@
 				<ul class="normal-ul hithings-ul">
 					<c:forEach items="${hithingslist}" var="h">
 						<li class="hithings-li">
-							<a class="normal-a floatnone-a cursor-a user-link text-ellipsis" onclick="userinfo(this, '${h.username}')">${h.nickname}</a>：${h.content}<br/><br/>
+							<a class="normal-a floatnone-a cursor-a user-link text-ellipsis display-inline" onclick="userinfo(this, '${h.username}')">${h.nickname}</a>${h.content}<br/><br/>
 							<label class="normal-label">${h.updateTime}</label>&nbsp;&nbsp;&nbsp;
 							<c:if test="${h.evaluateTypeId == 1}">
 								<a href="javascript:void(0)" onclick="blurutil(this)">
