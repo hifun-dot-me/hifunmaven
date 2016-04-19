@@ -26,6 +26,9 @@
 					<li class="normal-li shopdetail-menu-li" target="#hievaluate">
 						嗨评互动
 					</li>
+					<li class="normal-li shopdetail-menu-li no-shopdetail" style="float: right;" onclick="locationToNoSession('<%=request.getContextPath()%>/headpage/hifunplayground.do')">
+						<img src="../components/image/png/back.png" alt="返回" title="返回" style="margin-top: 12px;"/>
+					</li>
 				</ul>
 			</div>
 			<div class="shopdetail-info-div" id="hishopinfo">

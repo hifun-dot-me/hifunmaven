@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("li.shopdetail-menu-li").click(function(){
+	$("li.shopdetail-menu-li").not(".no-shopdetail").click(function(){
 		// 选项卡样式变化
 		$("li.shopdetail-menu-li").removeClass("shopdetail-curr-li");
 		$(this).addClass("shopdetail-curr-li");
