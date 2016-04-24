@@ -18,8 +18,18 @@
 			<div class="left-temp-div">
 				<div class="left-inside-div">
 					<div class="left-inside-top-div">
-						<button type="button" class="btn btn-primary btn-lg btn-block btn-warning" 
-						onclick="locationTo(this, '/headpage/shopregister.do')">成 为 嗨 商</button>
+						<c:if test="${shop != null}">
+							<div class="welcome-div">
+								<label class="normal-label">欢迎登录，</label>
+								<a class="user-link" href="javascript:void(0)" onclick="locationTo(this, '/headpage/shopmodify.do?shopid=${shop.id}')">
+									${shop.shopName}
+								</a>
+							</div>
+						</c:if>
+						<c:if test="${shop == null}">
+							<button type="button" class="btn btn-primary btn-lg btn-block btn-warning" 
+							onclick="locationTo(this, '/headpage/shopregister.do')">成 为 嗨 商</button>
+						</c:if>
 					</div>
 					<div class="left-inside-middle-div">
 						<ul class="normal-ul hiplayground-menu-ul">

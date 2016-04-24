@@ -177,4 +177,9 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
         return headDao.queryShopById(shopid);
     }
 
+    @Override
+    public Shop queryShopByUsername(String username) {
+        return headDao.queryShopByUsername(username);
+    }
+
 }

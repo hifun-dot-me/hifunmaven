@@ -230,4 +230,10 @@
 		where s.id = #id# limit 1
 	</select>
 	
+	<select id="query-shop-byusername" parameterClass="string" resultMap="shop">
+		select s.id, s.username, u.nickName, s.shopName, s.shopDesc, s.shopAddr, s.status from shop s
+		left join user u on s.username = u.username
+		where s.username = #username# limit 1
+	</select>
+	
 </sqlMap>

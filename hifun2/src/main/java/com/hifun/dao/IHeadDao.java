@@ -281,4 +281,13 @@ public interface IHeadDao {
      * @history:
      */
     Shop queryShopById(int shopid);
+
+    /**
+     * 根据用户名查询商家
+     * @param username
+     * @return 
+     * @create: 2016年4月24日 下午1:39:32 yuexia
+     * @history:
+     */
+    Shop queryShopByUsername(String username);
 }

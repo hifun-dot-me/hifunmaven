@@ -151,6 +151,13 @@ public class HeadController extends BaseController {
             .queryAllShopByStatus(AuditEnum.Y.getStatus(), shopName);
         view.addObject("shoplist", shoplist);
         view.addObject("shopName", shopName);
+        Shop shop = null;
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            shop = headService.queryShopByUsername(
+                ((SessionUser) sessionProvider.getUserDetail()).getUsername());
+        }
+        view.addObject("shop", shop);
         return view;
     }
 
