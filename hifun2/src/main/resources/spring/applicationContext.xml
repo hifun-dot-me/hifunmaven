@@ -34,9 +34,10 @@
 		<property name="maxActive" value="${maxActive}"></property>
 		<property name="maxWait" value="${maxWait}"></property>
 		<property name="minIdle" value="${minIdle}"></property>
-		<property name="logAbandoned" value="${logAbandoned}"></property>
-		<property name="removeAbandoned" value="${removeAbandoned}"></property>
-		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"></property>
+		<property name="testOnBorrow" value="${testOnBorrow}"></property>
+		<property name="testWhileIdle" value="${testWhileIdle}"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"></property>
+		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"></property>
 
 		<property name="driverClassName" value="${driver}"></property>
 		<property name="url" value="${url}"></property>
