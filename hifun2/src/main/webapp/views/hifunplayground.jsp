@@ -21,7 +21,7 @@
 						<c:if test="${shop != null}">
 							<div class="welcome-div">
 								<label class="normal-label">欢迎登录，</label>
-								<a class="user-link" href="javascript:void(0)" onclick="locationTo(this, '/headpage/shopmodify.do?shopid=${shop.id}')">
+								<a class="user-link" href="javascript:void(0)" onclick="locationTo(this, '/headpage/shop_modify.do?shopid=${shop.id}')">
 									${shop.shopName}
 								</a>
 							</div>

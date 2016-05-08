@@ -221,6 +221,16 @@ public interface IHeadDao {
     Integer queryShopCountByUsername(String username);
 
     /**
+     * 根据用户名查询商家数量
+     * @param shopId
+     * @param username
+     * @return 
+     * @create: 2016年05月08日13:54:58
+     * @history:
+     */
+    Integer queryShopCountByUsername(int shopId, String username);
+
+    /**
      * 保存好友申请记录
      * @param username
      * @param applyusername
@@ -290,4 +300,21 @@ public interface IHeadDao {
      * @history:
      */
     Shop queryShopByUsername(String username);
+
+    /**
+     * 根据商家ID更新商家信息
+     * @param shopId
+     * @param username
+     * @param shopType
+     * @param shopLevel
+     * @param shopDesc
+     * @param shopAddr
+     * @param status
+     * @param nowdate 
+     * @create: 2016年5月8日 下午2:13:16 yuexia
+     * @history:
+     */
+    void updateShopByshopid(int shopId, String username, int shopType,
+            int shopLevel, String shopDesc, String shopAddr, int status,
+            String nowdate);
 }

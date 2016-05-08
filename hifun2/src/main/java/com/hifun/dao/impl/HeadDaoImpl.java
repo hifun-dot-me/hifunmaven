@@ -213,6 +213,16 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
     }
 
     @Override
+    public Integer queryShopCountByUsername(int shopId, String username) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("shopId", shopId);
+        param.put("username", username);
+        Object obj = getSqlMapClientTemplate()
+            .queryForObject("query-shopcount-byshopidusername", param);
+        return obj == null ? 0 : (Integer) obj;
+    }
+
+    @Override
     public void insertApplyFriend(String username, String applyusername,
             String nowdate) {
         Map<String, Object> param = new HashMap<String, Object>();
@@ -274,6 +284,22 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
         Object obj = getSqlMapClientTemplate()
             .queryForObject("query-shop-byusername", username);
         return obj == null ? null : (Shop) obj;
+    }
+
+    @Override
+    public void updateShopByshopid(int shopId, String username, int shopType,
+            int shopLevel, String shopDesc, String shopAddr, int status,
+            String nowdate) {
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("shopId", shopId);
+        param.put("username", username);
+        param.put("shopType", shopType);
+        param.put("shopLevel", shopLevel);
+        param.put("shopDesc", shopDesc);
+        param.put("shopAddr", shopAddr);
+        param.put("status", status);
+        param.put("nowdate", nowdate);
+        getSqlMapClientTemplate().update("update-shop-byshopid", param);
     }
 
 }

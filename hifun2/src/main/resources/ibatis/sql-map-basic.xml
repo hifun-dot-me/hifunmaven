@@ -95,8 +95,8 @@
 	</select>
 	
 	<select id="query-allshop-bystatus" parameterClass="java.util.Map" resultClass="shop">
-		select s.id, s.username, s.shopName, s.shopDesc, 
-		s.shopAddr, s.status, s.passTime, s.updateTime 
+		select s.id, s.username, s.shopName, s.shopType, s.shopLevel, 
+		s.shopDesc, s.shopAddr, s.status, s.passTime, s.updateTime 
 		from shop s
 		<![CDATA[
 			where s.effectiveFrom <= now() and (s.effectiveTo > now() or s.effectiveTo is null)
@@ -157,6 +157,10 @@
 	
 	<select id="query-shopcount-byusername" parameterClass="string" resultClass="int">
 		select count(1) from shop where username = #username#
+	</select>
+	
+	<select id="query-shopcount-byshopidusername" parameterClass="java.util.Map" resultClass="int">
+		select count(1) from shop where username = #username# and id = #shopId#
 	</select>
 	
 	<insert id="insert-applyfriend" parameterClass="java.util.Map">
@@ -220,20 +224,29 @@
 		<result property="username" column="username"/>
 		<result property="nickName" column="nickName"/>
 		<result property="shopName" column="shopName"/>
+		<result property="shopType" column="shopType" nullValue="0"/>
+		<result property="shopLevel" column="shopLevel" nullValue="0"/>
 		<result property="shopDesc" column="shopDesc"/>
 		<result property="shopAddr" column="shopAddr"/>
 		<result property="status" column="status" nullValue="0"/>
 	</resultMap>
 	<select id="query-shop-byid" parameterClass="int" resultMap="shop">
-		select s.id, s.username, u.nickName, s.shopName, s.shopDesc, s.shopAddr, s.status from shop s
+		select s.id, s.username, u.nickName, s.shopName, s.shopType, s.shopLevel, s.shopDesc, s.shopAddr, s.status from shop s
 		left join user u on s.username = u.username
 		where s.id = #id# limit 1
 	</select>
 	
 	<select id="query-shop-byusername" parameterClass="string" resultMap="shop">
-		select s.id, s.username, u.nickName, s.shopName, s.shopDesc, s.shopAddr, s.status from shop s
+		select s.id, s.username, u.nickName, s.shopName, s.shopType, 
+		s.shopLevel, s.shopDesc, s.shopAddr, s.status from shop s
 		left join user u on s.username = u.username
 		where s.username = #username# limit 1
 	</select>
+	
+	<update id="update-shop-byshopid" parameterClass="java.util.Map">
+		update shop set shopType = #shopType#, shopLevel = #shopLevel#, shopDesc = #shopDesc#, 
+		shopAddr = #shopAddr#, updateTime = #nowdate#, updateBy = #username#
+		where id = #shopId# and username = #username#
+	</update>
 	
 </sqlMap>

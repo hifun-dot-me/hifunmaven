@@ -10,6 +10,10 @@ public class Shop {
 
     private String shopName;// 商家名称
 
+    private int shopType;// 商家类型
+
+    private int shopLevel;// 商家级别
+
     private String shopDesc;// 商家描述
 
     private String shopAddr;// 商家地址
@@ -70,6 +74,22 @@ public class Shop {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public int getShopType() {
+        return shopType;
+    }
+
+    public void setShopType(int shopType) {
+        this.shopType = shopType;
+    }
+
+    public int getShopLevel() {
+        return shopLevel;
+    }
+
+    public void setShopLevel(int shopLevel) {
+        this.shopLevel = shopLevel;
     }
 
 }

@@ -172,6 +172,48 @@ public class HeadController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/shop_modify.do", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView shopModify(
+            @RequestParam(value = "shopid", required = false) int shopid) {
+        ModelAndView view = new ModelAndView("/shopmodify");
+        Shop shop = headService.queryShopById(shopid);
+        view.addObject("shop", shop);
+        view.addObject("shopid", shopid);
+        return view;
+    }
+
+    @RequestMapping(value = "/submitshopmodify.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int submitShopmodify(
+            @RequestParam(value = "shopId", required = true) int shopId,
+            @RequestParam(value = "shopType", required = true) int shopType,
+            @RequestParam(value = "shopLevel", required = true) int shopLevel,
+            @RequestParam(value = "shopDesc", required = true) String shopDesc,
+            @RequestParam(value = "shopAddr", required = true) String shopAddr) {
+        if (sessionProvider != null
+                && sessionProvider.getUserDetail() != null) {
+            String username = ((SessionUser) sessionProvider.getUserDetail())
+                .getUsername();
+            Integer count = headService.queryShopCountByUsername(shopId,
+                username);
+            // 用户名对应的商家不存在
+            if (count == 0) {
+                return 2;
+            }
+            try {
+                headService.updateShopByshopid(shopId, username, shopType,
+                    shopLevel, shopDesc, shopAddr, AuditEnum.Y.getStatus(),
+                    DateUtil.getNowTimeString(TimeEnum.TIME.getFormat()));
+                return 1;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return -1;
+            }
+        }
+        return 0;
+    }
+
     @RequestMapping(value = "/hibar.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView showh3() {

@@ -144,6 +144,11 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
     }
 
     @Override
+    public Integer queryShopCountByUsername(int shopId, String username) {
+        return headDao.queryShopCountByUsername(shopId, username);
+    }
+
+    @Override
     public void insertApplyFriend(String username, String applyusername,
             String nowdate) {
         headDao.insertApplyFriend(username, applyusername, nowdate);
@@ -180,6 +185,14 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
     @Override
     public Shop queryShopByUsername(String username) {
         return headDao.queryShopByUsername(username);
+    }
+
+    @Override
+    public void updateShopByshopid(int shopId, String username, int shopType,
+            int shopLevel, String shopDesc, String shopAddr, int status,
+            String nowdate) {
+        headDao.updateShopByshopid(shopId, username, shopType, shopLevel,
+            shopDesc, shopAddr, status, nowdate);
     }
 
 }
