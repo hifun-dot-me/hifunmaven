@@ -30,6 +30,14 @@ $(document).ready(function(){
 				);
 	});
 	
+	$('#loginModal').on('shown.bs.modal', function () {
+		$("#login-username").focus();
+	});
+	
+	$('#registerModal').on('shown.bs.modal', function () {
+		$("#register-username").focus();
+	});
+	
 	$('#loginModal').on('hidden.bs.modal', function () {
 		initLoginForm();
 	});

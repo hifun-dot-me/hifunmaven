@@ -42,7 +42,7 @@
 					
 				</div>
 				<div class="letter-write-div">
-					<script id="letter" name="letterWrite" type="text/plain" style="width:100%;height:0px;"></script>
+					<script id="letter" name="letterWrite" type="text/plain" style="width:100%;height:50px;"></script>
 				</div>
 				<div class="letter-btn-div">
 					<c:if test="${!empty list}">
