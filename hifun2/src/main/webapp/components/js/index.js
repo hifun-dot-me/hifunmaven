@@ -122,11 +122,11 @@ function doQueryApplyFriendSuccess(res){
 		
 		for(var i = 0;i < list.length;i++){
 			html = html + "<ul class='normal-ul apply-ul'>" +
-								"<li class='normal-li menu-horizontal apply-li' title='申请人'>" +
+								"<li class='normal-li menu-horizontal apply-li' style='width:25%;' title='申请人'>" +
 									"<a class='normal-a floatnone-a cursor-a user-link' onclick=\"userinfo(this, '" + list[i].username + "')\">" + list[i].nickname + "</a>" +
 								"</li>" +
-								"<li class='normal-li menu-horizontal apply-li' title='申请时间'>" + list[i].applyTime + "</li>" +
-								"<li class='normal-li menu-horizontal apply-li right' title='操作'>" +
+								"<li class='normal-li menu-horizontal apply-li' style='width:45%;' title='申请时间'>" + list[i].applyTime + "</li>" +
+								"<li class='normal-li menu-horizontal apply-li right' style='width:30%;' title='操作'>" +
 									"<a class='normal-a cursor-a user-link' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '2')\">愉快同意</a>" +
 									"<a class='normal-a cursor-a user-link margin-left10' onclick=\"agreeApplyFriend(this, '" + list[i].username + "', '-1')\">无情拒绝</a>" +
 								"</li>" +
