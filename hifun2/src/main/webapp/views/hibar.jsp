@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <jsp:include page="../components/jsp/include.jsp" />
+<script type="text/javascript" src="../components/js/hibar.js"></script>
+<link rel="stylesheet" type="text/css" href="../components/css/hibar.css">
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -14,10 +16,39 @@ $(document).ready(function(){
 </script>
 <title>嗨吧</title>
 </head>
-<body>
-	<div>
-		this is hibar.<br/>
-		we are developing...
+<body class="inside-body">
+	<input id="base" type="hidden" value="<%=request.getContextPath()%>">
+	<div class="middle-div minwid-div">
+		<div class="left-div">
+			<div class="left-temp-div">
+				<div class="left-inside-div">
+					<div class="left-inside-top-div">
+						<ul class="normal-ul hibar-menu-ul">
+							<li class="normal-li hibar-menu-li">
+								首页
+							</li>
+							<li class="normal-li hibar-menu-li">
+								嗨翻专区
+							</li>
+							<li class="normal-li hibar-menu-li">
+								任意聊
+							</li>
+							<li class="normal-li hibar-menu-li">
+								聊五毛专区
+							</li>
+						</ul>
+					</div>
+					<div class="left-inside-middle-div">
+						<div class="welcome-div">
+							<label class="normal-label">经验值</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-div">
+			
+		</div>
 	</div>
 </body>
 </html>

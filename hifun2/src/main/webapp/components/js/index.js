@@ -195,7 +195,7 @@ function mouseouthitoolletterdiv(toolid, e){
 function locationTo(e, loc){
 	$(".menu-li").removeClass('curr-li');
 	$(e).addClass('curr-li');
-	$("#content-frame").attr('src', $("#base").val()+loc);
+	$("#content-frame").attr('src', loc.indexOf('http') == -1 ? $("#base").val()+loc : loc);
 }
 function agreeApplyFriend(e, username, applyStatus){
 	var this_ = $(e);
