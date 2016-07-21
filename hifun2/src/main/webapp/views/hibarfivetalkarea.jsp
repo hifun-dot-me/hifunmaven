@@ -24,7 +24,7 @@ $(document).ready(function(){
 				<div class="left-inside-div">
 					<div class="left-inside-top-div">
 						<ul class="normal-ul hibar-menu-ul">
-							<li class="normal-li hibar-menu-li hibar-menu-li-hover" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/firstpage.do')">
+							<li class="normal-li hibar-menu-li" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/firstpage.do')">
 								首页
 							</li>
 							<li class="normal-li hibar-menu-li" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/hifunarea.do')">
@@ -33,7 +33,7 @@ $(document).ready(function(){
 							<li class="normal-li hibar-menu-li" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/talkarea.do')">
 								任意聊
 							</li>
-							<li class="normal-li hibar-menu-li" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/fivetalkarea.do')">
+							<li class="normal-li hibar-menu-li hibar-menu-li-hover" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/fivetalkarea.do')">
 								聊五毛专区
 							</li>
 						</ul>
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="right-div">
-			首页
+			五毛专区
 		</div>
 	</div>
 </body>

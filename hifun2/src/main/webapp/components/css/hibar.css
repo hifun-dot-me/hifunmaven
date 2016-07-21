@@ -73,7 +73,7 @@
 	border: 2px solid #FFFFFF;
 }
 
-.hibar-menu-li:hover{
+.hibar-menu-li:hover, .hibar-menu-li-hover{
 	border: 2px solid #F0AD4E;
 	cursor: pointer;
 	color: #F0AD4E;
