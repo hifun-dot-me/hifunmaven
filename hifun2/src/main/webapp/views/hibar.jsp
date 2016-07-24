@@ -25,7 +25,7 @@ $(document).ready(function(){
 					<div class="left-inside-top-div">
 						<ul class="normal-ul hibar-menu-ul">
 							<li class="normal-li hibar-menu-li hibar-menu-li-hover" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/firstpage.do')">
-								首页
+								嗨吧首页
 							</li>
 							<li class="normal-li hibar-menu-li" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/hifunarea.do')">
 								嗨翻专区
@@ -34,7 +34,7 @@ $(document).ready(function(){
 								任意聊
 							</li>
 							<li class="normal-li hibar-menu-li" onclick="locationToNoSession('<%=request.getContextPath()%>/hibar/fivetalkarea.do')">
-								聊五毛专区
+								五毛专区
 							</li>
 						</ul>
 					</div>
@@ -47,7 +47,19 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="right-div">
-			首页
+			<div class="right-main-div">
+				<div class="right-main-left-div">
+					<div class="right-main-left-banner-div">
+						原创专区 - banner scroll
+					</div>
+					<div class="right-main-left-note-div">
+						精华嗨帖 - banner scroll
+					</div>
+				</div>
+				<div class="right-main-right-div">
+					注册人数
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

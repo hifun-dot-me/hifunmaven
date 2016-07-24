@@ -126,6 +126,16 @@ function userinfo(e, username){
 	window.parent.location.href = $("#base").val() + "/userAuthen/userinfo.do?username=" + encrypt(username);
 }
 
+function optionClick(e, model){
+	// 选项卡样式变化
+	$("li." + model + "-menu-li").removeClass(model + "-curr-li");
+	$(e).addClass(model + "-curr-li");
+	
+	// 展示内容样式变化
+	$("." + model + "-info-div").hide();
+	$($(e).attr("target")).show();
+}
+
 /**
  * 文本框根据输入内容自适应高度
  * @param                {HTMLElement}        输入框元素

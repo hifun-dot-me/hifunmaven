@@ -6,15 +6,15 @@
 
 .left-div{
 	float: left;
-	width: 14%;
+	width: 12%;
 	height: 100%;
 	position: fixed;
-	min-width: 180px;
+	min-width: 153px;
 }
 
 .right-div{
 	float: right;
-	width: 86%;
+	width: 88%;
 	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -31,7 +31,7 @@
 }
 
 .left-inside-div{
-	width: 95%;
+	width: 100%;
 	height: 450px;
 	border: 0px solid #ccc;
 	margin: 0px auto;
@@ -62,7 +62,7 @@
 .hibar-menu-ul{
 	width: 100%;
 	height: 100%;
-	padding: 20px 10px;
+	padding: 20px 0px;
 }
 
 .hibar-menu-li{
@@ -74,30 +74,46 @@
 }
 
 .hibar-menu-li:hover, .hibar-menu-li-hover{
-	border: 2px solid #F0AD4E;
+	border: 2px solid #0066CC;
+	background-color: #0066CC;
 	cursor: pointer;
-	color: #F0AD4E;
+	color: #FFFFFF;
 }
 
-.right-top-div{
+.right-main-div{
+	border: 0px solid #F0F0F0;
+	width: 90%;
+	height: 80%;
+	margin: 0px auto;
+	margin-top: 30px;
+}
+
+.right-main-left-div{
+	border: 0px solid #F0F0F0;
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.right-main-right-div{
+	border: 1px solid #F0F0F0;
+	width: 30%;
+	height: 100%;
+	float: right;
+	border-left: 0px;
+}
+
+.right-main-left-banner-div{
+	border: 1px solid #F0F0F0;
 	width: 100%;
-	height: 70px;
+	height: 60%;
 }
 
-.right-top-tip-div{
-	background-color: #FFFF6F;
+.right-main-left-note-div{
+	border: 1px solid #F0F0F0;
 	width: 100%;
-	height: 24px;
-	color: #FF2D2D;
-	line-height: 24px;
-	padding-left: 20px;
+	height: 40%;
+	border-top: 0px;
 }
-
-.right-inside-div{
-	width: 100%;
-	padding: 10px;
-	padding-right: 40px;
-}
-
 
 

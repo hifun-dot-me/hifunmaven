@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+.main-div{
+	width: 60%;
+	height: 80%;
+	margin: 0px auto;
+	border: 0px solid #F0F0F0;
+	margin-top: 30px;
+}
+
+.donate-font{
+	font-size: 14px;
+}
+
+.weixin-donate{
+	width: 200px;
+	height: auto;
+}
+
+.donate-total-div{
+	border: 0px solid #CCC;
+	width: 100%;
+	height: 100%;
+	margin: 0px auto;
+}
+
+.donate-info-div{
+	border: 1px solid #CCC;
+	width: 100%;
+	height: 300px;
+	padding: 25px 20px;
+	margin-top: -1px;
+	font-size: 12px;
+}
+
+.donate-horizontal{
+	display: inline;
+	overflow: hidden;
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+.donate-menu-li{
+	display: inline;
+	float: left;
+	padding: 2px 20px;
+	height: 100%;
+	line-height: 38px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.donate-curr-li{
+	border-top: 3px solid #37adff;
+	line-height: 33px;
+	color: #37adff;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #FFF;
+}
+
