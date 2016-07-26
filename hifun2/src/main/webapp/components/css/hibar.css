@@ -101,6 +101,11 @@
 	height: 100%;
 	float: right;
 	border-left: 0px;
+	background-color: #97CBFF;
+}
+
+.scroller-main-div{
+	margin-top: 50%;
 }
 
 .right-main-left-banner-div{

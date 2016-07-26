@@ -8,12 +8,9 @@
 
 <jsp:include page="../components/jsp/include.jsp" />
 <script type="text/javascript" src="../components/js/hibar.js"></script>
+<script type="text/javascript" src="../components/scrolljs/scroller.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../components/css/hibar.css">
-<script type="text/javascript">
-$(document).ready(function(){
-	
-});
-</script>
+<link rel="stylesheet" type="text/css" href="../components/scrolljs/scroller.css">
 <title>嗨吧</title>
 </head>
 <body class="inside-body">
@@ -57,10 +54,52 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class="right-main-right-div">
-					注册人数
+					<div id="scroller-pane" class="scroller-main-div"></div>
+					<!-- <div id="clock-pane"></div> -->
 				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			ajaxAsyncPost(url, data, dataType, doSuccess);
+			var num = 0;
+			var scroller=Scroller.getNewInstance({
+				direction:Scroller.DIRECTION.UP,
+				interval:3000,
+				width:200,
+				amount:50,
+				separatorType:Scroller.SEPARATOR.THOUSAND,
+				separator:" "
+			});
+			scroller.appendTo(document.getElementById("scroller-pane")).setStyle({backgroundColor:"#97CBFF",color:"red"});
+			scroller.start(completeNum(num, 9));
+			scroller.scrollTo(completeNum(12388319, 9));
+			/* setInterval(function(){
+				num += 1;
+				scroller.scrollTo(completeNum(num, 9));
+			},10000); */
+			/* var clockScroller=Scroller.getNewInstance({
+				width:200,
+				amount:40,
+				interval:800,
+				separatorType:Scroller.SEPARATOR.TIME,
+				separator:":"
+			});
+			clockScroller.appendTo(document.getElementById("clock-pane"));
+			clockScroller.start("000000");
+			setInterval(function(){
+				var now=new Date();
+				var hours=now.getHours();
+				var minutes=now.getMinutes();
+				var seconds=now.getSeconds();
+				hours=(hours<10)?"0"+hours:hours+"";
+				minutes=(minutes<10)?"0"+minutes:minutes+"";
+				seconds=(seconds<10)?"0"+seconds:seconds+"";
+				var timeStr=hours+minutes+seconds;
+				clockScroller.scrollTo(hours+minutes+seconds);
+			},1000); */
+		});
+	</script>
 </body>
 </html>

@@ -58,11 +58,33 @@ function ajaxGet(url, data, dataType, doSuccess){
 	ajaxParam(url, data, 'get', dataType, doSuccess);
 }
 
+function ajaxAsyncPost(url, data, dataType, doSuccess){
+	ajaxAsyncParam(url, data, 'post', dataType, doSuccess);
+}
+
+function ajaxAsyncGet(url, data, dataType, doSuccess){
+	ajaxAsyncParam(url, data, 'get', dataType, doSuccess);
+}
+
 function ajaxParam(url, data, type, dataType, doSuccess){
 	$.ajax({
 		url:url,
 		data:data,
 		type:type,
+		dataType:dataType,
+		success:doSuccess,
+		error:function(res){
+			window.wxc.xcConfirm('系统访问出错，请联系管理员！', window.wxc.xcConfirm.typeEnum.error);
+		}
+	});
+}
+
+function ajaxAsyncParam(url, data, type, dataType, doSuccess){
+	$.ajax({
+		url:url,
+		data:data,
+		type:type,
+		async:false,
 		dataType:dataType,
 		success:doSuccess,
 		error:function(res){
@@ -134,6 +156,21 @@ function optionClick(e, model){
 	// 展示内容样式变化
 	$("." + model + "-info-div").hide();
 	$($(e).attr("target")).show();
+}
+
+/**
+ * 数据位数补全，不足的补0
+ * @param num
+ * @param len
+ */
+function completeNum(num, len){
+	var numstr;
+	if((num+'').length < len){
+		numstr = '000000000' + num;
+	}else{
+		numstr = num + '';
+	}
+	return numstr.substring(numstr.length - 9, numstr.length);
 }
 
 /**
