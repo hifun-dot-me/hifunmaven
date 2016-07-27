@@ -249,4 +249,12 @@
 		where id = #shopId# and username = #username#
 	</update>
 	
+	<select id="query-hibar-totalusers" resultClass="int">
+		select count(1) from hibar_user
+		where 1 = 1
+		<![CDATA[
+			and effectiveFrom <= NOW() and (effectiveTo >= NOW() or effectiveTo is null)
+		]]>
+	</select>
+	
 </sqlMap>

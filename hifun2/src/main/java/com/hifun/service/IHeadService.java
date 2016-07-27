@@ -309,4 +309,12 @@ public interface IHeadService {
             int shopLevel, String shopDesc, String shopAddr, int status,
             String nowdate);
 
+    /**
+     * 查询所有hibar用户数量
+     * @return 
+     * @create: 2016年7月27日 下午10:55:31 yuexia
+     * @history:
+     */
+    int queryHibarTotalUsers();
+
 }

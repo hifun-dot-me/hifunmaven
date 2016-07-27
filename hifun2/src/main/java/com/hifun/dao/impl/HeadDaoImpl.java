@@ -302,4 +302,11 @@ public class HeadDaoImpl extends BaseDao implements IHeadDao {
         getSqlMapClientTemplate().update("update-shop-byshopid", param);
     }
 
+    @Override
+    public int queryHibarTotalUsers() {
+        Object obj = getSqlMapClientTemplate()
+            .queryForObject("query-hibar-totalusers");
+        return obj == null ? null : (Integer) obj;
+    }
+
 }

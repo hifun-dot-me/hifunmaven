@@ -317,4 +317,12 @@ public interface IHeadDao {
     void updateShopByshopid(int shopId, String username, int shopType,
             int shopLevel, String shopDesc, String shopAddr, int status,
             String nowdate);
+
+    /**
+     * 查询所有hibar用户数量
+     * @return 
+     * @create: 2016年7月27日 下午10:56:46 yuexia
+     * @history:
+     */
+    int queryHibarTotalUsers();
 }

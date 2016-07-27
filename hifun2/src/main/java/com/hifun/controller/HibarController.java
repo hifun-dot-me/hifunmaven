@@ -44,4 +44,14 @@ public class HibarController extends BaseController {
         return view;
     }
 
+    @RequestMapping(value = "/querytotalusers.do", method = RequestMethod.POST)
+    @ResponseBody
+    public int queryTotalUsers() {
+        try {
+            return headService.queryHibarTotalUsers();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
 }

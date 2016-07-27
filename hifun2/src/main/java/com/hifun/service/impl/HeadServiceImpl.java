@@ -195,4 +195,9 @@ public class HeadServiceImpl extends BaseService implements IHeadService {
             shopDesc, shopAddr, status, nowdate);
     }
 
+    @Override
+    public int queryHibarTotalUsers() {
+        return headDao.queryHibarTotalUsers();
+    }
+
 }

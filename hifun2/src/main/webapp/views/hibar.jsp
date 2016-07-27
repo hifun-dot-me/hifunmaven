@@ -54,7 +54,7 @@
 					</div>
 				</div>
 				<div class="right-main-right-div">
-					<div id="scroller-pane" class="scroller-main-div"></div>
+					<div id="scroller-pane" class="scroller-main-div" title="嗨吧用户数">
 					<!-- <div id="clock-pane"></div> -->
 				</div>
 			</div>
@@ -62,7 +62,6 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			ajaxAsyncPost(url, data, dataType, doSuccess);
 			var num = 0;
 			var scroller=Scroller.getNewInstance({
 				direction:Scroller.DIRECTION.UP,
@@ -74,7 +73,15 @@
 			});
 			scroller.appendTo(document.getElementById("scroller-pane")).setStyle({backgroundColor:"#97CBFF",color:"red"});
 			scroller.start(completeNum(num, 9));
-			scroller.scrollTo(completeNum(12388319, 9));
+			//获取hibar总用户数
+			ajaxAsyncPost(
+					$("#base").val()+'/hibar/querytotalusers.do', 
+					{}, 
+					'json', function(res){
+						num = res.data;
+					}
+			);
+			scroller.scrollTo(completeNum(num, 9));
 			/* setInterval(function(){
 				num += 1;
 				scroller.scrollTo(completeNum(num, 9));

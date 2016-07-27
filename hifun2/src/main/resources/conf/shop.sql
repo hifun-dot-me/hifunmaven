@@ -107,3 +107,18 @@ CREATE TABLE IF NOT EXISTS `hifun`.`type_img` (
   `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
   `effectiveTo` DATETIME NULL COMMENT '生效时间止'
 );
+
+-- -----------------------------------------------------
+-- Table `hifun`.`hibar_user` - 记录用户首次发帖时间
+-- -----------------------------------------------------
+create table if not exists hibar_user(
+  `id` int primary key auto_increment,
+  `username` VARCHAR(20) NOT NULL COMMENT '用户名',
+  `firstPostTime` datetime not null comment '首次发帖时间',
+  `createTime` DATETIME NULL COMMENT '创建时间',
+  `createBy` VARCHAR(20) NULL COMMENT '创建人',
+  `updateTime` DATETIME NULL COMMENT '修改时间',
+  `updateBy` VARCHAR(20) NULL COMMENT '修改人',
+  `effectiveFrom` DATETIME NULL COMMENT '生效时间起',
+  `effectiveTo` DATETIME NULL COMMENT '生效时间止'
+);
