@@ -83,15 +83,28 @@
 .right-top-div{
 	width: 100%;
 	height: 70px;
+	padding: 5px 5px;
 }
 
 .right-top-tip-div{
-	background-color: #FFFF6F;
+	background-color: #FFC1E0;
 	width: 100%;
 	height: 24px;
-	color: #FF2D2D;
-	line-height: 24px;
+	line-height: 22px;
 	padding-left: 20px;
+	border: 1px solid #F00078;
+}
+
+.announcement-font, .announcement-font:hover{
+	color: #FF2D2D;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.close-announcement{
+	position: inherit;
+	vertical-align: middle;
+	cursor: pointer;
 }
 
 .right-top-search-div{

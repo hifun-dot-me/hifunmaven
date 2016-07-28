@@ -53,7 +53,9 @@
 		<div class="right-div">
 			<div class="right-top-div">
 				<div class="right-top-tip-div">
-					公告：嗨翻广场火热招商中...
+					<span class="glyphicon glyphicon-remove close-announcement" title="关闭"></span>
+					<a class="announcement-font" data-toggle="modal" 
+						data-target="#announcementModal">公告：嗨翻广场火热招商中...</a>
 				</div>
 				<div class="right-top-search-div">
 					<div class="search-div">
@@ -85,5 +87,35 @@
 			</div>
 		</div>
 	</div>
+	<!-- 公告模态框（Modal） -->
+	<div class="modal fade" id="announcementModal" tabindex="-1" role="dialog" 
+	   aria-labelledby="announcementModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="announcementModalLabel">
+		               	公 告
+		            </h4>
+				</div>
+				<div class="modal-body">
+					<c:if test="${shop == null}">
+						&nbsp;&nbsp;&nbsp;&nbsp;嗨翻广场正在火热招商中，接入请查看
+						<a class="user-link cursor-a" onclick="tobeHiShop(this)">成为嗨商</a>
+						链接
+					</c:if>
+					<c:if test="${shop != null}">
+						您已接入嗨商，可点此
+						<a class="user-link" href="javascript:void(0)" onclick="locationTo(this, '/headpage/shop_modify.do?shopid=${shop.id}')">
+							查看详情
+						</a>
+					</c:if>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </body>
 </html>

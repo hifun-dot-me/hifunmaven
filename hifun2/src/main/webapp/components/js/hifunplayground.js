@@ -6,6 +6,10 @@ $(document).ready(function(){
 		$("#mainForm").attr("action", $("#base").val()+'/headpage/hifunplayground.do');
 		$("#mainForm").submit();
 	});
+	
+	$(".close-announcement").click(function(){
+		$(this).parent().remove();
+	});
 });
 
 function checkForm(){
@@ -59,5 +63,10 @@ function evaluatePost(e, evaluateId, evaluateTypeId, relateTypeName){
 
 function mouseonblackboard(e){
 	$(e).children(".hiplayground-tip-div").show().animate({height:"60px"});
+}
+
+function tobeHiShop(e){
+	$("#announcementModal").modal('hide');
+	locationTo(e, '/headpage/shopregister.do');
 }
 

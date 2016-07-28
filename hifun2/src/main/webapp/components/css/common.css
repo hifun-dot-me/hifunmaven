@@ -26,16 +26,19 @@ a{
 	color: #FFFFFF;
 	text-decoration: none;
 	z-index: 2;
+	outline: none;
 }
 
 a:hover{
 	color: #E0E0E0;
 	text-decoration: none;
+	outline: none;
 }
 
 a:visited{
 	color: #FFFFFF;
 	text-decoration: none;
+	outline: none;
 }
 
 .normal-text, .normal-a{
