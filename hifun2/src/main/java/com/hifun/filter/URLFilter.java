@@ -33,7 +33,7 @@ public class URLFilter implements Filter {
         String url = req.getRequestURI()
             .substring(req.getContextPath().length());
         if (url.equals("/")) {// 访问网站根目录
-            res.sendRedirect(req.getContextPath() + "/headpage/index.do");
+            res.sendRedirect(req.getContextPath() + "/views/welcome.jsp");
             return;
         }
         req = new EncodeRequestWrapper(req);
