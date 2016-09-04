@@ -1,0 +1,154 @@
+@CHARSET "UTF-8";
+
+.minwid-div{
+	min-width: 1110px;
+}
+
+.left-div{
+	float: left;
+	width: 12%;
+	height: 100%;
+	position: fixed;
+	min-width: 153px;
+}
+
+.right-div{
+	float: right;
+	width: 88%;
+	height: 100%;
+	min-width: 800px;
+	z-index: 2;
+	padding-top: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.left-temp-div{
+	width: 100%;
+	height: 90%;
+	margin: 0;
+	border: 0px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.left-inside-div{
+	width: 100%;
+	height: 450px;
+	border: 0px solid #ccc;
+	margin: 0px auto;
+	margin-top: 5px;
+}
+
+.left-inside-top-div{
+	width: 100%;
+	height: 300px;
+	border: 0px solid #ccc;
+	padding: 0px;
+	padding-top: 2px;
+	padding-left: 0px;
+}
+
+.welcome-div{
+	margin-left: 16px;
+	margin-top: 20px;
+}
+
+.left-inside-middle-div{
+	width: 100%;
+	height: 50px;
+	border: 0px solid #ccc;
+	margin-top: 5px;
+}
+
+.hibar-menu-ul{
+	width: 100%;
+	height: 100%;
+	padding: 20px 0px;
+}
+
+.hibar-menu-li{
+	width: 100%;
+	padding: 10px 0px;
+	font-size: 14px;
+	padding: 3px 6px;
+	border: 2px solid #FFFFFF;
+}
+
+.hibar-menu-li:hover, .hibar-menu-li-hover{
+	border: 2px solid #0066CC;
+	background-color: #0066CC;
+	cursor: pointer;
+	color: #FFFFFF;
+}
+
+.right-main-div{
+	border: 0px solid #F0F0F0;
+	width: 90%;
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin: 0px auto;
+}
+
+.right-main-left-div{
+	border: 0px solid #F0F0F0;
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.right-main-right-div{
+	border: 1px solid #F0F0F0;
+	width: 30%;
+	height: 100%;
+	float: right;
+	border-left: 0px;
+}
+
+.scroller-main-div{
+	width: 100%;
+	background-color: #97CBFF;
+}
+
+.padding-5{
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.right-main-left-banner-div{
+	border: 1px solid #F0F0F0;
+	width: 100%;
+	height: 60%;
+	position: relative;
+}
+
+.right-main-left-note-div{
+	border: 1px solid #F0F0F0;
+	width: 100%;
+	height: 40%;
+	border-top: 0px;
+}
+
+.hibar-note-ul{
+	width: 80%;
+	height: 100%;
+	padding: 3px 0px;
+}
+
+.hibar-note-li{
+	border: 0px solid #F0F0F0;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #F0F0F0;
+	padding-left: 18px;
+}
+
+.first-hibar-note-li{
+	border-top: 1px solid #F0F0F0;
+}
+
+.hibar-btn-div{
+	width: 20%;
+}
+

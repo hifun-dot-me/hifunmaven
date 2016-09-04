@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+	    http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+    <context:component-scan base-package="com.hifun"/>
+	<context:annotation-config />
+    
+    <bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:conf/jdbc.properties</value>
+				<value>classpath*:conf/redis.properties</value>
+<!-- 				<value>classpath*:conf/variables.properties</value> -->
+			</list>
+		</property>
+	</bean>
+	<!-- dbcp pool config -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<property name="maxActive" value="${maxActive}"></property>
+		<property name="maxWait" value="${maxWait}"></property>
+		<property name="minIdle" value="${minIdle}"></property>
+		<property name="testOnBorrow" value="${testOnBorrow}"></property>
+		<property name="testWhileIdle" value="${testWhileIdle}"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"></property>
+		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"></property>
+
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+        	<ref bean="dataSource"/>
+        </property>
+	</bean>
+	
+	<!--配置哪些方法,什么情况下需要回滚--> 
+   <tx:advice id="serviceAdvice" transaction-manager="txManager">  
+	    <tx:attributes>   
+	        <!--当代理的service层中的方法抛出异常的时候才回滚,必须加rollback-for参数--> 
+	        <tx:method name="transaction*" propagation="REQUIRED" rollback-for="Throwable"/>
+	        <tx:method name="insert*" propagation="REQUIRED" rollback-for="Throwable"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Throwable"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Throwable"/>
+            <tx:method name="*" read-only="true"/>
+	    </tx:attributes>  
+	</tx:advice>  
+	<!-- 配置哪些类的方法需要进行事务管理 -->  
+	<aop:config proxy-target-class="true">  
+		<aop:pointcut id="servicePointcut" expression="(execution(* com.hifun.service.impl..*.*(..)))"/>  
+		<aop:advisor pointcut-ref="servicePointcut" advice-ref="serviceAdvice"/>  
+	</aop:config>
+	
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ibatis/sqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+	<bean id="springContext" class="com.hifun.util.SpringContextUtil"></bean>
+	
+<!-- 	<import resource="redis-context.xml"/> -->
+    
+</beans>

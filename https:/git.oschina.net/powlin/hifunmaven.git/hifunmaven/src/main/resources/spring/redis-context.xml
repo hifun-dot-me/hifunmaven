@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-3.2.xsd
+    http://www.springframework.org/schema/task 
+    http://www.springframework.org/schema/task/spring-task.xsd
+    http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+	default-autowire="default">
+	
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+	  <property name="maxIdle" value="${redis.maxIdle}" />
+	  <property name="maxActive" value="${redis.maxActive}" />
+	  <property name="maxWait" value="${redis.maxWait}" />
+	  <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+	</bean>
+    
+	<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+	  p:host-name="${redis.host}"
+	  p:port="${redis.port}"
+	  p:password="${redis.pass}"
+	  p:pool-config-ref="poolConfig"/>
+	  
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">  
+		<property name="connectionFactory" ref="connectionFactory" />  
+	</bean>
+	
+</beans>
